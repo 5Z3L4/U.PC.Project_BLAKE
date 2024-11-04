@@ -14,7 +14,7 @@ public class ControlThree : PerkScriptableObject
         this.player = player;
         foreach(Room room in ReferenceManager.RoomManager.GetAllRooms())
         {
-            room.ActivateAllBlockers();
+            room.SetControlPerkThree(true);
         }
         EnemyDeathMediator.Instance.ComboController.AddMinCombo(-0.3f);
         ReferenceManager.Instance.OnFloorLoad += Refresh;
@@ -23,7 +23,7 @@ public class ControlThree : PerkScriptableObject
     {
         foreach (Room room in ReferenceManager.RoomManager.GetAllRooms())
         {
-            room.ActivateAllBlockers();
+            room.SetControlPerkThree(true);
         }
     }
 
@@ -31,5 +31,9 @@ public class ControlThree : PerkScriptableObject
     public override void OnRemove()
     {
         EnemyDeathMediator.Instance.ComboController.AddMinCombo(0.3f);
+        foreach (Room room in ReferenceManager.RoomManager.GetAllRooms())
+        {
+            room.SetControlPerkThree(false);
+        }
     }
 }

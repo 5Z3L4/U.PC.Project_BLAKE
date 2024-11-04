@@ -132,6 +132,10 @@ public class Room : MonoBehaviour
     {
         isControlPerkActivated = value;
     }
+    public void SetControlPerkThree(bool value)
+    {
+        isControlPerkThreeActivated = value;
+    }
 
     public void Peek()
     {
@@ -177,10 +181,7 @@ public class Room : MonoBehaviour
             activefogBlockers.Add(fogBlocker);
             avaiblePoints.Remove(point);
 
-            if(i < fogBlockerUpgradeAmount && i >= fogBlockerAmount)
-            {
-                fogBlocker.SetActive(false);
-            }
+            fogBlocker.SetActive(false);
 
             if (avaiblePoints.Count == 0) break;
         }
