@@ -17,16 +17,18 @@ namespace _Project.Scripts.Player
             inputSystem = new PlayerInputSystem();
             inputSystem.Gameplay.SetCallbacks(this);
             inputSystem.RoomPeeking.SetCallbacks(this);
-            SetUpControls();
             ReferenceManager.PlayerInputController = this;
+        }
+
+        private void Start()
+        {
+            SetUpControls();
         }
 
         void SetUpControls()
         {
             inputSystem.Enable();
-            inputSystem.Gameplay.Enable();
-            inputSystem.RoomPeeking.Disable();
-
+            DisablePeeking();
             //Shooting
         }
 
