@@ -20,43 +20,61 @@ namespace _Project.Scripts.EnemyAI
 
         //create one Collider because there will be only one player
         private Collider[] overlapSphereColliders = new Collider[1];
+        private CancellationTokenSource cts;
+        private AIController _aiController;
+        private bool _canSeePlayer;
 
         [HideInInspector]
-        public bool CanSeePlayer;
+        public bool CanSeePlayer { 
+            get => _canSeePlayer;
+            set
+            {
+                if (_canSeePlayer == false)
+                {
+                    _canSeePlayer = value;
+                }
+            }
+        }
 
-        public delegate void CanSeePlayerChanged(bool newCanSeePlayer);
+        public delegate void CanSeePlayerChanged(bool newCanSeePlayer, CombatState stateToApply = CombatState.Alarmed, bool instantAlarmEnemies = false);
         public event CanSeePlayerChanged OnCanSeePlayerChanged;
 
         private void OnEnable()
         {
-            _ = FOVRoutine();
+            FOVRoutine().Forget();
+            _aiController = GetComponent<AIController>();
         }
-        
+
+        private void OnDisable()
+        {
+            _canSeePlayer = false;
+        }
+
         private async UniTaskVoid FOVRoutine()
         {
-            var cToken = this.GetCancellationTokenOnDestroy();
+            cts = new CancellationTokenSource();
             while (true)
             {
-                await UniTask.Delay(TimeSpan.FromSeconds(fovCheckDelay), cancellationToken: cToken);
-                _ = FieldOfViewCheck(cToken);
+                await UniTask.Delay(TimeSpan.FromSeconds(fovCheckDelay), cancellationToken: cts.Token);
+                await FieldOfViewCheck(cts.Token);
             }
         }
 
-        private async UniTaskVoid FieldOfViewCheck(CancellationToken cToken)
+        private async UniTask FieldOfViewCheck(CancellationToken cToken)
         {
             Physics.OverlapSphereNonAlloc(transform.position, Radius, overlapSphereColliders, TargetMask);
-
+            
             if (overlapSphereColliders[0] is null)
             {
                 if (CanSeePlayer)
                 {
-                    OnCanSeePlayerChanged?.Invoke(CanSeePlayer = false);
+                    OnCanSeePlayerChanged?.Invoke(_canSeePlayer = false, CombatState.Patrol);
                 }
                 
                 return;
             }
 
-            if (CanSeePlayer)
+            if (CanSeePlayer && _aiController.CombatStateReference.GetVariable().Value != CombatState.Alarmed)
             {
                 return;
             }
@@ -67,6 +85,11 @@ namespace _Project.Scripts.EnemyAI
             
             if (!Physics.Raycast(raycastOrigin.position, directionToTarget, distanceToTarget, ObstacleMask))
             {
+                if (CanSeePlayer)
+                {
+                    return;
+                }
+                
                 //front of enemy 
                 if (Vector3.Angle(transform.forward, directionToTarget) < Angle / 2)
                 {
@@ -80,14 +103,30 @@ namespace _Project.Scripts.EnemyAI
                     OnCanSeePlayerChanged?.Invoke(CanSeePlayer);
                 }
             }
+            else if (_aiController.CombatStateReference.GetVariable().Value == CombatState.Alarmed && CanSeePlayer)
+            {
+                OnCanSeePlayerChanged?.Invoke(_canSeePlayer = false, CombatState.Patrol);
+                _canSeePlayer = false;
+            }
         }
 
         private void OnCollisionEnter(Collision other)
         {
-            if (other.collider.CompareTag("Player"))
+            if (!other.collider.CompareTag("Player"))
             {
-                OnCanSeePlayerChanged?.Invoke(CanSeePlayer = true);
+                return;
             }
+            
+            if (StateShouldBeChanged())
+            {
+                OnCanSeePlayerChanged?.Invoke(CanSeePlayer = true, CombatState.Chase, true);
+            }
+        }
+
+        private bool StateShouldBeChanged()
+        {
+            return _aiController.CombatStateReference.GetVariable().Value is CombatState.Undefined
+                or CombatState.Patrol or CombatState.Alarmed;
         }
 
 #if UNITY_EDITOR
@@ -103,5 +142,10 @@ namespace _Project.Scripts.EnemyAI
             Gizmos.DrawWireSphere(transform.position, Radius);
         }
 #endif
+        private void OnDestroy()
+        {
+            cts?.Cancel();
+            cts?.Dispose();
+        }
     }
 }

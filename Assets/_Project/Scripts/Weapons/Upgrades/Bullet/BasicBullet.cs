@@ -50,24 +50,33 @@ namespace _Project.Scripts.Weapons.Upgrades.Bullet
 
         private void OnCollisionEnter(Collision collision)
         {
-            var damageable = collision.gameObject.GetComponentInParent<IDamageable>();
-            if (damageable != null && collision.gameObject != instigator)
+            if (collision.gameObject == instigator)
             {
-                damageable.TryTakeDamage(instigator, 1);
+                return;
+            }
+            
+            var damageable = collision.gameObject.GetComponentInParent<IDamageable>();
+            if (damageable == null)
+            {
+                Destroy(gameObject);
+                return;
+            }
 
-                if (bulletType == BulletType.Explosive)
-                {
-                    Destroy(gameObject);
-                }
+            damageable.TryTakeDamage(instigator, 1);
+            if (collision.gameObject.CompareTag("Shield"))
+            {
+                Destroy(gameObject);
+                return;
+            }
+            
+            if (bulletType == BulletType.Explosive)
+            {
+                Destroy(gameObject);
+            }
 
-                if (penetrateAmount > 0)
-                {
-                    penetrateAmount--;
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
+            if (penetrateAmount > 0)
+            {
+                penetrateAmount--;
             }
             else
             {

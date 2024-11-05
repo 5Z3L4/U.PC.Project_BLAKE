@@ -668,6 +668,178 @@ Transform:
   m_Father: {fileID: 4503270474711157812}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1681951788587588111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8457844477592339700}
+  - component: {fileID: 643487890666036003}
+  - component: {fileID: 3717900402333533076}
+  m_Layer: 0
+  m_Name: Red
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &8457844477592339700
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681951788587588111}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1072486135523917922}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 2.4}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!23 &643487890666036003
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681951788587588111}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3717900402333533076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681951788587588111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: '!'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 12
+  m_fontSizeBase: 12
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 0
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 643487890666036003}
+  m_maskType: 0
 --- !u!1 &1738362165641466551
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,6 +1142,39 @@ Transform:
   - {fileID: 6255028751490643121}
   m_Father: {fileID: 3649654134233090655}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2179044290415610521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1072486135523917922}
+  m_Layer: 0
+  m_Name: EnemyStatesMarker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1072486135523917922
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2179044290415610521}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7342524642819425228}
+  - {fileID: 8457844477592339700}
+  m_Father: {fileID: 7790469361782224641}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2188313035417988601
 GameObject:
@@ -2290,6 +2495,178 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!1 &5514999653092518396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7342524642819425228}
+  - component: {fileID: 2627410049737381502}
+  - component: {fileID: 5752885023993377766}
+  m_Layer: 0
+  m_Name: Yellow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &7342524642819425228
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514999653092518396}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1072486135523917922}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 2.4}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!23 &2627410049737381502
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514999653092518396}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5752885023993377766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514999653092518396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: '!'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278255615
+  m_fontColor: {r: 1, g: 1, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 12
+  m_fontSizeBase: 12
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 0
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 2627410049737381502}
+  m_maskType: 0
 --- !u!1 &5612336414588296450
 GameObject:
   m_ObjectHideFlags: 0
@@ -3272,8 +3649,17 @@ GameObject:
   - component: {fileID: -3707185606851980299}
   - component: {fileID: 2611339117920508267}
   - component: {fileID: -470558907172326393}
+  - component: {fileID: 331781540620305067}
   - component: {fileID: 893637976758665190}
   - component: {fileID: 4415879650037009705}
+  - component: {fileID: 4648309128689206776}
+  - component: {fileID: 341789868287603701}
+  - component: {fileID: 6316995276987429044}
+  - component: {fileID: 4228835946638530776}
+  - component: {fileID: 5431706374323744604}
+  - component: {fileID: 4417422484271164543}
+  - component: {fileID: -1835770342051528536}
+  - component: {fileID: 6190593503545765889}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -3297,6 +3683,7 @@ Transform:
   - {fileID: 7303044552361109284}
   - {fileID: 6041966008548309468}
   - {fileID: 4646812212058794984}
+  - {fileID: 1072486135523917922}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3335,7 +3722,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 116
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &6862616546200951086
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3424,7 +3811,6 @@ MonoBehaviour:
   fovCheckDelay: 0.1
   maxBackVisibilityDistance: 3
   findPlayerFromBehindDelay: 0.75
-  CanSeePlayer: 0
 --- !u!114 &6426853079096780474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3492,7 +3878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 0}
+  selectedEditorNode: {fileID: 6190593503545765889}
   repeatOnFinish: 1
   maxExecutionsPerTick: 1000
   parent: {fileID: 0}
@@ -3539,7 +3925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: CombatState
-  val: 0
+  val: 1
 --- !u!114 &1703910959861566954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3587,6 +3973,7 @@ MonoBehaviour:
   parent: {fileID: 1703910959861566954}
   children:
   - {fileID: 3520482790344718388}
+  - {fileID: 4648309128689206776}
   - {fileID: 2330217625758376006}
   - {fileID: -1019468932509090006}
   - {fileID: 3463585168474237226}
@@ -3609,7 +3996,7 @@ MonoBehaviour:
   title: Patrol
   rect:
     serializedVersion: 2
-    x: -600
+    x: -560
     y: 300
     width: 160
     height: 45
@@ -3622,12 +4009,12 @@ MonoBehaviour:
   Abort: 3
   Invert: 0
   CombatStateReference:
-    useConstant: 0
+    useConstant: 1
     mode: 0
     blackboard: {fileID: 2944841440345444223}
     key: CombatState
-    constantValue: 0
-  CombatState: 0
+    constantValue: 1
+  CombatState: 1
 --- !u!114 &2330217625758376006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3643,7 +4030,7 @@ MonoBehaviour:
   title: Chase
   rect:
     serializedVersion: 2
-    x: 0
+    x: 480
     y: 300
     width: 160
     height: 45
@@ -3656,12 +4043,12 @@ MonoBehaviour:
   Abort: 3
   Invert: 0
   CombatStateReference:
-    useConstant: 0
+    useConstant: 1
     mode: 0
     blackboard: {fileID: 2944841440345444223}
     key: CombatState
-    constantValue: 0
-  CombatState: 1
+    constantValue: 1
+  CombatState: 2
 --- !u!114 &-1019468932509090006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3677,8 +4064,8 @@ MonoBehaviour:
   title: Attack
   rect:
     serializedVersion: 2
-    x: 600
-    y: 300
+    x: 1000
+    y: 240
     width: 160
     height: 45
   parent: {fileID: -8901199169982741344}
@@ -3690,12 +4077,12 @@ MonoBehaviour:
   Abort: 3
   Invert: 0
   CombatStateReference:
-    useConstant: 0
+    useConstant: 1
     mode: 0
     blackboard: {fileID: 2944841440345444223}
     key: CombatState
-    constantValue: 0
-  CombatState: 2
+    constantValue: 3
+  CombatState: 3
 --- !u!114 &3463585168474237226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3711,8 +4098,8 @@ MonoBehaviour:
   title: Strafe
   rect:
     serializedVersion: 2
-    x: 1000
-    y: 300
+    x: 1360
+    y: 260
     width: 160
     height: 45
   parent: {fileID: -8901199169982741344}
@@ -3724,12 +4111,12 @@ MonoBehaviour:
   Abort: 3
   Invert: 0
   CombatStateReference:
-    useConstant: 0
+    useConstant: 1
     mode: 0
     blackboard: {fileID: 2944841440345444223}
     key: CombatState
-    constantValue: 0
-  CombatState: 3
+    constantValue: 1
+  CombatState: 4
 --- !u!114 &8844222667262711403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3745,7 +4132,7 @@ MonoBehaviour:
   title: Wait
   rect:
     serializedVersion: 2
-    x: -420
+    x: -380
     y: 500
     width: 160
     height: 45
@@ -3777,7 +4164,7 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: -600
+    x: -560
     y: 360
     width: 160
     height: 45
@@ -3805,7 +4192,7 @@ MonoBehaviour:
   title: Next Waypoint
   rect:
     serializedVersion: 2
-    x: -780
+    x: -740
     y: 500
     width: 160
     height: 45
@@ -3850,7 +4237,7 @@ MonoBehaviour:
   title: Move To
   rect:
     serializedVersion: 2
-    x: -600
+    x: -560
     y: 500
     width: 160
     height: 45
@@ -3882,8 +4269,8 @@ MonoBehaviour:
   title: FindPositionAroundTarget
   rect:
     serializedVersion: 2
-    x: -160
-    y: 480
+    x: 400
+    y: 500
     width: 160
     height: 59
   parent: {fileID: 7161793314436595745}
@@ -3913,8 +4300,8 @@ MonoBehaviour:
   title: Move To
   rect:
     serializedVersion: 2
-    x: 0
-    y: 480
+    x: 560
+    y: 500
     width: 160
     height: 45
   parent: {fileID: 7161793314436595745}
@@ -3945,12 +4332,13 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: 0
-    y: 383
+    x: 480
+    y: 360
     width: 160
     height: 45
   parent: {fileID: 2330217625758376006}
   children:
+  - {fileID: 5431706374323744604}
   - {fileID: 38267842173792834}
   - {fileID: 3913361937030402353}
   - {fileID: 6344856036324573767}
@@ -3973,8 +4361,8 @@ MonoBehaviour:
   title: SetCombatState
   rect:
     serializedVersion: 2
-    x: 160
-    y: 480
+    x: 660
+    y: 420
     width: 160
     height: 45
   parent: {fileID: 7161793314436595745}
@@ -3983,12 +4371,12 @@ MonoBehaviour:
   runtimePriority: 0
   breakpoint: 0
   CombatStateReference:
-    useConstant: 0
+    useConstant: 1
     mode: 0
     blackboard: {fileID: 2944841440345444223}
     key: CombatState
-    constantValue: 0
-  NewCombatState: 2
+    constantValue: 3
+  NewCombatState: 3
 --- !u!114 &323183005275120560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4018,8 +4406,8 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: 600
-    y: 540
+    x: 1000
+    y: 480
     width: 160
     height: 45
   parent: {fileID: -6067202371559989259}
@@ -4027,6 +4415,7 @@ MonoBehaviour:
   - {fileID: -3707185606851980299}
   - {fileID: 2611339117920508267}
   - {fileID: 4966832978454690114}
+  - {fileID: -1835770342051528536}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -4046,8 +4435,8 @@ MonoBehaviour:
   title: Wait
   rect:
     serializedVersion: 2
-    x: 780
-    y: 640
+    x: 1100
+    y: 600
     width: 160
     height: 45
   parent: {fileID: -669197665866827864}
@@ -4078,8 +4467,8 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: 1001
-    y: 367
+    x: 1360
+    y: 320
     width: 160
     height: 45
   parent: {fileID: 3463585168474237226}
@@ -4105,8 +4494,8 @@ MonoBehaviour:
   title: Wait
   rect:
     serializedVersion: 2
-    x: 972
-    y: 452
+    x: 1340
+    y: 420
     width: 160
     height: 45
   parent: {fileID: -7220201294149938652}
@@ -4137,8 +4526,8 @@ MonoBehaviour:
   title: SetCombatState
   rect:
     serializedVersion: 2
-    x: 1138
-    y: 453
+    x: 1500
+    y: 420
     width: 160
     height: 45
   parent: {fileID: -7220201294149938652}
@@ -4147,12 +4536,12 @@ MonoBehaviour:
   runtimePriority: 0
   breakpoint: 0
   CombatStateReference:
-    useConstant: 0
+    useConstant: 1
     mode: 0
     blackboard: {fileID: 2944841440345444223}
     key: CombatState
-    constantValue: 0
-  NewCombatState: 1
+    constantValue: 2
+  NewCombatState: 2
 --- !u!114 &-6067202371559989259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4168,8 +4557,8 @@ MonoBehaviour:
   title: Repeater
   rect:
     serializedVersion: 2
-    x: 600
-    y: 480
+    x: 1000
+    y: 440
     width: 160
     height: 45
   parent: {fileID: -1274732412291600798}
@@ -4195,8 +4584,8 @@ MonoBehaviour:
   title: Shoot
   rect:
     serializedVersion: 2
-    x: 600
-    y: 420
+    x: 1160
+    y: 360
     width: 160
     height: 45
   parent: {fileID: 893637976758665190}
@@ -4252,8 +4641,8 @@ MonoBehaviour:
   title: Run EQS query
   rect:
     serializedVersion: 2
-    x: 400
-    y: 640
+    x: 780
+    y: 560
     width: 160
     height: 45
   parent: {fileID: -669197665866827864}
@@ -4283,8 +4672,8 @@ MonoBehaviour:
   title: Move To
   rect:
     serializedVersion: 2
-    x: 600
-    y: 640
+    x: 940
+    y: 600
     width: 160
     height: 45
   parent: {fileID: -669197665866827864}
@@ -4315,6 +4704,20 @@ MonoBehaviour:
   enemyCharacter: {fileID: 6426853079096780474}
   enemyTypeEnum: 0
   pointsForKill: -1
+--- !u!114 &331781540620305067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7446312994107534779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 725f918be66907e428ebcde6faa00cab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _yellowMarker: {fileID: 5514999653092518396}
+  _redMarker: {fileID: 1681951788587588111}
 --- !u!114 &893637976758665190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4330,12 +4733,13 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: 600
-    y: 360
+    x: 1000
+    y: 300
     width: 160
     height: 45
   parent: {fileID: -1019468932509090006}
   children:
+  - {fileID: 4417422484271164543}
   - {fileID: 4415879650037009705}
   - {fileID: -1274732412291600798}
   behaviourTree: {fileID: 0}
@@ -4357,8 +4761,8 @@ MonoBehaviour:
   title: Wait
   rect:
     serializedVersion: 2
-    x: 420
-    y: 420
+    x: 1000
+    y: 360
     width: 160
     height: 45
   parent: {fileID: 893637976758665190}
@@ -4374,6 +4778,256 @@ MonoBehaviour:
     constantValue: 0.3
   randomDeviation: 0.1
   continueOnRestart: 0
+--- !u!114 &4648309128689206776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7446312994107534779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b9b94bc3d9f18f4a96ef02a87898151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Alarmed
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 300
+    width: 160
+    height: 45
+  parent: {fileID: -8901199169982741344}
+  children:
+  - {fileID: 341789868287603701}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  Abort: 3
+  Invert: 0
+  CombatStateReference:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 2944841440345444223}
+    key: CombatState
+    constantValue: 1
+  CombatState: 5
+--- !u!114 &341789868287603701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7446312994107534779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 360
+    width: 160
+    height: 45
+  parent: {fileID: 4648309128689206776}
+  children:
+  - {fileID: 6316995276987429044}
+  - {fileID: 4228835946638530776}
+  - {fileID: 6190593503545765889}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &6316995276987429044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7446312994107534779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23776847906ba824b8e09f1d67f53c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: ChangeVisuals
+  rect:
+    serializedVersion: 2
+    x: -180
+    y: 480
+    width: 160
+    height: 45
+  parent: {fileID: 341789868287603701}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  CombatStateReference:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 2944841440345444223}
+    key: CombatState
+    constantValue: 0
+  EnemyVisuals: {fileID: 331781540620305067}
+--- !u!114 &4228835946638530776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7446312994107534779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58fe7bc6a9b18e148b82820c7c1c0a90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Wait
+  rect:
+    serializedVersion: 2
+    x: -20
+    y: 480
+    width: 160
+    height: 45
+  parent: {fileID: 341789868287603701}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  time:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 2
+  randomDeviation: 0
+  continueOnRestart: 0
+--- !u!114 &5431706374323744604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7446312994107534779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23776847906ba824b8e09f1d67f53c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: ChangeVisuals
+  rect:
+    serializedVersion: 2
+    x: 320
+    y: 420
+    width: 160
+    height: 45
+  parent: {fileID: 7161793314436595745}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  CombatStateReference:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 2944841440345444223}
+    key: CombatState
+    constantValue: 0
+  EnemyVisuals: {fileID: 331781540620305067}
+--- !u!114 &4417422484271164543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7446312994107534779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23776847906ba824b8e09f1d67f53c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: ChangeVisuals
+  rect:
+    serializedVersion: 2
+    x: 840
+    y: 360
+    width: 160
+    height: 45
+  parent: {fileID: 893637976758665190}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  CombatStateReference:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 2944841440345444223}
+    key: CombatState
+    constantValue: 0
+  EnemyVisuals: {fileID: 331781540620305067}
+--- !u!114 &-1835770342051528536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7446312994107534779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c2f80692ccbe2488e0ff419e74f450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: SetCombatState
+  rect:
+    serializedVersion: 2
+    x: 1280
+    y: 580
+    width: 160
+    height: 45
+  parent: {fileID: -669197665866827864}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  CombatStateReference:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 2944841440345444223}
+    key: CombatState
+    constantValue: 4
+  NewCombatState: 4
+--- !u!114 &6190593503545765889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7446312994107534779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151a990e977747beba6e2983ad5aafb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: SetCombatStateIfStateNotChanged
+  rect:
+    serializedVersion: 2
+    x: 160
+    y: 460
+    width: 160
+    height: 59
+  parent: {fileID: 341789868287603701}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  CombatStateReference:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 2944841440345444223}
+    key: CombatState
+    constantValue: 2
+  NewCombatState: 2
+  currentState: 5
 --- !u!1 &7728173451198980118
 GameObject:
   m_ObjectHideFlags: 0

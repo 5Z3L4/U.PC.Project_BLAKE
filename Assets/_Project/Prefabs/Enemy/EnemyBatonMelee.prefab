@@ -31,7 +31,7 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEditorNode
       value: 
-      objectReference: {fileID: 8535164568833062961}
+      objectReference: {fileID: 3467546051029284781}
     - target: {fileID: -1274732412291600798, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: interval
@@ -60,7 +60,7 @@ PrefabInstance:
     - target: {fileID: -669197665866827864, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: rect.x
-      value: 600
+      value: 1020
       objectReference: {fileID: 0}
     - target: {fileID: -669197665866827864, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
@@ -264,6 +264,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2217e4d35c0c94ea02cf2166c17e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3467546051029284781 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3520482790344718388, guid: 20caf66ddd7209d4291d40715d756be9,
+    type: 3}
+  m_PrefabInstance: {fileID: 55299597911183257}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7463283202204918306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b9b94bc3d9f18f4a96ef02a87898151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4195407616045605612 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4250661716291628405, guid: 20caf66ddd7209d4291d40715d756be9,
@@ -297,7 +309,7 @@ MonoBehaviour:
   title: Move To Target
   rect:
     serializedVersion: 2
-    x: 440
+    x: 860
     y: 520
     width: 160
     height: 45
@@ -323,7 +335,7 @@ MonoBehaviour:
   title: Primary attack
   rect:
     serializedVersion: 2
-    x: 600
+    x: 1020
     y: 520
     width: 160
     height: 45
@@ -355,7 +367,7 @@ MonoBehaviour:
   title: Wait
   rect:
     serializedVersion: 2
-    x: 760
+    x: 1180
     y: 520
     width: 160
     height: 45

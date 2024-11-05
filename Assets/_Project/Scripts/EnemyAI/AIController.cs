@@ -19,6 +19,7 @@ public class AIController : MonoBehaviour
     private GameObject playerRef;
     private Animator animator;
     private EnemyCharacter character;
+    private Tween _alarmEnemies;
 
     public CombatStateReference CombatStateReference;
     public BoolReference HasLineOfSightReference;
@@ -78,27 +79,18 @@ public class AIController : MonoBehaviour
 
     public void SetWaypoints(Waypoints waypoints)
     {
-        this.Waypoints = waypoints;
-    }
-    
-    public void TryChangeCombatState(CombatState combatState)
-    {
-        if (!character.IsAlive) return;
-        
-        CombatStateReference.GetVariable().Value = combatState;
-        if (IsInvoking("ClearPlayerFocus"))
-        {
-            CancelInvoke("ClearPlayerFocus");
-        }
+        Waypoints = waypoints;
     }
 
-    private void OnCanSeePlayerChanged(bool newCanSeePlayer)
+    private void OnCanSeePlayerChanged(bool newCanSeePlayer, CombatState stateToApply = CombatState.Alarmed, bool instantAlarmEnemies = false)
     {
         HasLineOfSightReference.Value = newCanSeePlayer;
+        CombatStateReference.GetVariable().Value = stateToApply;
+        
         if (newCanSeePlayer)
         {
-            CombatStateReference.GetVariable().Value = CombatState.Attack;
-            DOVirtual.DelayedCall(alarmEnemiesInRoomDelay, () => ChangeStateForEveryInRoom(CombatState.Chase), false).SetLink(gameObject);
+            _alarmEnemies = DOVirtual.DelayedCall(instantAlarmEnemies ? 0f : alarmEnemiesInRoomDelay,
+                () => ChangeStateForEveryInRoom(CombatState.Chase), false).SetLink(gameObject);
             
             if (IsInvoking("ClearPlayerFocus"))
             {
@@ -107,6 +99,12 @@ public class AIController : MonoBehaviour
         }
         else
         {
+            if (stateToApply == CombatState.Patrol)
+            {
+                _alarmEnemies.Kill();
+                _alarmEnemies = null;
+            }
+            
             Invoke("ClearPlayerFocus", 10f);
         }
     }
@@ -121,6 +119,19 @@ public class AIController : MonoBehaviour
             if(enemy.AIController == this) continue;
             
             enemy.AIController.TryChangeCombatState(combatState);
+        }
+
+        _alarmEnemies = null;
+    }
+    
+    public void TryChangeCombatState(CombatState combatState)
+    {
+        if (!character.IsAlive) return;
+        
+        CombatStateReference.GetVariable().Value = combatState;
+        if (IsInvoking("ClearPlayerFocus"))
+        {
+            CancelInvoke("ClearPlayerFocus");
         }
     }
 

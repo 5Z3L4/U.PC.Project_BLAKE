@@ -3355,12 +3355,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDefinitionHolder: {fileID: 11400000, guid: 1cc4e21e814b3d64abc15afeb3719c22,
     type: 2}
-  meleeWeaponsUpgrades:
-    keys: []
-    values: []
-  rangedWeaponsUpgrades:
-    keys: []
-    values: []
 --- !u!1 &8871600578562275924
 GameObject:
   m_ObjectHideFlags: 0

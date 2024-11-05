@@ -25,8 +25,10 @@ public class CombatStateReference : VariableReference<CombatStateVariable, Comba
 
 public enum CombatState
 {
-    Patrol,
-    Chase,
-    Attack,
-    Strafe
+    Undefined = 0,
+    Patrol = 1,
+    Chase = 2,
+    Attack = 3,
+    Strafe = 4,
+    Alarmed = 5
 }
