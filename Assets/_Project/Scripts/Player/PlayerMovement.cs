@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     public event Action OnDashPerformed;
     public event Action<Dash> OnDashAdded;
     public event Action<Dash> OnDashRemoved;
+    public event Action<Room> OnPeek;
 
     private List<Dash> dashes = new List<Dash>() { new Dash() };
     
@@ -62,6 +63,11 @@ public class PlayerMovement : MonoBehaviour
     {
         rigidbodyCache = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
+    }
+
+    public void Peek(Room room)
+    {
+        OnPeek?.Invoke(room);
     }
 
     private void OnEnable()

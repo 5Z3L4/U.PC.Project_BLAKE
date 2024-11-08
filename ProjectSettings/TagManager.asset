@@ -22,7 +22,7 @@ TagManager:
   - EnemyPOVBlock
   - Floor
   - Interactable
-  - VisibleOnTop
+  - BlockFog
   - Minimap
   - 
   - 

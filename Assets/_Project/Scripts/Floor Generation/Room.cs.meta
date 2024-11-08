@@ -3,7 +3,13 @@ guid: b680341974f81224e8e6bdbb3b72b3da
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - minimapRoom: {instanceID: 0}
+  - spawnPoint: {instanceID: 0}
+  - fog: {instanceID: 0}
+  - fogBlockerPrefab: {fileID: 7778639131620135934, guid: a74e00e8d8d5a7d4abc33b2fafc3c687,
+      type: 3}
+  - cameFromRoom: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
