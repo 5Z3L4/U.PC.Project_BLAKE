@@ -7,3 +7,11 @@ public interface IInteractable
     GameObject GetGameObject();
     Vector3 GetPositionForUI();
 }
+
+public interface IAltInteractable
+{
+    void AltInteract(GameObject interacter);
+    bool CanAltInteract();
+    GameObject GetGameObject();
+    Vector3 GetPositionForUI();
+}

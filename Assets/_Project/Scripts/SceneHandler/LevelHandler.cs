@@ -45,6 +45,7 @@ namespace _Project.Scripts.SceneHandler
             }
             onNextLevel?.Invoke();
             levelIndex++;
+            ReferenceManager.RoomManager.ClearRooms();
             sceneHandler.LoadNewLevel(levelNames.levelNames[levelIndex]);
         }
 
@@ -55,6 +56,8 @@ namespace _Project.Scripts.SceneHandler
             {
                 Destroy(ReferenceManager.PlayerInputController.gameObject);
             }
+            ReferenceManager.RoomManager.ClearRooms();
+
             sceneHandler.LoadMainMenu();
         }
 
@@ -71,6 +74,10 @@ namespace _Project.Scripts.SceneHandler
 
                 ReferenceManager.PlayerCurrencyController?.ResetValues();
             }
+            if(ReferenceManager.RoomManager != null){
+                ReferenceManager.RoomManager.ClearRooms();
+            }
+
         }
     }
 }

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using _Project.Scripts;
 using _Project.Scripts.GlobalHandlers;
 using UnityEngine;
 
@@ -12,6 +11,9 @@ public class RoomManager : MonoBehaviour
     public delegate void EnteredRoom(Room room);
     public event EnteredRoom onRoomEnter;
     public event EnteredRoom onRoomLeave;
+    public bool isControlOneActivated = false;
+
+    private List<Room> allRooms = new List<Room>();
 
     [SerializeField]
     private Transform minimapFloor;
@@ -19,6 +21,22 @@ public class RoomManager : MonoBehaviour
     private void Awake()
     {
         ReferenceManager.RoomManager = this;
+    }
+
+
+    public void AddRoom(Room room)
+    {
+        allRooms.Add(room);
+    }
+
+    public void ClearRooms()
+    {
+        allRooms.Clear();
+    }
+
+    public List<Room> GetAllRooms()
+    {
+        return allRooms;
     }
 
     public void SetActiveRoom(Room newRoom)

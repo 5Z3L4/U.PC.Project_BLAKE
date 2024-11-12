@@ -65,5 +65,10 @@ namespace _Project.Scripts.Floor_Generation
             FloorGeneratorEnd?.Invoke(player.transform, cameraFollow.transform);
             ReferenceManager.Instance.OnFloorGenEnd();
         }
+
+        public CinemachineVirtualCamera GetMainCamera()
+        {
+            return virtualCamera;
+        }
     }
 }

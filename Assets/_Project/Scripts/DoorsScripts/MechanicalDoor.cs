@@ -1,6 +1,7 @@
+using _Project.Scripts.GlobalHandlers;
 using UnityEngine;
 
-public class MechanicalDoor : Door, IInteractable
+public class MechanicalDoor : Door, IInteractable, IAltInteractable
 {
     [SerializeField]
     private Animator animator;
@@ -12,6 +13,8 @@ public class MechanicalDoor : Door, IInteractable
     private bool interactable = false;
     [SerializeField]
     private bool open = false;
+
+    private Room roomToPeek;
 
     private void Awake()
     {
@@ -54,9 +57,36 @@ public class MechanicalDoor : Door, IInteractable
         }
     }
 
+
     public bool CanInteract()
     {
         return interactable;
+    }
+
+    private void SetRoomToPeek()
+    {
+        if (connector.GetConnector().GetRoom() != ReferenceManager.RoomManager.GetActiveRoom())
+        {
+            roomToPeek = connector.GetConnector().GetRoom();
+        }
+        else
+        {
+            roomToPeek = connector.GetRoom();
+        }
+    }
+
+
+    public void AltInteract(GameObject interacter)
+    {
+        if (!CanAltInteract()) return;
+        ReferenceManager.PlayerInputController.EnablePeeking();
+        roomToPeek.Peek();
+    }
+
+    public bool CanAltInteract()
+    {
+        SetRoomToPeek();
+        return (roomToPeek.HavePeekingCam());
     }
 
     public GameObject GetGameObject()
@@ -95,4 +125,5 @@ public class MechanicalDoor : Door, IInteractable
         var currentState = animator.GetCurrentAnimatorStateInfo(0);
         return currentState.normalizedTime < 1 && animator.GetCurrentAnimatorClipInfo(0).Length > 0;
     }
+
 }

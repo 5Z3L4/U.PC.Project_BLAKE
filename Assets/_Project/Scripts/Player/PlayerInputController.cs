@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace _Project.Scripts.Player
 {
-    public class PlayerInputController : Singleton<PlayerInputController>, PlayerInputSystem.IGameplayActions
+    public class PlayerInputController : Singleton<PlayerInputController>, PlayerInputSystem.IGameplayActions, PlayerInputSystem.IRoomPeekingActions
     {
         private PlayerInputSystem inputSystem;
 
@@ -16,14 +16,19 @@ namespace _Project.Scripts.Player
             
             inputSystem = new PlayerInputSystem();
             inputSystem.Gameplay.SetCallbacks(this);
-            SetUpControls();
+            inputSystem.RoomPeeking.SetCallbacks(this);
             ReferenceManager.PlayerInputController = this;
+        }
+
+        private void Start()
+        {
+            SetUpControls();
         }
 
         void SetUpControls()
         {
             inputSystem.Enable();
-
+            DisablePeeking();
             //Shooting
         }
 
@@ -38,10 +43,13 @@ namespace _Project.Scripts.Player
         public event Action onShootStrongCancelEvent;
         public event Action<int> changeWeaponEvent;
         public event Action interactEvent;
+        public event Action altInteractEvent;
         public event Action onMapPressEvent; 
         public event Action onMapReleaseEvent;
         public event Action dashEvent;
         public event Action escapeButtonEvent;
+
+        public event Action onPeekingCancel;
 
         public void OnMovement(InputAction.CallbackContext context)
         {
@@ -83,6 +91,14 @@ namespace _Project.Scripts.Player
             if(context.performed)
             {
                 interactEvent?.Invoke();
+            }
+        }
+
+        public void OnAltInteract(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                altInteractEvent?.Invoke();
             }
         }
 
@@ -137,6 +153,27 @@ namespace _Project.Scripts.Player
         private void OnDisable()
         {
             DisableInputSystem();
+        }
+
+        public void EnablePeeking()
+        {
+
+            inputSystem.Gameplay.Disable();
+            inputSystem.RoomPeeking.Enable();
+        }
+        public void DisablePeeking()
+        {
+
+            inputSystem.Gameplay.Enable();
+            inputSystem.RoomPeeking.Disable();
+        }
+        public void OnCancel(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+            {
+                DisablePeeking();
+                onPeekingCancel?.Invoke();
+            }
         }
     }
 }

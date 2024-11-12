@@ -395,7 +395,6 @@ MonoBehaviour:
   - {fileID: 6044242103073066999}
   - {fileID: 5149062364688321357}
   randomObjects: []
-  fog: {fileID: 1538225824381414103}
   minimapRoom: {fileID: 6795522276079399506}
   overlapColliders:
   - {fileID: 509893228488257634}
@@ -404,6 +403,14 @@ MonoBehaviour:
   isInitialized: 0
   isBeaten: 0
   spawnPoint: {fileID: 2417886148915629074}
+  fog: {fileID: 1538225824381414103}
+  fogBlockerPrefab: {fileID: 0}
+  fogBlockerAmount: 1
+  fogBlockerUpgradeAmount: 2
+  fogBlockerSize: 1
+  fogPoints: []
+  activefogBlockers: []
+  peekCamera: {fileID: 0}
   gCost: 0
   hCost: 0
   fCost: 0
