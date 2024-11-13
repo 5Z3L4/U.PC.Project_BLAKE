@@ -73,10 +73,10 @@ public class BuyPerkButton : MonoBehaviour
 #if ENABLE_CLOUD_SERVICES_ANALYTICS
         var parameters = new Dictionary<string, object>()
         {
-            { AnalyticsParameterNames.PERK_NAME, perk.perkName },
+            { AnalyticsParameterNames.PerkName, perk.perkName },
         };
 
-        AnalyticsManager.Instance.SendCustomData(AnalyticsEventNames.PERK_BOUGHT, parameters);
+        AnalyticsManager.Instance.SendCustomData(AnalyticsEventNames.PerkBought, parameters);
 #endif
     }
 }

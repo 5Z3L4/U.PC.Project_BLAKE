@@ -91,12 +91,12 @@ namespace _Project.Scripts.SceneHandler
 #if ENABLE_CLOUD_SERVICES_ANALYTICS
             var parameters = new Dictionary<string, object>()
             {
-                { AnalyticsParameterNames.LEVEL_NAME, levelNames.levelNames[levelIndex] },
-                { AnalyticsParameterNames.ROOMS_BEATEN, FloorManager.Instance.RoomsDoneCounter.RoomsBeaten },
-                { AnalyticsParameterNames.ROOMS_TO_BEAT, FloorManager.Instance.RoomsDoneCounter.RoomsInitialized },
+                { AnalyticsParameterNames.LevelName, levelNames.levelNames[levelIndex] },
+                { AnalyticsParameterNames.RoomsBeaten, FloorManager.Instance.RoomsDoneCounter.RoomsBeaten },
+                { AnalyticsParameterNames.RoomsToBeat, FloorManager.Instance.RoomsDoneCounter.RoomsInitialized },
             };
 
-            AnalyticsManager.Instance.SendCustomData(AnalyticsEventNames.LEVEL_COMPLETED, parameters, true);
+            AnalyticsManager.Instance.SendCustomData(AnalyticsEventNames.LevelCompleted, parameters, true);
 #endif
         }
     }

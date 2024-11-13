@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Project.Scripts.Analytics;
 using _Project.Scripts.GlobalHandlers;
 using _Project.Scripts.Patterns;
 using _Project.Scripts.Weapons.Statistics;
@@ -198,12 +199,12 @@ namespace _Project.Scripts.Weapons.Upgrades
                 var currentValue = playerWeaponUpgradeManager.GetCurrentWeaponStatistics(upgradeData.WeaponDefinition)
                     .GetValueByName(statName);
                 
-                CreateStatistic(upgradeData, instantiatedCard, statName, currentValue, upgradeValue);
+                CreateStatistic(instantiatedCard, statName, currentValue, upgradeValue);
             }
         }
 
-        private void CreateStatistic(WeaponUpgradeData upgradeData, WeaponUpgradeCardUI instantiatedCard,
-            string upgradeName, float currentValue, float upgradeValue)
+        private void CreateStatistic(WeaponUpgradeCardUI instantiatedCard, string upgradeName, float currentValue,
+            float upgradeValue)
         {
             var instantiatedStatistic = instantiatedCard.CreateNewUpgradeStatistic(statisticUpgradePrefab);
             
@@ -221,6 +222,7 @@ namespace _Project.Scripts.Weapons.Upgrades
 
                 ReferenceManager.PlayerCurrencyController.RemovePoints(upgradeData.UpgradeCost);
                 
+                TrySendAnalytics(upgradeData);
                 ResetAllValues();
                 
                 isUpgradeAvailable = false;
@@ -263,6 +265,37 @@ namespace _Project.Scripts.Weapons.Upgrades
             {
                 Debug.Log($"Sum of rarity drop chances are different than 1 in {name}");
             }
+        }
+        
+        private void TrySendAnalytics(WeaponUpgradeData upgradeData)
+        {
+#if ENABLE_CLOUD_SERVICES_ANALYTICS
+            var parameters = new Dictionary<string, object>()
+            {
+                { AnalyticsParameterNames.WeaponUpgrades_WeaponName, upgradeData.WeaponDefinition.WeaponName },
+                { AnalyticsParameterNames.WeaponUpgrades_WeaponRarity, upgradeData.WeaponUpgradeRarity.ToString() },
+                { AnalyticsParameterNames.WeaponUpgrades_UpgradeCost, upgradeData.UpgradeCost },
+            };
+
+            if (dictionaryOfUpgrades.TryGetValue(upgradeData, out var statistics))
+            {
+                var index = 1;
+                foreach (var (statName, upgradeValue) in statistics.GetNonZeroFields())
+                {
+                    if (index > 4)
+                    {
+                        break;
+                    }
+                    
+                    var upgradeStat = AnalyticsParameterNames.GetWeaponUpgradeStat(index);
+                    parameters.Add(upgradeStat.Item1, statName);
+                    parameters.Add(upgradeStat.Item2, upgradeValue);
+                    index++;
+                }
+            }
+
+            AnalyticsManager.Instance.SendCustomData(AnalyticsEventNames.WeaponUpgradeBought, parameters, true);
+#endif
         }
     }
 }
