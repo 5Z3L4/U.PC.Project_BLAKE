@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
-  heroDead: 0
-  weaponPickup: 0
-  levelCompleted: 0
+  heroDead: 1
+  weaponPickup: 1
+  levelCompleted: 1
+  perkBought: 1
+  weaponUpgradeBought: 1
+  instantSendInfo: 0

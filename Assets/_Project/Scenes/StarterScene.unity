@@ -442,11 +442,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AnalyticsManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2698036577644691397, guid: a601915f4c7fbfb40abc5ae823316276,
-        type: 3}
-      propertyPath: levelCompleted
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a601915f4c7fbfb40abc5ae823316276, type: 3}
 --- !u!1001 &9022207386387358225

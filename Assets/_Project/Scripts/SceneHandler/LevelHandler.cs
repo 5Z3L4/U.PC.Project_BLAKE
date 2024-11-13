@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using _Project.Scripts.Analytics;
-using _Project.Scripts.Floor_Generation;
 using _Project.Scripts.GlobalHandlers;
 using _Project.Scripts.Patterns;
 using UnityEngine;
@@ -47,7 +45,7 @@ namespace _Project.Scripts.SceneHandler
                 return;
             }
             
-            TrySendAnalytics();
+            this.TrySendAnalytics(levelNames.levelNames[levelIndex]);
             
             onNextLevel?.Invoke();
             levelIndex++;
@@ -83,21 +81,6 @@ namespace _Project.Scripts.SceneHandler
             if(ReferenceManager.RoomManager != null){
                 ReferenceManager.RoomManager.ClearRooms();
             }
-
-        }
-        
-        private void TrySendAnalytics()
-        {
-#if ENABLE_CLOUD_SERVICES_ANALYTICS
-            var parameters = new Dictionary<string, object>()
-            {
-                { AnalyticsParameterNames.LevelName, levelNames.levelNames[levelIndex] },
-                { AnalyticsParameterNames.RoomsBeaten, FloorManager.Instance.RoomsDoneCounter.RoomsBeaten },
-                { AnalyticsParameterNames.RoomsToBeat, FloorManager.Instance.RoomsDoneCounter.RoomsInitialized },
-            };
-
-            AnalyticsManager.Instance.SendCustomData(AnalyticsEventNames.LevelCompleted, parameters, true);
-#endif
         }
     }
 }

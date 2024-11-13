@@ -222,7 +222,7 @@ namespace _Project.Scripts.Weapons.Upgrades
 
                 ReferenceManager.PlayerCurrencyController.RemovePoints(upgradeData.UpgradeCost);
                 
-                TrySendAnalytics(upgradeData);
+                this.TrySendAnalytics(upgradeData, dictionaryOfUpgrades);
                 ResetAllValues();
                 
                 isUpgradeAvailable = false;
@@ -265,37 +265,6 @@ namespace _Project.Scripts.Weapons.Upgrades
             {
                 Debug.Log($"Sum of rarity drop chances are different than 1 in {name}");
             }
-        }
-        
-        private void TrySendAnalytics(WeaponUpgradeData upgradeData)
-        {
-#if ENABLE_CLOUD_SERVICES_ANALYTICS
-            var parameters = new Dictionary<string, object>()
-            {
-                { AnalyticsParameterNames.WeaponUpgrades_WeaponName, upgradeData.WeaponDefinition.WeaponName },
-                { AnalyticsParameterNames.WeaponUpgrades_WeaponRarity, upgradeData.WeaponUpgradeRarity.ToString() },
-                { AnalyticsParameterNames.WeaponUpgrades_UpgradeCost, upgradeData.UpgradeCost },
-            };
-
-            if (dictionaryOfUpgrades.TryGetValue(upgradeData, out var statistics))
-            {
-                var index = 1;
-                foreach (var (statName, upgradeValue) in statistics.GetNonZeroFields())
-                {
-                    if (index > 4)
-                    {
-                        break;
-                    }
-                    
-                    var upgradeStat = AnalyticsParameterNames.GetWeaponUpgradeStat(index);
-                    parameters.Add(upgradeStat.Item1, statName);
-                    parameters.Add(upgradeStat.Item2, upgradeValue);
-                    index++;
-                }
-            }
-
-            AnalyticsManager.Instance.SendCustomData(AnalyticsEventNames.WeaponUpgradeBought, parameters, true);
-#endif
         }
     }
 }

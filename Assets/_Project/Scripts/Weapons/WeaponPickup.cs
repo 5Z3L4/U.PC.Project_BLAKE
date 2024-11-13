@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using _Project.Scripts.Analytics;
 using _Project.Scripts.Weapons.Definition;
 using UnityEngine;
@@ -65,7 +64,7 @@ namespace _Project.Scripts.Weapons
             weaponsManager.Equip(WeaponDefinition, index);
             if(weaponsManager.ActiveWeaponIndex == 0) weaponsManager.SetActiveIndex(index);
         
-            TrySendAnalytics();
+            this.TrySendAnalytics(WeaponDefinition);
 
             if (WeaponInstanceInfo != null)
             {
@@ -100,18 +99,6 @@ namespace _Project.Scripts.Weapons
             weaponGFX = Instantiate(newWeapon.WeaponGFX, pickupGameObject.transform);
             weaponGFX.transform.localPosition = newWeapon.PickupLocationOffset;
             weaponGFX.transform.localRotation = newWeapon.PickupRotation;
-        }
-    
-        private void TrySendAnalytics()
-        {
-#if ENABLE_CLOUD_SERVICES_ANALYTICS
-            var parameters = new Dictionary<string, object>()
-            {
-                { AnalyticsParameterNames.ItemName, WeaponDefinition.WeaponName }
-            };
-
-            AnalyticsManager.Instance.SendCustomData(AnalyticsEventNames.HeroDead, parameters);
-#endif
         }
     }
 

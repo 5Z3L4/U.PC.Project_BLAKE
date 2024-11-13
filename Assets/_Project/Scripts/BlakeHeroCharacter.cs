@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using _Project.Scripts.Analytics;
 using _Project.Scripts.GlobalHandlers;
 using _Project.Scripts.PointsSystem;
@@ -31,32 +30,13 @@ namespace _Project.Scripts
 
         public override void Die(GameObject killer)
         {
-            TrySendAnalytics(killer);
+            this.TrySendAnalytics(killer);
         
             explosionParticleInstantiated = Instantiate(explosionParticle, transform.position, quaternion.identity);
             gameObject.SetActive(false);
             Invoke("Respawn", 2f);
 
             base.Die(killer);
-        }
-
-        private void TrySendAnalytics(GameObject killer)
-        {
-#if ENABLE_CLOUD_SERVICES_ANALYTICS
-            if (killer == null)
-            {
-                return;
-            }
-        
-            var parameters = new Dictionary<string, object>()
-            {
-                { AnalyticsParameterNames.Killer, killer.name },
-                { AnalyticsParameterNames.ItemName, killer.GetComponent<AIController>()?.Weapon?.name },
-                { AnalyticsParameterNames.PlacementName, ReferenceManager.RoomManager.GetActiveRoom().name }
-            };
-            
-            AnalyticsManager.Instance.SendCustomData(AnalyticsEventNames.HeroDead, parameters);
-#endif
         }
     }
 }

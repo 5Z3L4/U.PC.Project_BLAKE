@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using _Project.Scripts.Analytics;
 using _Project.Scripts.PointsSystem;
 using _Project.Scripts.GlobalHandlers;
@@ -63,20 +62,8 @@ public class BuyPerkButton : MonoBehaviour
             buttonText.text = "BOUGHT";
         }
         
-        TrySendAnalytics();
+        this.TrySendAnalytics(perk);
         
         activated = !activated;
-    }
-    
-    private void TrySendAnalytics()
-    {
-#if ENABLE_CLOUD_SERVICES_ANALYTICS
-        var parameters = new Dictionary<string, object>()
-        {
-            { AnalyticsParameterNames.PerkName, perk.perkName },
-        };
-
-        AnalyticsManager.Instance.SendCustomData(AnalyticsEventNames.PerkBought, parameters);
-#endif
     }
 }
