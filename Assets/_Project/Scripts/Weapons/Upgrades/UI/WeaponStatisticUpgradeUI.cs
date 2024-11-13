@@ -14,7 +14,6 @@ namespace _Project.Scripts.Weapons.Upgrades.UI
         {
             this.upgradeName.text = HelperUtils.SplitCamelCase(upgradeName);
             this.upgradeValue.text = $"{currentValue} {UPGRADE_ARROW} {currentValue + upgradeValue}";
-            //this.upgradeValue.color = upgradeValue >= 0 ? Color.green : Color.red;
         }
     }
 }

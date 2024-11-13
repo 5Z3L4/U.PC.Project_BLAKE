@@ -26,12 +26,15 @@ namespace _Project.Scripts.Floor_Generation
         private CinemachineVirtualCamera virtualCamera;
         private GameObject cameraFollow;
 
+        public RoomsDoneCounter RoomsDoneCounter { get; private set; }
+
 
         protected override void Awake()
         {
             base.Awake();
             
             floorGenerator = GetComponent<FloorGenerator>();
+            RoomsDoneCounter = GetComponent<RoomsDoneCounter>();
         }
 
         private void Start()
