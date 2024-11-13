@@ -10,6 +10,7 @@ namespace _Project.Scripts.Analytics
         public const string HERO_DEAD = "HeroDead";
         public const string WEAPON_PICKUP = "WeaponPickup";
         public const string LEVEL_COMPLETED = "LevelCompleted";
+        public const string PERK_BOUGHT = "PerkBought";
     }
     public static class AnalyticsParameterNames
     {
@@ -19,6 +20,7 @@ namespace _Project.Scripts.Analytics
         public const string LEVEL_NAME = "LevelName";
         public const string ROOMS_BEATEN = "RoomsBeaten";
         public const string ROOMS_TO_BEAT = "RoomsToBeat";
+        public const string PERK_NAME = "PerkName";
     }
     
     public class AnalyticsManager : Singleton<AnalyticsManager>
@@ -27,6 +29,10 @@ namespace _Project.Scripts.Analytics
         [SerializeField] private bool heroDead;
         [SerializeField] private bool weaponPickup;
         [SerializeField] private bool levelCompleted;
+        [SerializeField] private bool perkBought;
+
+        [Space] 
+        [SerializeField] private bool instantSendInfo;
 
         private Dictionary<string, bool> _enabledAnalytics;
 
@@ -41,6 +47,7 @@ namespace _Project.Scripts.Analytics
                         { AnalyticsEventNames.HERO_DEAD, heroDead },
                         { AnalyticsEventNames.WEAPON_PICKUP, weaponPickup },
                         { AnalyticsEventNames.LEVEL_COMPLETED, levelCompleted },
+                        { AnalyticsEventNames.PERK_BOUGHT, perkBought },
                     };
                 }
 
@@ -53,7 +60,7 @@ namespace _Project.Scripts.Analytics
             AnalyticsService.Instance.StartDataCollection();
         }
 
-        public void SendCustomData(string eventName, Dictionary<string, object> parameters)
+        public void SendCustomData(string eventName, Dictionary<string, object> parameters, bool forceSendInfo = false)
         {
             if (!EnabledAnalytics.TryGetValue(eventName, out var isEnabled) || !isEnabled)
             {
@@ -61,11 +68,16 @@ namespace _Project.Scripts.Analytics
             }
             
             AnalyticsService.Instance.CustomData(eventName, parameters);
-            AnalyticsService.Instance.Flush();
+
+            if (forceSendInfo || instantSendInfo)
+            {
+                AnalyticsService.Instance.Flush();
+            }
         }
 
         private void OnDestroy()
         {
+            AnalyticsService.Instance.Flush();
             AnalyticsService.Instance.StopDataCollection();
         }
     }

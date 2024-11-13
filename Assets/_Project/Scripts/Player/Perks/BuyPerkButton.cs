@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using _Project.Scripts.Analytics;
 using _Project.Scripts.PointsSystem;
 using _Project.Scripts.GlobalHandlers;
 using UnityEngine;
@@ -15,30 +17,43 @@ public class BuyPerkButton : MonoBehaviour
     {
         if (buttonText != null)
         {
-            buttonText.text = string.Format("BUY: {0}", perkCost);
+            buttonText.text = $"BUY: {perkCost}";
         }
 
-        if(ReferenceManager.PlayerInputController != null)
+        if (ReferenceManager.PlayerInputController == null)
         {
-            var perks = ReferenceManager.PlayerInputController.GetComponent<PlayerPerkManager>();
-            if(perks.GetPerkList().Contains(perk))
+            return;
+        }
+        
+        var perks = ReferenceManager.PlayerInputController.GetComponent<PlayerPerkManager>();
+        if(perks.GetPerkList().Contains(perk))
+        {
+            if (buttonText != null)
             {
-                if (buttonText != null)
-                {
-                    buttonText.text = "BOUGHT";
-                }
-                activated = false;
+                buttonText.text = "BOUGHT";
             }
+                
+            activated = false;
         }
     }
 
     public void GiveOrRemove()
     {
-        if (activated) return;
+        if (activated)
+        {
+            return;
+        }
 
         var player = ReferenceManager.BlakeHeroCharacter?.GetComponent<PlayerPerkManager>();
-        if (player == null) return;
-        if (EnemyDeathMediator.Instance.PlayerCurrencyController.Points < perkCost) return;
+        if (player == null)
+        {
+            return;
+        }
+        
+        if (EnemyDeathMediator.Instance.PlayerCurrencyController.Points < perkCost)
+        {
+            return;
+        }
 
         player.AddPerk(perk);
         EnemyDeathMediator.Instance.PlayerCurrencyController.RemovePoints(perkCost);
@@ -47,6 +62,21 @@ public class BuyPerkButton : MonoBehaviour
         {
             buttonText.text = "BOUGHT";
         }
+        
+        TrySendAnalytics();
+        
         activated = !activated;
+    }
+    
+    private void TrySendAnalytics()
+    {
+#if ENABLE_CLOUD_SERVICES_ANALYTICS
+        var parameters = new Dictionary<string, object>()
+        {
+            { AnalyticsParameterNames.PERK_NAME, perk.perkName },
+        };
+
+        AnalyticsManager.Instance.SendCustomData(AnalyticsEventNames.PERK_BOUGHT, parameters);
+#endif
     }
 }

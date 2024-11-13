@@ -96,7 +96,7 @@ namespace _Project.Scripts.SceneHandler
                 { AnalyticsParameterNames.ROOMS_TO_BEAT, FloorManager.Instance.RoomsDoneCounter.RoomsInitialized },
             };
 
-            AnalyticsManager.Instance.SendCustomData(AnalyticsEventNames.LEVEL_COMPLETED, parameters);
+            AnalyticsManager.Instance.SendCustomData(AnalyticsEventNames.LEVEL_COMPLETED, parameters, true);
 #endif
         }
     }
