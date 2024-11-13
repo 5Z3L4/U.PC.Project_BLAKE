@@ -50,9 +50,9 @@ namespace _Project.Scripts
         
             var parameters = new Dictionary<string, object>()
             {
-                { "killer", killer.name },
-                { "itemName", killer.GetComponent<AIController>()?.Weapon?.name },
-                { "placementName", ReferenceManager.RoomManager.GetActiveRoom().name }
+                { AnalyticsParameterNames.KILLER, killer.name },
+                { AnalyticsParameterNames.ITEM_NAME, killer.GetComponent<AIController>()?.Weapon?.name },
+                { AnalyticsParameterNames.PLACEMENT_NAME, ReferenceManager.RoomManager.GetActiveRoom().name }
             };
             
             AnalyticsManager.Instance.SendCustomData(AnalyticsEventNames.HERO_DEAD, parameters);

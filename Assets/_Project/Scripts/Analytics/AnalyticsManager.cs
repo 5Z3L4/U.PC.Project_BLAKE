@@ -9,12 +9,24 @@ namespace _Project.Scripts.Analytics
     {
         public const string HERO_DEAD = "HeroDead";
         public const string WEAPON_PICKUP = "WeaponPickup";
+        public const string LEVEL_COMPLETED = "LevelCompleted";
+    }
+    public static class AnalyticsParameterNames
+    {
+        public const string PLACEMENT_NAME = "placementName";
+        public const string ITEM_NAME = "itemName";
+        public const string KILLER = "killer";
+        public const string LEVEL_NAME = "LevelName";
+        public const string ROOMS_BEATEN = "RoomsBeaten";
+        public const string ROOMS_TO_BEAT = "RoomsToBeat";
     }
     
     public class AnalyticsManager : Singleton<AnalyticsManager>
     {
+        [Header("Analytics Enabled:")]
         [SerializeField] private bool heroDead;
         [SerializeField] private bool weaponPickup;
+        [SerializeField] private bool levelCompleted;
 
         private Dictionary<string, bool> _enabledAnalytics;
 
@@ -28,6 +40,7 @@ namespace _Project.Scripts.Analytics
                     {
                         { AnalyticsEventNames.HERO_DEAD, heroDead },
                         { AnalyticsEventNames.WEAPON_PICKUP, weaponPickup },
+                        { AnalyticsEventNames.LEVEL_COMPLETED, levelCompleted },
                     };
                 }
 

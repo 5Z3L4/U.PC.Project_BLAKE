@@ -107,7 +107,7 @@ namespace _Project.Scripts.Weapons
 #if ENABLE_CLOUD_SERVICES_ANALYTICS
             var parameters = new Dictionary<string, object>()
             {
-                { "itemName", WeaponDefinition.WeaponName }
+                { AnalyticsParameterNames.ITEM_NAME, WeaponDefinition.WeaponName }
             };
 
             AnalyticsManager.Instance.SendCustomData(AnalyticsEventNames.HERO_DEAD, parameters);
