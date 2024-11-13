@@ -26,12 +26,15 @@ namespace _Project.Scripts.Floor_Generation
         private CinemachineVirtualCamera virtualCamera;
         private GameObject cameraFollow;
 
+        public RoomsDoneCounter RoomsDoneCounter { get; private set; }
+
 
         protected override void Awake()
         {
             base.Awake();
             
             floorGenerator = GetComponent<FloorGenerator>();
+            RoomsDoneCounter = GetComponent<RoomsDoneCounter>();
         }
 
         private void Start()
@@ -64,6 +67,11 @@ namespace _Project.Scripts.Floor_Generation
         
             FloorGeneratorEnd?.Invoke(player.transform, cameraFollow.transform);
             ReferenceManager.Instance.OnFloorGenEnd();
+        }
+
+        public CinemachineVirtualCamera GetMainCamera()
+        {
+            return virtualCamera;
         }
     }
 }

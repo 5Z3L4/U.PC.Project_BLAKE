@@ -3,6 +3,9 @@ using UnityEngine;
 using Unity.AI.Navigation;
 using System;
 using _Project.Scripts;
+using _Project.Scripts.Floor_Generation;
+using Cinemachine;
+using _Project.Scripts.GlobalHandlers;
 
 public enum RoomType
 {
@@ -31,9 +34,6 @@ public class Room : MonoBehaviour
     [SerializeField]
     private RandomizedRoomObject[] randomObjects;
 
-    [SerializeField]
-    private GameObject fog;
-
     private RoomManager roomManager;
 
     [SerializeField, Header("Minimap variables")]
@@ -56,6 +56,26 @@ public class Room : MonoBehaviour
 
     [SerializeField]
     private Transform spawnPoint;
+
+    [Header("Fog")]
+    private bool isControlPerkActivated = false;
+    private bool isControlPerkThreeActivated = false;
+    [SerializeField]
+    private GameObject fog;
+    [SerializeField]
+    private GameObject fogBlockerPrefab;
+    [SerializeField]
+    private int fogBlockerAmount = 1;
+    [SerializeField]
+    private int fogBlockerUpgradeAmount = 2;
+    [SerializeField]
+    private float fogBlockerSize = 1f;
+    [SerializeField]
+    private Transform[] fogPoints;
+    [SerializeField]
+    private List<GameObject> activefogBlockers = new List<GameObject>();
+    [SerializeField]
+    private CinemachineVirtualCamera peekCamera;
 
     private BlakeHeroCharacter blakeHeroCharacter;
     private List<RoomTrigger> triggers = new List<RoomTrigger>();
@@ -108,10 +128,84 @@ public class Room : MonoBehaviour
         }
     }
 
+    public void SetControlPerkOne(bool value)
+    {
+        isControlPerkActivated = value;
+    }
+    public void SetControlPerkThree(bool value)
+    {
+        isControlPerkThreeActivated = value;
+    }
+
+    public void Peek()
+    {
+        if (peekCamera == null) return;
+        ReferenceManager.PlayerInputController.onPeekingCancel += StopPeek;
+        roomManager.GetComponent<FloorManager>().GetMainCamera().enabled = false;
+        ReferenceManager.PlayerInputController.GetComponent<PlayerMovement>().Peek(this);
+
+        for(int i = 0; i < ((isControlPerkThreeActivated)?fogBlockerUpgradeAmount: fogBlockerAmount); i++)
+        {
+            activefogBlockers[i].gameObject.SetActive(true);
+        }
+        peekCamera.gameObject.SetActive(true);
+    }
+
+    public void StopPeek()
+    {
+        if (peekCamera == null) return;
+        roomManager.GetComponent<FloorManager>().GetMainCamera().enabled = true;
+        peekCamera.gameObject.SetActive(false);
+        foreach(var fogBlocker in activefogBlockers)
+        {
+            fogBlocker.SetActive(false);
+        }
+        ReferenceManager.PlayerInputController.onPeekingCancel -= StopPeek;
+
+    }
+
+    public bool HavePeekingCam()
+    {
+        return peekCamera != null;
+    }
+    public void SetupFogBlockers()
+    {
+        if (fogBlockerPrefab == null) return;
+        if (fogPoints.Length == 0) return;
+        List<Transform> avaiblePoints = new List<Transform>(fogPoints);
+        for(int i = 0; i < fogBlockerUpgradeAmount; i++)
+        {
+            var point = avaiblePoints[UnityEngine.Random.Range(0, avaiblePoints.Count)];
+            var fogBlocker = Instantiate(fogBlockerPrefab, point.position, Quaternion.identity, this.transform);
+            fogBlocker.transform.localScale *= fogBlockerSize;
+            activefogBlockers.Add(fogBlocker);
+            avaiblePoints.Remove(point);
+
+            fogBlocker.SetActive(false);
+
+            if (avaiblePoints.Count == 0) break;
+        }
+    }
+
+    public void AddToBlockerScale(float scale)
+    {
+        fogBlockerSize += scale;
+
+        foreach(var blocker in activefogBlockers)
+        {
+            blocker.transform.localScale = Vector3.one;
+            blocker.transform.localScale *= fogBlockerSize;
+        }
+    }
+
+    public void ActivateAllBlockers()
+    {
+        isControlPerkThreeActivated = true;
+    }
+
     public void InitializeRoom(RoomManager rm)
     {
         roomManager = rm;
-        
         foreach(RandomizedRoomObject randomObject in randomObjects)
         {
             randomObject.InitializeRandomObject();
@@ -141,7 +235,10 @@ public class Room : MonoBehaviour
             roomConnector.UnlockDoor();
             roomConnector.CloseDoor();
         }
-        
+
+        SetupFogBlockers();
+        SpawnEnemies();
+
         isInitialized = true;
     }
 
@@ -266,7 +363,6 @@ public class Room : MonoBehaviour
 
         if (!isBeaten)
         {
-            SpawnEnemies();
 
             if (spawnedEnemies.Count == 0)
             {
@@ -346,7 +442,7 @@ public class Room : MonoBehaviour
             rt.Reset();
         }
 
-        Invoke("ResetEnemies", 0.5f);
+        //Invoke("ResetEnemies", 0.5f);
 
         foreach (var weapon in instantiatedWeapons.ToArray())
         {

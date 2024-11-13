@@ -115,6 +115,7 @@ public class FloorGenerator : MonoBehaviour
         foreach (GameObject room in spawnedRooms)
         {
             Room roomScript = room.GetComponent<Room>();
+            roomManager.AddRoom(roomScript);
             roomScript.InitializeRoom(roomManager);
             RoomTrigger[] triggers = room.GetComponentsInChildren<RoomTrigger>();
             foreach(RoomTrigger trigger in triggers)

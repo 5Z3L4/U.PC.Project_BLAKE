@@ -3263,6 +3263,7 @@ MonoBehaviour:
     m_Bits: 4353
   playerHead: {fileID: 7222346875757800973}
   interactUI: {fileID: 0}
+  altInteractUI: {fileID: 0}
 --- !u!114 &5545414051132038904
 MonoBehaviour:
   m_ObjectHideFlags: 0

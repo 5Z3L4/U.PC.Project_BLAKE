@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using _Project.Scripts.Analytics;
 using _Project.Scripts.GlobalHandlers;
 using _Project.Scripts.Patterns;
 using UnityEngine;
@@ -43,8 +44,12 @@ namespace _Project.Scripts.SceneHandler
                 EndRun();
                 return;
             }
+            
+            this.TrySendAnalytics(levelNames.levelNames[levelIndex]);
+            
             onNextLevel?.Invoke();
             levelIndex++;
+            ReferenceManager.RoomManager.ClearRooms();
             sceneHandler.LoadNewLevel(levelNames.levelNames[levelIndex]);
         }
 
@@ -55,6 +60,8 @@ namespace _Project.Scripts.SceneHandler
             {
                 Destroy(ReferenceManager.PlayerInputController.gameObject);
             }
+            ReferenceManager.RoomManager.ClearRooms();
+
             sceneHandler.LoadMainMenu();
         }
 
@@ -70,6 +77,9 @@ namespace _Project.Scripts.SceneHandler
             {
 
                 ReferenceManager.PlayerCurrencyController?.ResetValues();
+            }
+            if(ReferenceManager.RoomManager != null){
+                ReferenceManager.RoomManager.ClearRooms();
             }
         }
     }

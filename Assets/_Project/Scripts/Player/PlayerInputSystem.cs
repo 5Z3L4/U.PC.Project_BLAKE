@@ -73,6 +73,15 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""AltInteract"",
+                    ""type"": ""Button"",
+                    ""id"": ""17223dc6-393d-412b-a79f-0837a6e3b483"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Map"",
                     ""type"": ""Button"",
                     ""id"": ""5687928f-5e57-44f1-b96a-39b35ed0d295"",
@@ -285,6 +294,17 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""ShootStrong"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""083c51e1-2625-406e-8972-38b2cd799f5a"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AltInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -321,6 +341,45 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""RoomPeeking"",
+            ""id"": ""99ed0cb5-bbad-4485-a338-e3e7a139f48a"",
+            ""actions"": [
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""af84a843-ffc8-4079-905f-3c487b5824ba"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""8a7c038e-4d47-4705-9ae7-a450c580613e"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b2f8f9ac-44aa-4c44-82eb-e648f6b3b347"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -332,6 +391,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         m_Gameplay_ShootBasic = m_Gameplay.FindAction("ShootBasic", throwIfNotFound: true);
         m_Gameplay_ShootStrong = m_Gameplay.FindAction("ShootStrong", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+        m_Gameplay_AltInteract = m_Gameplay.FindAction("AltInteract", throwIfNotFound: true);
         m_Gameplay_Map = m_Gameplay.FindAction("Map", throwIfNotFound: true);
         m_Gameplay_MousePosition = m_Gameplay.FindAction("MousePosition", throwIfNotFound: true);
         m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
@@ -341,6 +401,9 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_PerkMenu = m_Debug.FindAction("PerkMenu", throwIfNotFound: true);
+        // RoomPeeking
+        m_RoomPeeking = asset.FindActionMap("RoomPeeking", throwIfNotFound: true);
+        m_RoomPeeking_Cancel = m_RoomPeeking.FindAction("Cancel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -407,6 +470,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_ShootBasic;
     private readonly InputAction m_Gameplay_ShootStrong;
     private readonly InputAction m_Gameplay_Interact;
+    private readonly InputAction m_Gameplay_AltInteract;
     private readonly InputAction m_Gameplay_Map;
     private readonly InputAction m_Gameplay_MousePosition;
     private readonly InputAction m_Gameplay_Dash;
@@ -420,6 +484,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         public InputAction @ShootBasic => m_Wrapper.m_Gameplay_ShootBasic;
         public InputAction @ShootStrong => m_Wrapper.m_Gameplay_ShootStrong;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
+        public InputAction @AltInteract => m_Wrapper.m_Gameplay_AltInteract;
         public InputAction @Map => m_Wrapper.m_Gameplay_Map;
         public InputAction @MousePosition => m_Wrapper.m_Gameplay_MousePosition;
         public InputAction @Dash => m_Wrapper.m_Gameplay_Dash;
@@ -448,6 +513,9 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @AltInteract.started += instance.OnAltInteract;
+            @AltInteract.performed += instance.OnAltInteract;
+            @AltInteract.canceled += instance.OnAltInteract;
             @Map.started += instance.OnMap;
             @Map.performed += instance.OnMap;
             @Map.canceled += instance.OnMap;
@@ -479,6 +547,9 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @AltInteract.started -= instance.OnAltInteract;
+            @AltInteract.performed -= instance.OnAltInteract;
+            @AltInteract.canceled -= instance.OnAltInteract;
             @Map.started -= instance.OnMap;
             @Map.performed -= instance.OnMap;
             @Map.canceled -= instance.OnMap;
@@ -592,6 +663,52 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         }
     }
     public DebugActions @Debug => new DebugActions(this);
+
+    // RoomPeeking
+    private readonly InputActionMap m_RoomPeeking;
+    private List<IRoomPeekingActions> m_RoomPeekingActionsCallbackInterfaces = new List<IRoomPeekingActions>();
+    private readonly InputAction m_RoomPeeking_Cancel;
+    public struct RoomPeekingActions
+    {
+        private @PlayerInputSystem m_Wrapper;
+        public RoomPeekingActions(@PlayerInputSystem wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Cancel => m_Wrapper.m_RoomPeeking_Cancel;
+        public InputActionMap Get() { return m_Wrapper.m_RoomPeeking; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(RoomPeekingActions set) { return set.Get(); }
+        public void AddCallbacks(IRoomPeekingActions instance)
+        {
+            if (instance == null || m_Wrapper.m_RoomPeekingActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_RoomPeekingActionsCallbackInterfaces.Add(instance);
+            @Cancel.started += instance.OnCancel;
+            @Cancel.performed += instance.OnCancel;
+            @Cancel.canceled += instance.OnCancel;
+        }
+
+        private void UnregisterCallbacks(IRoomPeekingActions instance)
+        {
+            @Cancel.started -= instance.OnCancel;
+            @Cancel.performed -= instance.OnCancel;
+            @Cancel.canceled -= instance.OnCancel;
+        }
+
+        public void RemoveCallbacks(IRoomPeekingActions instance)
+        {
+            if (m_Wrapper.m_RoomPeekingActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IRoomPeekingActions instance)
+        {
+            foreach (var item in m_Wrapper.m_RoomPeekingActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_RoomPeekingActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public RoomPeekingActions @RoomPeeking => new RoomPeekingActions(this);
     public interface IGameplayActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -599,6 +716,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         void OnShootBasic(InputAction.CallbackContext context);
         void OnShootStrong(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnAltInteract(InputAction.CallbackContext context);
         void OnMap(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
@@ -610,5 +728,9 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
     public interface IDebugActions
     {
         void OnPerkMenu(InputAction.CallbackContext context);
+    }
+    public interface IRoomPeekingActions
+    {
+        void OnCancel(InputAction.CallbackContext context);
     }
 }

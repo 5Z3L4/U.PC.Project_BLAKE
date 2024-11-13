@@ -1,132 +1,114 @@
-using System.Collections.Generic;
-using _Project.Scripts.Weapons;
+using _Project.Scripts.Analytics;
 using _Project.Scripts.Weapons.Definition;
 using UnityEngine;
 
-#if ENABLE_CLOUD_SERVICES_ANALYTICS
-using Unity.Services.Analytics;
-#endif
-
-public class WeaponPickup : Interactable
+namespace _Project.Scripts.Weapons
 {
-    public WeaponDefinition WeaponDefinition;
-
-    [SerializeField] 
-    private GameObject pickupGameObject;
-
-    [SerializeField] 
-    private float rotateForce = 12f;
-
-    [HideInInspector]
-    public WeaponInstanceInfo WeaponInstanceInfo;
-
-    private GameObject weaponGFX;
-
-#if ENABLE_CLOUD_SERVICES_ANALYTICS
-    public bool SendAnalyticsDataOnPickup = false;
-#endif
-
-    private void Start()
+    public class WeaponPickup : Interactable
     {
-        weaponGFX = Instantiate(WeaponDefinition.WeaponGFX, pickupGameObject.transform.position, pickupGameObject.transform.rotation, pickupGameObject.transform);
-    }
+        public WeaponDefinition WeaponDefinition;
 
-    private void Update()
-    {
-        pickupGameObject.transform.Rotate(Vector3.up * (Time.deltaTime * rotateForce));
-    }
+        [SerializeField] 
+        private GameObject pickupGameObject;
 
-    public override void Interact(GameObject interacter)
-    {
-        WeaponsManager weaponsManager = interacter.GetComponent<WeaponsManager>();
-        if(weaponsManager == null)
+        [SerializeField] 
+        private float rotateForce = 12f;
+
+        [HideInInspector]
+        public WeaponInstanceInfo WeaponInstanceInfo;
+
+        private GameObject weaponGFX;
+
+        private void Start()
         {
-            Debug.LogWarning("WeaponsManager is not valid");
-            return;
+            weaponGFX = Instantiate(WeaponDefinition.WeaponGFX, pickupGameObject.transform.position, pickupGameObject.transform.rotation, pickupGameObject.transform);
         }
-        int index = 0;
-        index = weaponsManager.ActiveWeaponIndex == 0 ? 1 : weaponsManager.ActiveWeaponIndex;
-        for (int i = 0; i < weaponsManager.Weapons.Count; i++)
+
+        private void Update()
         {
-            if (weaponsManager.Weapons[i] == null)
+            pickupGameObject.transform.Rotate(Vector3.up * (Time.deltaTime * rotateForce));
+        }
+
+        public override void Interact(GameObject interacter)
+        {
+            WeaponsManager weaponsManager = interacter.GetComponent<WeaponsManager>();
+            if(weaponsManager == null)
             {
-                index = i;
-                break;
+                Debug.LogWarning("WeaponsManager is not valid");
+                return;
             }
-        }
-
-        WeaponDefinition weaponDefinition = null;
-        if(weaponsManager.Weapons[index] != null)
-        {
-            weaponDefinition = weaponsManager.Weapons[index].WeaponDefinition;
-        }
-
-        WeaponInstanceInfo weaponInstanceInfoToSave = null;
-        Weapon oldWeapon = weaponsManager.Weapons[index];
-        if (oldWeapon != null)
-        {
-            weaponInstanceInfoToSave = oldWeapon.GenerateWeaponInstanceInfo();
-        }
-
-        weaponsManager.Equip(WeaponDefinition, index);
-        if(weaponsManager.ActiveWeaponIndex == 0) weaponsManager.SetActiveIndex(index);
-
-#if ENABLE_CLOUD_SERVICES_ANALYTICS
-        if (SendAnalyticsDataOnPickup)
-        {
-            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            int index = 0;
+            index = weaponsManager.ActiveWeaponIndex == 0 ? 1 : weaponsManager.ActiveWeaponIndex;
+            for (int i = 0; i < weaponsManager.Weapons.Count; i++)
             {
-                { "itemName", WeaponDefinition.WeaponName }
-            };
+                if (weaponsManager.Weapons[i] == null)
+                {
+                    index = i;
+                    break;
+                }
+            }
 
-            AnalyticsService.Instance.StartDataCollection();
-            AnalyticsService.Instance.CustomData("WeaponPickup", parameters);
-            Debug.Log("Analytics data sent.");
+            WeaponDefinition weaponDefinition = null;
+            if(weaponsManager.Weapons[index] != null)
+            {
+                weaponDefinition = weaponsManager.Weapons[index].WeaponDefinition;
+            }
+
+            WeaponInstanceInfo weaponInstanceInfoToSave = null;
+            Weapon oldWeapon = weaponsManager.Weapons[index];
+            if (oldWeapon != null)
+            {
+                weaponInstanceInfoToSave = oldWeapon.GenerateWeaponInstanceInfo();
+            }
+
+            weaponsManager.Equip(WeaponDefinition, index);
+            if(weaponsManager.ActiveWeaponIndex == 0) weaponsManager.SetActiveIndex(index);
+        
+            this.TrySendAnalytics(WeaponDefinition);
+
+            if (WeaponInstanceInfo != null)
+            {
+                weaponsManager.Weapons[index].LoadWeaponInstanceInfo(WeaponInstanceInfo);
+            }
+
+            WeaponInstanceInfo = weaponInstanceInfoToSave;
+            weaponsManager.OnPlayerPickupWeapon();
+
+            if (weaponDefinition != null)
+            {
+                WeaponDefinition = weaponDefinition;
+                ChangeVisuals(weaponDefinition);
+                return;
+            }
+
+            PlayerInteractables playerInteractables = interacter.GetComponent<PlayerInteractables>();
+            if (playerInteractables != null)
+            {
+                playerInteractables.RemoveInteractable(this);
+            }
+            Destroy(gameObject);
         }
-#endif
 
-        if (WeaponInstanceInfo != null)
+        private void ChangeVisuals(WeaponDefinition newWeapon)
         {
-            weaponsManager.Weapons[index].LoadWeaponInstanceInfo(WeaponInstanceInfo);
-        }
+            if (weaponGFX != null)
+            {
+                Destroy(weaponGFX);
+            }
 
-        WeaponInstanceInfo = weaponInstanceInfoToSave;
-        weaponsManager.OnPlayerPickupWeapon();
-
-        if (weaponDefinition != null)
-        {
-            WeaponDefinition = weaponDefinition;
-            ChangeVisuals(weaponDefinition);
-            return;
+            weaponGFX = Instantiate(newWeapon.WeaponGFX, pickupGameObject.transform);
+            weaponGFX.transform.localPosition = newWeapon.PickupLocationOffset;
+            weaponGFX.transform.localRotation = newWeapon.PickupRotation;
         }
-
-        PlayerInteractables playerInteractables = interacter.GetComponent<PlayerInteractables>();
-        if (playerInteractables != null)
-        {
-            playerInteractables.RemoveInteractable(this);
-        }
-        Destroy(gameObject);
     }
 
-    private void ChangeVisuals(WeaponDefinition newWeapon)
+    public class WeaponInstanceInfo
     {
-        if (weaponGFX != null)
-        {
-            Destroy(weaponGFX);
-        }
 
-        weaponGFX = Instantiate(newWeapon.WeaponGFX, pickupGameObject.transform);
-        weaponGFX.transform.localPosition = newWeapon.PickupLocationOffset;
-        weaponGFX.transform.localRotation = newWeapon.PickupRotation;
     }
-}
 
-public class WeaponInstanceInfo
-{
-
-}
-
-public class RangedWeaponInstanceInfo : WeaponInstanceInfo
-{
-    public int bulletsLeft;
+    public class RangedWeaponInstanceInfo : WeaponInstanceInfo
+    {
+        public int bulletsLeft;
+    }
 }

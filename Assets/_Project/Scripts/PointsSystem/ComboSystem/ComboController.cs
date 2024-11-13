@@ -7,7 +7,7 @@ namespace _Project.Scripts.PointsSystem.ComboSystem
     {
         private const float MAX_TIMER_VALUE = 3f;
         private const float MAX_COMBO_COUNT = 5f;
-        private const float MIN_COMBO_COUNT = 1f;
+        private float MIN_COMBO_COUNT = 1f;
         private const float COMBO_INCREASE_STEP = .1f;
         private const int MIN_KILLS_TO_START_COMBO = 2;
     
@@ -50,6 +50,12 @@ namespace _Project.Scripts.PointsSystem.ComboSystem
             isComboActive = true;
             comboCounter = MAX_COMBO_COUNT;
 
+        }
+
+        public void AddMinCombo(float value)
+        {
+            MIN_COMBO_COUNT += value;
+            comboCounter = MIN_COMBO_COUNT;
         }
 
         private void CountdownTime()
