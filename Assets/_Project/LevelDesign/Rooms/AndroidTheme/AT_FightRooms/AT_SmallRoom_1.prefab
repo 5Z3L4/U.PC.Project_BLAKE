@@ -530,7 +530,6 @@ MonoBehaviour:
   fogBlockerUpgradeAmount: 2
   fogBlockerSize: 1
   fogPoints:
-  - {fileID: 0}
   - {fileID: 976846199609912704}
   activefogBlockers: []
   peekCamera: {fileID: 8206816672880464242}
