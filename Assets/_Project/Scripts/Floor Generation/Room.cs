@@ -53,6 +53,7 @@ public class Room : MonoBehaviour
 
     [SerializeField]
     private bool isBeaten = false;
+    public bool IsBeaten => isBeaten;
 
     [SerializeField]
     private Transform spawnPoint;
