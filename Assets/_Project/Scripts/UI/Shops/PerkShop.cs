@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PerkShop : MonoBehaviour
 {
@@ -19,14 +20,23 @@ public class PerkShop : MonoBehaviour
     [SerializeField] private TMP_Text perkName;
     [SerializeField] private TMP_Text perkDesc;
     [SerializeField] private TMP_Text buyButton;
+    [SerializeField] private TMP_Text pointsText;
     private PerkShopButton lastButton;
     private int perkCost = 0;
     private PerkScriptableObject perkToBuy;
 
-    private int perkRarityOneCost = 1000;
-    private int perkRarityTwoCost = 2000;
-    private int perkRarityThreeCost = 3000;
-    public void SetPerk(string name, string desc, PerkScriptableObject perk, PerkShopButton button)
+    private static int perkRarityOneCost = 1000;
+    private static int perkRarityTwoCost = 2000;
+    private static int perkRarityThreeCost = 3000;
+
+    public static void ResetShopValues()
+    {
+        perkRarityOneCost = 1000;
+        perkRarityTwoCost = 2000;
+        perkRarityThreeCost = 3000;
+    }
+
+    public void SetPerk(string name, string desc, PerkScriptableObject perk, PerkShopButton button, Color perkColor)
     {
         perkName.text = name;
         perkDesc.text = desc;
@@ -48,6 +58,9 @@ public class PerkShop : MonoBehaviour
                 perkCost = 1000;
                 break;
         }
+
+        buyButton.GetComponentInParent<Image>().color = perkColor;
+        perkName.color = perkColor;
 
         if(!button.PerkBought)
         {
@@ -87,5 +100,21 @@ public class PerkShop : MonoBehaviour
         }
         lastButton.Buy();
         lastButton.OnClick();
+    }
+
+    private void RefreshPoints(float points)
+    {
+        pointsText.text = $"Points: {points}";
+    }
+
+    private void OnEnable()
+    {
+        ReferenceManager.PlayerCurrencyController.OnPointsChanged += RefreshPoints;
+        ReferenceManager.PlayerCurrencyController.RefreshPoints();
+    }
+
+    private void OnDisable()
+    {
+        ReferenceManager.PlayerCurrencyController.OnPointsChanged += RefreshPoints;
     }
 }

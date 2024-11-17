@@ -421,6 +421,7 @@ MonoBehaviour:
   perkDesc: "zwi\u0119ksza promie\u0144 podgl\u0105danych obszar\xF3w"
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 5d202dad833f01a41b92ef0e3ba6b55b, type: 2}
+  perkColor: {r: 0.5647059, g: 0.011764706, b: 0.5019608, a: 1}
   perkRarity: 1
 --- !u!1 &1201652993563172254
 GameObject:
@@ -706,6 +707,7 @@ MonoBehaviour:
     ilo\u015B\u0107 dopuszczalnych zgon\xF3w o 1"
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: a111b7fa5c94d68438265fc1a909d851, type: 2}
+  perkColor: {r: 0.16470589, g: 0.65882355, b: 0.039215688, a: 1}
   perkRarity: 1
 --- !u!1 &1989500148834942521
 GameObject:
@@ -1541,6 +1543,7 @@ MonoBehaviour:
   perkDesc: "podw\xF3jny dash ALE przeciwnicy s\u0105 nieco szybsi"
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 4701864d1c8f9bc4fa899f243e9cec9f, type: 2}
+  perkColor: {r: 0, g: 0.05490196, b: 0.90588236, a: 1}
   perkRarity: 2
 --- !u!1 &3514677743023449042
 GameObject:
@@ -1829,6 +1832,7 @@ MonoBehaviour:
     si\u0119 w niej amunicja"
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 9ee8d46764ff52c4fbdc5eeb108d45fb, type: 2}
+  perkColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 1}
   perkRarity: 1
 --- !u!1 &3807498734502917270
 GameObject:
@@ -2117,6 +2121,7 @@ MonoBehaviour:
     <b>ALE mno\u017Cnik Punkt\xF3w zaczyna si\u0119 nalicza\u0107 od 0.7x</b>"
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 9472b8c5dfaca2748b2c46cc0922d895, type: 2}
+  perkColor: {r: 0.5647059, g: 0.011764706, b: 0.5019608, a: 1}
   perkRarity: 2
 --- !u!1 &4515305638980371342
 GameObject:
@@ -2404,6 +2409,7 @@ MonoBehaviour:
   perkDesc: "zwi\u0119kszona og\xF3lna pr\u0119dko\u015B\u0107 ruchu"
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 0741bc707a94a6b48926828e95310ce9, type: 2}
+  perkColor: {r: 0, g: 0.05490196, b: 0.90588236, a: 1}
   perkRarity: 0
 --- !u!1 &5345461784566780714
 GameObject:
@@ -2558,6 +2564,7 @@ MonoBehaviour:
     po modyfikacji przez mno\u017Cnik)"
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 39baf15ff73faa54399a24c57cc9aece, type: 2}
+  perkColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 1}
   perkRarity: 0
 --- !u!1 &5697981905489734272
 GameObject:
@@ -2710,6 +2717,7 @@ MonoBehaviour:
   perkDesc: "zachowujesz cz\u0119\u015B\u0107 Punkt\xF3w po \u015Bmierci"
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: e0c789267980a914ba4db4693e5a8a9b, type: 2}
+  perkColor: {r: 0.16470589, g: 0.65882355, b: 0.039215688, a: 1}
   perkRarity: 0
 --- !u!1 &5719359127965121940
 GameObject:
@@ -3393,6 +3401,7 @@ RectTransform:
   - {fileID: 7057209285497086010}
   - {fileID: 1101260704492540745}
   - {fileID: 5746633189817370451}
+  - {fileID: 599707156307881639}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3477,6 +3486,7 @@ MonoBehaviour:
   perkName: {fileID: 6643339265721900853}
   perkDesc: {fileID: 5406483727392460529}
   buyButton: {fileID: 4332731784324592057}
+  pointsText: {fileID: 1793773670434721419}
 --- !u!1 &6631626593521123856
 GameObject:
   m_ObjectHideFlags: 0
@@ -3735,6 +3745,7 @@ MonoBehaviour:
   perkDesc: "skr\xF3cony czas odnowienia dasha"
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 5d6655bfc274aad41bca777b94acd3c0, type: 2}
+  perkColor: {r: 0, g: 0.05490196, b: 0.90588236, a: 1}
   perkRarity: 1
 --- !u!1 &6993659829476150336
 GameObject:
@@ -4023,7 +4034,143 @@ MonoBehaviour:
     pojawia si\u0119 po osi\u0105gni\u0119ciu combo x5"
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: de30911e444a8334fadc4a8a9ac2eeb9, type: 2}
+  perkColor: {r: 0.16470589, g: 0.65882355, b: 0.039215688, a: 1}
   perkRarity: 2
+--- !u!1 &7336118864355716244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 599707156307881639}
+  - component: {fileID: 2929494577320127488}
+  - component: {fileID: 1793773670434721419}
+  m_Layer: 5
+  m_Name: Points
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &599707156307881639
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7336118864355716244}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000104, y: 1.0000104, z: 1.0000104}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1622663602403242669}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 30, y: -30}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0, y: 1}
+--- !u!222 &2929494577320127488
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7336118864355716244}
+  m_CullTransparentMesh: 1
+--- !u!114 &1793773670434721419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7336118864355716244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Points: 0'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 0
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &7353180271162126739
 GameObject:
   m_ObjectHideFlags: 0
@@ -4390,6 +4537,7 @@ MonoBehaviour:
     te bronie, kt\xF3re nosimy)</b>"
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: a03278aad6683d94f92bd336360a9d68, type: 2}
+  perkColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 1}
   perkRarity: 2
 --- !u!1 &7800792247066814590
 GameObject:
@@ -4678,6 +4826,7 @@ MonoBehaviour:
     podanej pozycji"
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 19c03033794b73e44a399c15e6410b74, type: 2}
+  perkColor: {r: 0.5647059, g: 0.011764706, b: 0.5019608, a: 1}
   perkRarity: 0
 --- !u!1 &8050308478781260449
 GameObject:

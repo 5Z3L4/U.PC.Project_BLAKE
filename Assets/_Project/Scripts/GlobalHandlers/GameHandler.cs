@@ -12,6 +12,8 @@ namespace _Project.Scripts.GlobalHandlers
         
         [SerializeField]
         private GameObject pausedGameCanvas;
+        [SerializeField]
+        private GameObject playerUI;
 
         private bool isGamePaused = false;
         
@@ -77,7 +79,15 @@ namespace _Project.Scripts.GlobalHandlers
             IsGamePaused = pauseGame;
             return openedCanvas;
         }
-    
+
+        public void PauseWithoutUI()
+        {
+            pausedGameCanvas.SetActive(true);
+            IsGamePaused = true;
+
+            playerUI.SetActive(false);
+        }
+
         public void CloseAllCanvasAndUnpause()
         {
             pausedGameCanvas.SetActive(false);
@@ -86,6 +96,7 @@ namespace _Project.Scripts.GlobalHandlers
                 var child = pausedGameCanvas.transform.GetChild(i).gameObject;
                 child.SetActive(false);
             }
+            playerUI.SetActive(true);
 
             IsGamePaused = false;
         }

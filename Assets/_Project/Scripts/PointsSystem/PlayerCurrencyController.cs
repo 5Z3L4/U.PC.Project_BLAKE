@@ -68,5 +68,10 @@ namespace _Project.Scripts.PointsSystem
         {
             deathPointsModifier += percentage;
         }
+
+        public void RefreshPoints()
+        {
+            OnPointsChanged?.Invoke(this.points);
+        }
     }
 }

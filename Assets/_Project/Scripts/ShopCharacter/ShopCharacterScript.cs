@@ -1,3 +1,4 @@
+using _Project.Scripts.GlobalHandlers;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -36,7 +37,7 @@ public class ShopCharacterScript : MonoBehaviour, IInteractable
     private void OpenShop()
     {
         shopMenu.SetActive(true);
-        Time.timeScale = 0f;
+        GameHandler.Instance.PauseWithoutUI();
         isOpen = true;
     }
 
@@ -45,6 +46,18 @@ public class ShopCharacterScript : MonoBehaviour, IInteractable
         shopMenu.SetActive(false);
         Time.timeScale = 1f;
         isOpen = false;
+    }
+
+    private void OnEnable()
+    {
+        if (ReferenceManager.PlayerInputController == null) return;
+        ReferenceManager.PlayerInputController.escapeButtonEvent += CloseShop;
+    }
+
+    private void OnDisable()
+    {
+        if (ReferenceManager.PlayerInputController == null) return;
+        ReferenceManager.PlayerInputController.escapeButtonEvent -= CloseShop;
     }
 
 
