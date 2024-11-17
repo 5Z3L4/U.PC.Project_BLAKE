@@ -79,7 +79,7 @@ public class MechanicalDoor : Door, IInteractable, IAltInteractable
     public void AltInteract(GameObject interacter)
     {
         if (!CanAltInteract()) return;
-        ReferenceManager.PlayerInputController.EnablePeeking();
+        ReferenceManager.PlayerInputController.SetPeekingState();
         roomToPeek.Peek();
     }
 
