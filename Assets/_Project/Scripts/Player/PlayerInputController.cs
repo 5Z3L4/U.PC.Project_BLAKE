@@ -27,7 +27,6 @@ namespace _Project.Scripts.Player
 
         void SetUpControls()
         {
-            inputSystem.Enable();
             DisablePeeking();
             //Shooting
         }
@@ -137,7 +136,7 @@ namespace _Project.Scripts.Player
     
         public void EnableInputSystem()
         {
-            inputSystem.Enable();
+            DisablePeeking();
         }
 
         public void DisableInputSystem()
