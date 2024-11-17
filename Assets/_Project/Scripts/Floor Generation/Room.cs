@@ -168,6 +168,15 @@ public class Room : MonoBehaviour
     {
         return peekCamera != null;
     }
+
+    public bool CanBePeeked()
+    {
+        if(!HavePeekingCam()) return false;
+        if(isBeaten) return false;
+        if (spawnedEnemies.Count > 0 && IsPlayerInside()) return false;
+        
+        return true;
+    }
     public void SetupFogBlockers()
     {
         if (fogBlockerPrefab == null) return;

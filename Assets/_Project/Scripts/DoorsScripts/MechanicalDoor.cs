@@ -86,7 +86,7 @@ public class MechanicalDoor : Door, IInteractable, IAltInteractable
     public bool CanAltInteract()
     {
         SetRoomToPeek();
-        return (roomToPeek.HavePeekingCam());
+        return roomToPeek.CanBePeeked();
     }
 
     public GameObject GetGameObject()
