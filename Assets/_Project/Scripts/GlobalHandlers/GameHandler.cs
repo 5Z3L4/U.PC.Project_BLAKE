@@ -1,4 +1,5 @@
 using _Project.Scripts.Patterns;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
 namespace _Project.Scripts.GlobalHandlers
@@ -25,6 +26,17 @@ namespace _Project.Scripts.GlobalHandlers
             {
                 isGamePaused = value;
                 Time.timeScale = isGamePaused ? 0f : 1f;
+                var input = ReferenceManager.PlayerInputController;
+                if(input != null)
+                {
+                    if(value)
+                    {
+                        input.SetPauseState();
+                    } else
+                    {
+                        input.EnableInputSystem();
+                    }
+                }
             }
         }
 
