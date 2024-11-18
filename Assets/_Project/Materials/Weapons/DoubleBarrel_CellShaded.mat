@@ -22,7 +22,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _ColorMap:
-        m_Texture: {fileID: 2800000, guid: 15d89080bb113b54180fe40d5998ffdb, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0b14beb066b47b44da7af500cab884b4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DecalsMask:

@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Emission_Enviro_Lights_Sychro
+  m_Name: Emission_DoubleBarrel_Pulse
   m_Shader: {fileID: -6465566751694194690, guid: a5672abf5697e8141830e38f3a89625c,
     type: 3}
   m_ValidKeywords: []
@@ -35,7 +35,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _ColorMap:
-        m_Texture: {fileID: 2800000, guid: 2302e423e1d51654192698dfb75e7cf2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0b14beb066b47b44da7af500cab884b4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -52,11 +52,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Intensity: 3
+    - _Intensity: 20
     - _PulseTime: 5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Synchronized: 1
+    - _Synchronized: 0
     m_Colors:
-    - _LightRange: {r: 0.22, g: 0.5, b: 0, a: 0}
+    - _LightRange: {r: 0.15, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
