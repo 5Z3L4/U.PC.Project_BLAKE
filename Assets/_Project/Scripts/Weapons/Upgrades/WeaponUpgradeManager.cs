@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Project.Scripts.Analytics;
 using _Project.Scripts.GlobalHandlers;
 using _Project.Scripts.Patterns;
 using _Project.Scripts.Weapons.Statistics;
@@ -198,12 +199,12 @@ namespace _Project.Scripts.Weapons.Upgrades
                 var currentValue = playerWeaponUpgradeManager.GetCurrentWeaponStatistics(upgradeData.WeaponDefinition)
                     .GetValueByName(statName);
                 
-                CreateStatistic(upgradeData, instantiatedCard, statName, currentValue, upgradeValue);
+                CreateStatistic(instantiatedCard, statName, currentValue, upgradeValue);
             }
         }
 
-        private void CreateStatistic(WeaponUpgradeData upgradeData, WeaponUpgradeCardUI instantiatedCard,
-            string upgradeName, float currentValue, float upgradeValue)
+        private void CreateStatistic(WeaponUpgradeCardUI instantiatedCard, string upgradeName, float currentValue,
+            float upgradeValue)
         {
             var instantiatedStatistic = instantiatedCard.CreateNewUpgradeStatistic(statisticUpgradePrefab);
             
@@ -221,6 +222,7 @@ namespace _Project.Scripts.Weapons.Upgrades
 
                 ReferenceManager.PlayerCurrencyController.RemovePoints(upgradeData.UpgradeCost);
                 
+                this.TrySendAnalytics(upgradeData, dictionaryOfUpgrades);
                 ResetAllValues();
                 
                 isUpgradeAvailable = false;

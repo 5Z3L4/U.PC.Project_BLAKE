@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using _Project.Scripts.Analytics;
 using _Project.Scripts.GlobalHandlers;
 using _Project.Scripts.Patterns;
 using UnityEngine;
@@ -43,6 +44,9 @@ namespace _Project.Scripts.SceneHandler
                 EndRun();
                 return;
             }
+            
+            this.TrySendAnalytics(levelNames.levelNames[levelIndex]);
+            
             onNextLevel?.Invoke();
             levelIndex++;
             ReferenceManager.RoomManager.ClearRooms();
@@ -77,7 +81,6 @@ namespace _Project.Scripts.SceneHandler
             if(ReferenceManager.RoomManager != null){
                 ReferenceManager.RoomManager.ClearRooms();
             }
-
         }
     }
 }

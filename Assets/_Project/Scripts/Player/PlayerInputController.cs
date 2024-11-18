@@ -6,9 +6,16 @@ using UnityEngine.InputSystem;
 
 namespace _Project.Scripts.Player
 {
-    public class PlayerInputController : Singleton<PlayerInputController>, PlayerInputSystem.IGameplayActions, PlayerInputSystem.IRoomPeekingActions
+    public class PlayerInputController : Singleton<PlayerInputController>, PlayerInputSystem.IGameplayActions, PlayerInputSystem.IRoomPeekingActions, PlayerInputSystem.IPauseActions
     {
+        private enum InputState
+        {
+            Gameplay,
+            Peeking
+        }
         private PlayerInputSystem inputSystem;
+        private bool isPeeking = false;
+        private InputState inputState = InputState.Gameplay;
 
         protected override void Awake()
         {
@@ -17,6 +24,7 @@ namespace _Project.Scripts.Player
             inputSystem = new PlayerInputSystem();
             inputSystem.Gameplay.SetCallbacks(this);
             inputSystem.RoomPeeking.SetCallbacks(this);
+            inputSystem.Pause.SetCallbacks(this);
             ReferenceManager.PlayerInputController = this;
         }
 
@@ -27,8 +35,7 @@ namespace _Project.Scripts.Player
 
         void SetUpControls()
         {
-            inputSystem.Enable();
-            DisablePeeking();
+            SetGameplayState();
             //Shooting
         }
 
@@ -137,7 +144,15 @@ namespace _Project.Scripts.Player
     
         public void EnableInputSystem()
         {
-            inputSystem.Enable();
+            switch(inputState)
+            {
+                case InputState.Gameplay:
+                    SetGameplayState();
+                    break;
+                case InputState.Peeking:
+                    SetPeekingState();
+                    break;
+            }
         }
 
         public void DisableInputSystem()
@@ -155,23 +170,29 @@ namespace _Project.Scripts.Player
             DisableInputSystem();
         }
 
-        public void EnablePeeking()
+        public void SetPeekingState()
         {
-
-            inputSystem.Gameplay.Disable();
+            inputSystem.Disable();
             inputSystem.RoomPeeking.Enable();
+            inputState = InputState.Peeking;
         }
-        public void DisablePeeking()
+        public void SetGameplayState()
         {
-
+            inputSystem.Disable();
             inputSystem.Gameplay.Enable();
-            inputSystem.RoomPeeking.Disable();
+            inputState = InputState.Gameplay;
+        }
+
+        public void SetPauseState()
+        {
+            inputSystem.Disable();
+            inputSystem.Pause.Enable();
         }
         public void OnCancel(InputAction.CallbackContext context)
         {
             if(context.performed)
             {
-                DisablePeeking();
+                SetGameplayState();
                 onPeekingCancel?.Invoke();
             }
         }

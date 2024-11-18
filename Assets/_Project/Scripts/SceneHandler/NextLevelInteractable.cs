@@ -6,9 +6,11 @@ public class NextLevelInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField]
     private Transform UIHolderTransform;
+    [SerializeField]
+    private Room room;
     public bool CanInteract()
     {
-        return true;
+        return room.IsBeaten;
     }
 
     public GameObject GetGameObject()

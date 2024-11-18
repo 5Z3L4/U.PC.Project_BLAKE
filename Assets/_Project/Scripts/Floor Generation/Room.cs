@@ -53,6 +53,7 @@ public class Room : MonoBehaviour
 
     [SerializeField]
     private bool isBeaten = false;
+    public bool IsBeaten => isBeaten;
 
     [SerializeField]
     private Transform spawnPoint;
@@ -167,6 +168,15 @@ public class Room : MonoBehaviour
     public bool HavePeekingCam()
     {
         return peekCamera != null;
+    }
+
+    public bool CanBePeeked()
+    {
+        if(!HavePeekingCam()) return false;
+        if(isBeaten) return false;
+        if (spawnedEnemies.Count > 0 && IsPlayerInside()) return false;
+        
+        return true;
     }
     public void SetupFogBlockers()
     {

@@ -380,6 +380,34 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Pause"",
+            ""id"": ""438b2ee8-41b7-4959-8dc9-83dcdd31b8f9"",
+            ""actions"": [
+                {
+                    ""name"": ""EscapeButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""0ee94b68-4d01-4cc0-adbf-ef9a9982bd70"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""072c6922-d0d5-4650-98ea-d65c283dec47"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EscapeButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -404,6 +432,9 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         // RoomPeeking
         m_RoomPeeking = asset.FindActionMap("RoomPeeking", throwIfNotFound: true);
         m_RoomPeeking_Cancel = m_RoomPeeking.FindAction("Cancel", throwIfNotFound: true);
+        // Pause
+        m_Pause = asset.FindActionMap("Pause", throwIfNotFound: true);
+        m_Pause_EscapeButton = m_Pause.FindAction("EscapeButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -709,6 +740,52 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         }
     }
     public RoomPeekingActions @RoomPeeking => new RoomPeekingActions(this);
+
+    // Pause
+    private readonly InputActionMap m_Pause;
+    private List<IPauseActions> m_PauseActionsCallbackInterfaces = new List<IPauseActions>();
+    private readonly InputAction m_Pause_EscapeButton;
+    public struct PauseActions
+    {
+        private @PlayerInputSystem m_Wrapper;
+        public PauseActions(@PlayerInputSystem wrapper) { m_Wrapper = wrapper; }
+        public InputAction @EscapeButton => m_Wrapper.m_Pause_EscapeButton;
+        public InputActionMap Get() { return m_Wrapper.m_Pause; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PauseActions set) { return set.Get(); }
+        public void AddCallbacks(IPauseActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PauseActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PauseActionsCallbackInterfaces.Add(instance);
+            @EscapeButton.started += instance.OnEscapeButton;
+            @EscapeButton.performed += instance.OnEscapeButton;
+            @EscapeButton.canceled += instance.OnEscapeButton;
+        }
+
+        private void UnregisterCallbacks(IPauseActions instance)
+        {
+            @EscapeButton.started -= instance.OnEscapeButton;
+            @EscapeButton.performed -= instance.OnEscapeButton;
+            @EscapeButton.canceled -= instance.OnEscapeButton;
+        }
+
+        public void RemoveCallbacks(IPauseActions instance)
+        {
+            if (m_Wrapper.m_PauseActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPauseActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PauseActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PauseActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PauseActions @Pause => new PauseActions(this);
     public interface IGameplayActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -732,5 +809,9 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
     public interface IRoomPeekingActions
     {
         void OnCancel(InputAction.CallbackContext context);
+    }
+    public interface IPauseActions
+    {
+        void OnEscapeButton(InputAction.CallbackContext context);
     }
 }

@@ -37,6 +37,7 @@ namespace _Project.Scripts.SceneHandler
         {
             GetComponent<LevelHandler>().ResetValues();
             StartCoroutine(LoadNewSceneAdditive(firstFloor));
+            PerkShop.ResetShopValues();
         }
 
         public void LoadGame()

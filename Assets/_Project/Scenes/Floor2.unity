@@ -945,6 +945,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 536579403098262481, guid: c0b16755e1666b946848ec5a621a9f77,
         type: 3}
+      propertyPath: playerUI
+      value: 
+      objectReference: {fileID: 7410731053384455218}
+    - target: {fileID: 536579403098262481, guid: c0b16755e1666b946848ec5a621a9f77,
+        type: 3}
       propertyPath: pausedGameCanvas
       value: 
       objectReference: {fileID: 58368869}
@@ -1549,3 +1554,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c4b5f7670b559541a2e37b0c5082c8e, type: 3}
+--- !u!1 &7410731053384455218 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7766354205380842406, guid: 4c4b5f7670b559541a2e37b0c5082c8e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7410731053384455217}
+  m_PrefabAsset: {fileID: 0}
