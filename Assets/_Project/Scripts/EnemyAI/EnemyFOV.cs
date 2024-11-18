@@ -105,7 +105,6 @@ namespace _Project.Scripts.EnemyAI
             }
             else if (_aiController.CombatStateReference.GetVariable().Value == CombatState.Alarmed && CanSeePlayer)
             {
-                Debug.Log("LOST VISION");
                 OnCanSeePlayerChanged?.Invoke(_canSeePlayer = false, CombatState.Patrol);
                 _canSeePlayer = false;
             }

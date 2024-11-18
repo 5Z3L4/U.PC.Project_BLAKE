@@ -19,9 +19,6 @@ namespace _Project.Scripts.EnemyAI.MBT.Tasks
         private IEnumerator SetNewValue()
         {
             yield return new WaitForEndOfFrame();
-            
-            Debug.Log(CombatStateReference.GetVariable().Value);
-
             if (currentState == CombatStateReference.GetVariable().Value)
             {
                 CombatStateReference.GetVariable().Value = NewCombatState;

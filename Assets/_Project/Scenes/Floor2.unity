@@ -212,7 +212,7 @@ PrefabInstance:
         type: 3}
       propertyPath: endRoom
       value: 
-      objectReference: {fileID: 2171126759078518847, guid: 4d6e4b42c547191489c5e06c8f115243,
+      objectReference: {fileID: 2171126759078518847, guid: cc52196ab73e64047ac884017af085f6,
         type: 3}
     - target: {fileID: 3194443941187315569, guid: e02126aae2951bf4b9b740ef58abdbcf,
         type: 3}
