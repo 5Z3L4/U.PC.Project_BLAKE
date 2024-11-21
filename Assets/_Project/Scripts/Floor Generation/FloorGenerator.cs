@@ -206,6 +206,7 @@ public class FloorGenerator : MonoBehaviour
                 GameObject roomToSpawn = GetRandomSizedRoom(pool);
                 if (roomToSpawn == null) roomToSpawn = pool.GetRandomRoomFromPool();
                 var newRoom = Instantiate(roomToSpawn);
+                roomScript = newRoom.GetComponent<Room>();
                 int randomDoor = Random.Range(0, roomScript.GetDoors().Length);
                 RoomConnector newDoor = roomScript.GetDoors()[randomDoor];
 
