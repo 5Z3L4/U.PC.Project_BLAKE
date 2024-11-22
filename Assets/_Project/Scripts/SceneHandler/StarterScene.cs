@@ -2,8 +2,8 @@ using System;
 using System.Linq;
 using _Project.Scripts.GlobalHandlers;
 using Cysharp.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _Project.Scripts.SceneHandler
 {
@@ -14,12 +14,12 @@ namespace _Project.Scripts.SceneHandler
 
         private void Start()
         {
-            _ = StartLoading();
+            StartLoading().Forget();
         }
 
         private async UniTaskVoid StartLoading()
         {
-            var objectsInActiveScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects().ToList();
+            var objectsInActiveScene = SceneManager.GetActiveScene().GetRootGameObjects().ToList();
             objectsInActiveScene.RemoveAll(go => go == gameObject);
             
             while (objectsInActiveScene.Count > 0)
