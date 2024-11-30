@@ -115,38 +115,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!1 &1538225824381414103
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 462522855866356544}
-  m_Layer: 0
-  m_Name: Fogs
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &462522855866356544
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1538225824381414103}
-  m_LocalRotation: {x: 0.00260927, y: 0.70414674, z: -0.015010815, w: 0.709891}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5066985890225628299}
-  m_Father: {fileID: 2171126759078518832}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2046449825356775038
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +335,7 @@ Transform:
   - {fileID: 2171126759347209279}
   - {fileID: 6894984063914449559}
   - {fileID: 5686248222233469545}
-  - {fileID: 462522855866356544}
+  - {fileID: 3710143273607968791}
   - {fileID: 7528572913466262611}
   - {fileID: 2417886148915629074}
   - {fileID: 4589318294449982142}
@@ -401,10 +369,10 @@ MonoBehaviour:
   isInitialized: 0
   isBeaten: 0
   spawnPoint: {fileID: 2417886148915629074}
-  fog: {fileID: 1538225824381414103}
+  fog: {fileID: 8037086050731090352}
   fogBlockerPrefab: {fileID: 0}
-  fogBlockerAmount: 1
-  fogBlockerUpgradeAmount: 2
+  fogBlockerAmount: 0
+  fogBlockerUpgradeAmount: 0
   fogBlockerSize: 1
   fogPoints: []
   activefogBlockers: []
@@ -1320,7 +1288,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!1 &7954075958549795448
+--- !u!1 &8037086050731090352
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1328,9 +1296,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5066985890225628299}
-  - component: {fileID: 5667686560776517467}
-  - component: {fileID: 3723284744254705085}
+  - component: {fileID: 3710143273607968791}
+  - component: {fileID: 6134185372359488877}
   m_Layer: 0
   m_Name: Fog
   m_TagString: Untagged
@@ -1338,71 +1305,43 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5066985890225628299
+--- !u!4 &3710143273607968791
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7954075958549795448}
-  m_LocalRotation: {x: -0.0026092697, y: -0.70414674, z: 0.015010815, w: 0.709891}
-  m_LocalPosition: {x: 4.98, y: 2.96, z: 4.89}
-  m_LocalScale: {x: 1.080054, y: 1, z: 1.079936}
+  m_GameObject: {fileID: 8037086050731090352}
+  m_LocalRotation: {x: -0, y: -7.1054274e-15, z: -0, w: 1}
+  m_LocalPosition: {x: -0.22000003, y: 1.49, z: -10.35}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 462522855866356544}
-  m_RootOrder: 0
+  m_Father: {fileID: 2171126759078518832}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5667686560776517467
-MeshFilter:
+--- !u!114 &6134185372359488877
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7954075958549795448}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &3723284744254705085
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7954075958549795448}
+  m_GameObject: {fileID: 8037086050731090352}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: b66db632933b3604399506dbcd7a37e8, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67ca13d9138c03b44a7c1d58049386fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fogWidth: 22
+  fogDepth: 22
+  particleSpacing: 0.5
+  particlePrefab: {fileID: 3741879621835253911, guid: 052e65dc6ebabc242b783a22de90b2b7,
+    type: 3}
+  particlesYOffset: 0
+  objectsToHide:
+    serializedVersion: 2
+    m_Bits: 8704
+  turnedOn: 1
 --- !u!1 &8496663248021230518
 GameObject:
   m_ObjectHideFlags: 0
