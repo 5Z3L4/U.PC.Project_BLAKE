@@ -1,5 +1,7 @@
+using System;
 using _Project.Scripts.EnemyBoss.Shield;
 using _Project.Scripts.GlobalHandlers;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace _Project.Scripts.UI.Boss
@@ -10,6 +12,7 @@ namespace _Project.Scripts.UI.Boss
         
         private bool _subscribedToRoomManager = false;
         private bool _subscribedToLevelHandler = false;
+        private bool _subscribedToBoss = false;
 
         private bool EventsSubscribed => _subscribedToLevelHandler && _subscribedToRoomManager;
         
@@ -38,8 +41,14 @@ namespace _Project.Scripts.UI.Boss
 
             if (!_subscribedToLevelHandler && ReferenceManager.LevelHandler != null)
             {
-                ReferenceManager.LevelHandler.onNextLevel += RefreshEvents;
+                ReferenceManager.LevelHandler.onNextLevel += RefreshRoomManagerEvents;
                 _subscribedToLevelHandler = true;
+            }
+
+            if (!_subscribedToBoss && BossCharacter != null)
+            {
+                BossCharacter.onDeath += OnBossKilled;
+                _subscribedToBoss = true;
             }
         }
 
@@ -61,7 +70,12 @@ namespace _Project.Scripts.UI.Boss
             }
         }
 
-        private void RefreshEvents()
+        private void ForceDisableHeathBar()
+        {
+            healthBar.SetActive(false);
+        }
+
+        private void RefreshRoomManagerEvents()
         {
             var manager = ReferenceManager.RoomManager;
             if (manager != null)
@@ -73,6 +87,24 @@ namespace _Project.Scripts.UI.Boss
             BossRoom = null;
             BossCharacter = null;
             _subscribedToRoomManager = false;
+        }
+
+        private void OnBossKilled(BlakeCharacter _)
+        {
+            BossKilled().Forget();
+
+            if (BossCharacter != null)
+            {
+                BossCharacter.onDeath -= OnBossKilled;
+            }
+
+            BossCharacter = null;
+        }
+
+        private async UniTaskVoid BossKilled()
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(1f));
+            ForceDisableHeathBar();
         }
     }
 }
