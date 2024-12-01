@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &733073914306535234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4071301329167834986}
+  m_Layer: 0
+  m_Name: Target_IK.L
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4071301329167834986
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733073914306535234}
+  m_LocalRotation: {x: -0.7084632, y: -0.6972357, z: -0.07143849, w: -0.082697615}
+  m_LocalPosition: {x: -0.117, y: 0.019, z: 0.078}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3360847882770094504}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: -358.994, y: 167.492, z: 90.805}
+--- !u!1 &4643632174373467798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 454265130643908521}
+  m_Layer: 0
+  m_Name: Target_IK.R
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &454265130643908521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4643632174373467798}
+  m_LocalRotation: {x: 0.036600474, y: 0.70615894, z: 0.7069952, w: -0.012562872}
+  m_LocalPosition: {x: 0.0248, y: -0.0173, z: -0.117}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3360847882770094504}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: -88.051, y: 90, z: 93.985}
 --- !u!1001 &5491442706602682920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37,17 +99,17 @@ PrefabInstance:
     - target: {fileID: 7102642101788406656, guid: 5537cce7f288ae346949b6adb82e3bbe,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.007
+      value: 0.103
       objectReference: {fileID: 0}
     - target: {fileID: 7102642101788406656, guid: 5537cce7f288ae346949b6adb82e3bbe,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.076
+      value: 1.162
       objectReference: {fileID: 0}
     - target: {fileID: 7102642101788406656, guid: 5537cce7f288ae346949b6adb82e3bbe,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.448
+      value: 0.346
       objectReference: {fileID: 0}
     - target: {fileID: 7102642101788406656, guid: 5537cce7f288ae346949b6adb82e3bbe,
         type: 3}
@@ -112,6 +174,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5537cce7f288ae346949b6adb82e3bbe, type: 3}
+--- !u!4 &3360847882770094504 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7102642101788406656, guid: 5537cce7f288ae346949b6adb82e3bbe,
+    type: 3}
+  m_PrefabInstance: {fileID: 5491442706602682920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3360847882770094505 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7102642101788406657, guid: 5537cce7f288ae346949b6adb82e3bbe,
@@ -282,6 +350,11 @@ PrefabInstance:
       propertyPath: rect.y
       value: 660
       objectReference: {fileID: 0}
+    - target: {fileID: 3646392290756579506, guid: 20caf66ddd7209d4291d40715d756be9,
+        type: 3}
+      propertyPath: m_Data.m_Target
+      value: 
+      objectReference: {fileID: 454265130643908521}
     - target: {fileID: 3913361937030402353, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: rect.y
@@ -301,6 +374,16 @@ PrefabInstance:
         type: 3}
       propertyPath: avoidancePriority
       value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250661716291628411, guid: 20caf66ddd7209d4291d40715d756be9,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'hand.R'\n\tTransform 'upper_arm.R'\n\tTransform
+        'forearm.L'\n\tTransform 'hand.L'\n\tTransform 'upper_arm.L'\n\tTransform
+        'forearm.R'\n\tTransform 'hand.R'\n\tTransform 'upper_arm.R'\n\tTransform
+        'forearm.L'\n\tTransform 'hand.L'\n\tand more ..."
       objectReference: {fileID: 0}
     - target: {fileID: 4415879650037009705, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
@@ -352,6 +435,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6385241310686628531, guid: 20caf66ddd7209d4291d40715d756be9,
+        type: 3}
+      propertyPath: m_Data.m_Target
+      value: 
+      objectReference: {fileID: 4071301329167834986}
     - target: {fileID: 6993520951019724492, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
