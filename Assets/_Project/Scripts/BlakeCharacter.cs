@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using _Project.Scripts;
 using _Project.Scripts.GlobalHandlers;
 using _Project.Scripts.Interfaces;
 using UnityEngine;
@@ -22,6 +21,7 @@ public abstract class BlakeCharacter : MonoBehaviour, IDamageable
     public int RespawnsLeft => maxRespawns - respawnCounter;
 
     public bool IsAlive => !isDead;
+    public int DefaultHealth => defaultHealth;
 
     private bool hasShield = false;
 
