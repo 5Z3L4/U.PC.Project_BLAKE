@@ -131,7 +131,8 @@ MonoBehaviour:
   bulletSpeed: 40
   destroyTime: 4
   penetrateAmount: 1
-  explosionPrefab: {fileID: 0}
+  explosionPrefab: {fileID: -974440331182975407, guid: 31b42366b33781a47b43260f38cd6edd,
+    type: 3}
 --- !u!96 &-1506205009848016853
 TrailRenderer:
   serializedVersion: 2
