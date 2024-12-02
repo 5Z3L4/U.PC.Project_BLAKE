@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b52c6e7e16fc848a76e7336673e5f2, type: 3}
+  m_Name: Shotgun - Boss
+  m_EditorClassIdentifier: 
+  WeaponPrefab: {fileID: 7102642101788406657, guid: 5537cce7f288ae346949b6adb82e3bbe,
+    type: 3}
+  WeaponGFX: {fileID: 7630133848501499039, guid: 24876219021b8f541ae02417265e6a2c,
+    type: 3}
+  WeaponName: Shotgun
+  DropRate: 0
+  AbilitiesToGrant:
+  - {fileID: 11400000, guid: 7c4cd691da4d0084780e7a2b16579662, type: 2}
+  AttachSocketName: GunHandler
+  LocationOffset: {x: 0, y: 0, z: 0}
+  Rotation: {x: 0, y: 0, z: 0, w: 0}
+  Scale: {x: 1, y: 1, z: 1}
+  PickupLocationOffset: {x: 0, y: 0, z: 0}
+  PickupRotation: {x: 0, y: 0, z: 0, w: 0}
+  BasicBullet: {fileID: 8745238448183679225, guid: 840b6a6b89ca7344da4b0ad530514ca7,
+    type: 3}
+  WaitingTimeForNextShoot: 10
+  BulletType: 2
+  SpreadType: 4
+  Spread: 15
+  SpreadStep: -1
+  SpreadThreshold: -1
+  SpreadResetThreshold: -1
+  ProjectilesPerShot: 3
+  MagazineSize: 6
+  Range: 6.5
+  LoudnessRange: 2
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  EffectDuration: 0.5
+  ShootDelayTime: 0.5

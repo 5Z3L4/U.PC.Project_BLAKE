@@ -29,21 +29,25 @@ namespace _Project.Scripts.PointsSystem
                 return;
             }
 
+            var pointsDataSo = (PointsDataSo)target;
             var paths = guids.Select(AssetDatabase.GUIDToAssetPath).ToList();
             var enemies = paths.Select(AssetDatabase.LoadAssetAtPath<GameObject>).ToList();
 
             foreach (var enemy in enemies)
             {
                 var enemyPointsData = enemy.GetComponent<EnemyPointsData>();
-                var pointsDataSo = (PointsDataSo)target;
 
-                if (enemyPointsData.EnemyTypeEnum != EnemyTypeEnum.Undefined)
+                if (enemyPointsData == null)
                 {
-                    SetValues(pointsDataSo, enemyPointsData);
+                    Debug.Log($"GameObject: |||{DESTINATION_FOLDER}/{enemy.name}||| doesn't have enemyPointsData! If it's not a enemy, ignore that message");
+                }
+                else if (enemyPointsData.EnemyTypeEnum == EnemyTypeEnum.Undefined)
+                {
+                    Debug.Log($"Enemy from: |||{DESTINATION_FOLDER}/{enemyPointsData.name}||| has Undefined EnemyTypeEnum! If it's base prefab, ignore that message");
                 }
                 else
                 {
-                    Debug.Log($"Enemy from: |||{DESTINATION_FOLDER}/{enemyPointsData.name}||| has Undefined EnemyTypeEnum! If it's base prefab, ignore that message");
+                    SetValues(pointsDataSo, enemyPointsData);
                 }
             }
         }

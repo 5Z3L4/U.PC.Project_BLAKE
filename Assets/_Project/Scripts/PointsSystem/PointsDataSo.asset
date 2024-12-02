@@ -27,3 +27,5 @@ MonoBehaviour:
     pointsForKill: 150
   - enemyTypeEnum: 5
     pointsForKill: 200
+  - enemyTypeEnum: 7
+    pointsForKill: 5000

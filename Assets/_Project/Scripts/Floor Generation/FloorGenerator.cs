@@ -182,18 +182,19 @@ public class FloorGenerator : MonoBehaviour
 
     private IEnumerator GenerateBaseRoomsFromPool(RoomPool pool, int amountOfRooms)
     {
-        int tempCounter = 0;
-        FloorPathfinding floorPathfinding = new FloorPathfinding(spawnedRooms);
+        var tempCounter = 0;
+        var toAdd = new List<GameObject>();
+        var floorPathfinding = new FloorPathfinding(spawnedRooms);
 
-        while (tempCounter < amountOfRooms) {
+        while (tempCounter < amountOfRooms) 
+        {
             if (tries >= 200)
             {
                 Debug.LogWarning("Broken generation due to too many tries");
                 break;
             }
-
             
-            List<GameObject> toAdd = new List<GameObject>();
+            toAdd.Clear();
             
             foreach (GameObject room in spawnedRooms)
             {
@@ -205,8 +206,9 @@ public class FloorGenerator : MonoBehaviour
                 GameObject roomToSpawn = GetRandomSizedRoom(pool);
                 if (roomToSpawn == null) roomToSpawn = pool.GetRandomRoomFromPool();
                 var newRoom = Instantiate(roomToSpawn);
-                int randomDoor = Random.Range(0, newRoom.GetComponent<Room>().GetDoors().Length);
-                RoomConnector newDoor = newRoom.GetComponent<Room>().GetDoors()[randomDoor];
+                roomScript = newRoom.GetComponent<Room>();
+                int randomDoor = Random.Range(0, roomScript.GetDoors().Length);
+                RoomConnector newDoor = roomScript.GetDoors()[randomDoor];
 
                 bool success = TryPositionRoom(room, newRoom, door, newDoor);
 
@@ -214,7 +216,7 @@ public class FloorGenerator : MonoBehaviour
                 {
                     FinalizeRoomPlacement(newRoom, door, newDoor, map);
                     // Update the count based on the selected size
-                    switch (newRoom.GetComponent<Room>().roomSize)
+                    switch (roomScript.roomSize)
                     {
                         case RoomSize.Small:
                             smallRoomCount++;
@@ -236,6 +238,7 @@ public class FloorGenerator : MonoBehaviour
 
                 yield return new WaitForFixedUpdate();
             }
+            
             foreach (GameObject room in toAdd)
             {
                 spawnedRooms.Add(room);
@@ -245,10 +248,9 @@ public class FloorGenerator : MonoBehaviour
                 List<Room> path = floorPathfinding.FindPath(spawnedRooms[0], room);
                 pathLength.Add(room.GetComponent<Room>(), path.Count);
             }
-
         }
-        
     }
+    
     private IEnumerator GenerateSpecialRoomsFromPool(RoomPool pool, int amountOfRooms)
     {
         int tempCounter = 0;
@@ -495,7 +497,6 @@ public class FloorGenerator : MonoBehaviour
             {
                 Destroy(newRoom);
             }
-
         }
 
         if (toAdd.Count == 0)
