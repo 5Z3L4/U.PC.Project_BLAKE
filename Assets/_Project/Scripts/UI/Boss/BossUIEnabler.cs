@@ -1,6 +1,7 @@
 using System;
 using _Project.Scripts.EnemyBoss.Shield;
 using _Project.Scripts.GlobalHandlers;
+using _Project.Scripts.Player;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -13,8 +14,9 @@ namespace _Project.Scripts.UI.Boss
         private bool _subscribedToRoomManager = false;
         private bool _subscribedToLevelHandler = false;
         private bool _subscribedToBoss = false;
+        private bool _subscribedToPlayer = false;
 
-        private bool EventsSubscribed => _subscribedToLevelHandler && _subscribedToRoomManager;
+        private bool EventsSubscribed => _subscribedToLevelHandler && _subscribedToRoomManager && _subscribedToBoss && _subscribedToPlayer;
         
         public Room BossRoom { get; set; }
         public BossCharacter BossCharacter { get; set; }
@@ -50,11 +52,17 @@ namespace _Project.Scripts.UI.Boss
                 BossCharacter.onDeath += OnBossKilled;
                 _subscribedToBoss = true;
             }
+            
+            if (!_subscribedToPlayer && PlayerInputController.Instance != null)
+            {
+                ReferenceManager.BlakeHeroCharacter.onDeath += OnPlayerDeath;
+                _subscribedToPlayer = true;
+            }
         }
 
         private void TryEnableHealthBar(Room room)
         {
-            if (room.GetRoomType() == RoomType.Boss)
+            if (room.GetRoomType() == RoomType.Boss && !room.IsBeaten)
             {
                 BossRoom = room;
                 BossCharacter = room.SpawnedEnemiesList[0] as BossCharacter;
@@ -89,6 +97,11 @@ namespace _Project.Scripts.UI.Boss
             _subscribedToRoomManager = false;
         }
 
+        private void OnPlayerDeath(BlakeCharacter _)
+        {
+            OnBossKilled(null);
+        }
+        
         private void OnBossKilled(BlakeCharacter _)
         {
             BossKilled().Forget();

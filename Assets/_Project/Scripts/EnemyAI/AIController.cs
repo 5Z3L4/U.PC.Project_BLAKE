@@ -55,9 +55,13 @@ public class AIController : MonoBehaviour
 
     private void Die(BlakeCharacter blakeCharacter)
     {
-        this.enabled = false;
-        NavMeshAgent.isStopped = true;
+        if (NavMeshAgent.isActiveAndEnabled)
+        {
+            NavMeshAgent.isStopped = true;
+        }
+        
         GetComponent<MBTExecutor>().enabled = false;
+        enabled = false;
     }
 
     private void Update()
