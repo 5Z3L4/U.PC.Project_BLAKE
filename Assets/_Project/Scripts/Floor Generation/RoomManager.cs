@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using _Project.Scripts.GlobalHandlers;
 using UnityEngine;
@@ -22,8 +20,7 @@ public class RoomManager : MonoBehaviour
     {
         ReferenceManager.RoomManager = this;
     }
-
-
+    
     public void AddRoom(Room room)
     {
         allRooms.Add(room);

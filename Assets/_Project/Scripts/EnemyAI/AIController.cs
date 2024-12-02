@@ -16,6 +16,7 @@ public class AIController : MonoBehaviour
     public NavMeshAgent NavMeshAgent;
 
     [SerializeField] private float alarmEnemiesInRoomDelay;
+    
     private GameObject playerRef;
     private Animator animator;
     private EnemyCharacter character;
@@ -26,7 +27,7 @@ public class AIController : MonoBehaviour
 
     public Waypoints Waypoints;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         UpdatePlayerRef();
         Weapon.Owner = gameObject.GetComponent<BlakeCharacter>();

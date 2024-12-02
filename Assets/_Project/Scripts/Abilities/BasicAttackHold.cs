@@ -13,7 +13,7 @@ namespace _Project.Scripts.Abilities
         
         protected override void AbilitySkill()
         {
-            _ = HoldShoot();
+            HoldShoot().Forget();
         }
 
         private async UniTaskVoid HoldShoot()
@@ -21,11 +21,16 @@ namespace _Project.Scripts.Abilities
             while (IsInputPressed)
             {
                 await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
-                if (CanActivateAbility())
+                if (CanActivateAbility() && IsWeaponActive())
                 {
                     weaponSource.PrimaryAttack();
                 }
             }
+        }
+        
+        private bool IsWeaponActive()
+        {
+            return weaponSource.WeaponsManager.CurrentActiveWeapon == weaponSource;
         }
     }
 }
