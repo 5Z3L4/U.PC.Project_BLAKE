@@ -1,4 +1,3 @@
-using _Project.Scripts.Analytics;
 using _Project.Scripts.PointsSystem;
 using _Project.Scripts.GlobalHandlers;
 using UnityEngine;
@@ -61,8 +60,6 @@ public class BuyPerkButton : MonoBehaviour
         {
             buttonText.text = "BOUGHT";
         }
-        
-        this.TrySendAnalytics(perk);
         
         activated = !activated;
     }

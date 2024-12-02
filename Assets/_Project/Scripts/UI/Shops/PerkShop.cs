@@ -1,9 +1,7 @@
 using _Project.Scripts.GlobalHandlers;
 using _Project.Scripts.PointsSystem;
-using JetBrains.Annotations;
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using _Project.Scripts.Analytics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -84,6 +82,7 @@ public class PerkShop : MonoBehaviour
 
 
         player.AddPerk(perkToBuy);
+        this.TrySendAnalytics(perkToBuy);
         EnemyDeathMediator.Instance.PlayerCurrencyController.RemovePoints(perkCost);
         EnemyDeathMediator.Instance.Refresh();
         switch (lastButton.perkRarity)
@@ -98,6 +97,7 @@ public class PerkShop : MonoBehaviour
                 perkRarityThreeCost += 750;
                 break;
         }
+        
         lastButton.Buy();
         lastButton.OnClick();
     }
