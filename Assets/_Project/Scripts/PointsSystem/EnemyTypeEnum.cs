@@ -8,6 +8,7 @@ namespace _Project.Scripts.PointsSystem
         EnemyGlock = 3,
         EnemyRevolver = 4,
         EnemyShotgun = 5,
-        EnemySniper = 6
+        EnemySniper = 6,
+        BossBobby = 7,
     }
 }

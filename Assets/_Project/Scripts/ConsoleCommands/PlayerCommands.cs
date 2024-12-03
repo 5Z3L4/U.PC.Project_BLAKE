@@ -1,3 +1,4 @@
+using _Project.Scripts.Analytics;
 using _Project.Scripts.GlobalHandlers;
 using _Project.Scripts.PointsSystem;
 using SickDev.CommandSystem;
@@ -37,6 +38,8 @@ namespace _Project.Scripts.ConsoleCommands
 
         private void TrueGodMode(bool isEnabled)
         {
+            AnalyticsManager.Instance.StatisticSenderEnabled = false;
+            
             foreach (var command1 in DevConsole.singleton.GetCommands())
             {
                 if (command1.name is "Player.GodMode" or "Player.ShortDash" or "Weapons.InfiniteAmmo")

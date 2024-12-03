@@ -291,15 +291,14 @@ namespace _Project.Scripts.UI.Gameplay
             blakeHeroCharacter.OnDamageTaken -= HealthLeftUI;
             blakeHeroCharacter.onRespawn -= OnRespawnUIUpdate;
 
-            ReferenceManager.PlayerInputController.onMapPressEvent -= ShowMap;
-            ReferenceManager.PlayerInputController.onMapReleaseEvent -= HideMap;
+            ReferenceManager.PlayerCurrencyController.OnPointsChanged -= RefreshPoints;
 
             EnemyDeathMediator.Instance.OnRegisteredEnemyDeath -= UpdatePointsAndCombo;
-            ReferenceManager.PlayerCurrencyController.OnPointsChanged -= RefreshPoints;
             EnemyDeathMediator.Instance.ComboController.OnComboTimerEnd -= HideComboTexts;
-
-
+            
             playerMovement.OnPeek -= ShowText;
+            ReferenceManager.PlayerInputController.onMapPressEvent -= ShowMap;
+            ReferenceManager.PlayerInputController.onMapReleaseEvent -= HideMap;
             ReferenceManager.PlayerInputController.onPeekingCancel -= HideText;
         }
     }

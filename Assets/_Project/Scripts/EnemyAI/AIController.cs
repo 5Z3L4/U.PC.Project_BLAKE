@@ -16,6 +16,7 @@ public class AIController : MonoBehaviour
     public NavMeshAgent NavMeshAgent;
 
     [SerializeField] private float alarmEnemiesInRoomDelay;
+    
     private GameObject playerRef;
     private Animator animator;
     private EnemyCharacter character;
@@ -26,7 +27,7 @@ public class AIController : MonoBehaviour
 
     public Waypoints Waypoints;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         UpdatePlayerRef();
         Weapon.Owner = gameObject.GetComponent<BlakeCharacter>();
@@ -54,9 +55,13 @@ public class AIController : MonoBehaviour
 
     private void Die(BlakeCharacter blakeCharacter)
     {
-        this.enabled = false;
-        NavMeshAgent.isStopped = true;
+        if (NavMeshAgent.isActiveAndEnabled)
+        {
+            NavMeshAgent.isStopped = true;
+        }
+        
         GetComponent<MBTExecutor>().enabled = false;
+        enabled = false;
     }
 
     private void Update()

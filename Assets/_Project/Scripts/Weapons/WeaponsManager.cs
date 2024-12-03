@@ -18,7 +18,7 @@ namespace _Project.Scripts.Weapons
 
         private int activeWeaponIndex = 0;
         public int ActiveWeaponIndex { get => activeWeaponIndex; }
-        public bool isMeleeWeaponEquipped => activeWeaponIndex == 0;
+        public Weapon CurrentActiveWeapon => Weapons[activeWeaponIndex];
 
         private List<Weapon> weapons = new List<Weapon>() { null, null };
         public List<Weapon> Weapons { get => weapons; }

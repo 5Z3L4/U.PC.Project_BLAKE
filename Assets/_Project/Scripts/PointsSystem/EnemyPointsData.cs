@@ -4,19 +4,19 @@ namespace _Project.Scripts.PointsSystem
 {
     public class EnemyPointsData : MonoBehaviour
     {
-        [SerializeField]
-        private EnemyCharacter enemyCharacter;
-        
         [SerializeField] 
         private EnemyTypeEnum enemyTypeEnum;
         
         [SerializeField, HideInInspector] 
         private int pointsForKill;
         
+        private EnemyCharacter enemyCharacter;
+
         public EnemyTypeEnum EnemyTypeEnum => enemyTypeEnum;
 
         private void Awake()
         {
+            enemyCharacter = GetComponent<EnemyCharacter>();
             enemyCharacter.onDeath += EnemyCharacterOnDeath;
         }
 
