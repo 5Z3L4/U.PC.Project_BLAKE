@@ -105,7 +105,7 @@ namespace GameFramework.Abilities
         {
             for (int i = 0; i < availableAbilities.Count; i++)
             {
-                if (availableAbilities[i] is BasicAttack)
+                if (availableAbilities[i] is BasicAttack || availableAbilities[i] is BasicAttackHold)
                 {
                     availableAbilities[i].IsInputPressed = true;
 
@@ -125,7 +125,7 @@ namespace GameFramework.Abilities
         {
             for (int i = 0; i < availableAbilities.Count; i++)
             {
-                if (availableAbilities[i] is BasicAttack)
+                if (availableAbilities[i] is BasicAttack || availableAbilities[i] is BasicAttackHold)
                 {
                     availableAbilities[i].IsInputPressed = false;
 
