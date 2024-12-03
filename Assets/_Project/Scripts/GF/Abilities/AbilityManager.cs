@@ -56,12 +56,16 @@ namespace GameFramework.Abilities
         {
             PlayerInputController.Instance.onShootBasicStartEvent += OnShootBasicPressed;
             PlayerInputController.Instance.onShootBasicCancelEvent += OnShootBasicReleased;
+            PlayerInputController.Instance.onShootStrongStartEvent += OnShootStrongPressed;
+            PlayerInputController.Instance.onShootStrongCancelEvent += OnShootStrongReleased;
         }
 
         private void OnDestroy()
         {
             PlayerInputController.Instance.onShootBasicStartEvent -= OnShootBasicPressed;
             PlayerInputController.Instance.onShootBasicCancelEvent -= OnShootBasicReleased;
+            PlayerInputController.Instance.onShootStrongStartEvent -= OnShootStrongPressed;
+            PlayerInputController.Instance.onShootStrongCancelEvent -= OnShootStrongReleased;
         }
 
         #region Abilities
@@ -126,6 +130,42 @@ namespace GameFramework.Abilities
             for (int i = 0; i < availableAbilities.Count; i++)
             {
                 if (availableAbilities[i] is BasicAttack || availableAbilities[i] is BasicAttackHold)
+                {
+                    availableAbilities[i].IsInputPressed = false;
+
+                    if (availableAbilities[i].IsActive)
+                    {
+                        availableAbilities[i].InputReleased();
+                    }
+                }
+            }
+        }
+
+        private void OnShootStrongPressed()
+        {
+            for (int i = 0; i < availableAbilities.Count; i++)
+            {
+                if (availableAbilities[i] is RevolverStrong || availableAbilities[i] is SniperStrong)
+                {
+                    availableAbilities[i].IsInputPressed = true;
+
+                    if (availableAbilities[i].IsActive)
+                    {
+                        availableAbilities[i].InputPressed();
+                    }
+                    else
+                    {
+                        TryActivateAbility(availableAbilities[i].GetType());
+                    }
+                }
+            }
+        }
+
+        private void OnShootStrongReleased()
+        {
+            for (int i = 0; i < availableAbilities.Count; i++)
+            {
+                if (availableAbilities[i] is RevolverStrong || availableAbilities[i] is RevolverStrong)
                 {
                     availableAbilities[i].IsInputPressed = false;
 

@@ -13,7 +13,8 @@ public class PerkShopButton : MonoBehaviour
     [SerializeField] private PerkScriptableObject perk;
     [SerializeField] private Color perkColor;
     [SerializeField] private Sprite bouthSprite;
-    
+    [SerializeField] private Sprite bouthSelectedSprite;
+
 
     private bool bought = false;
     public bool PerkBought => bought;
@@ -35,5 +36,8 @@ public class PerkShopButton : MonoBehaviour
     {
         bought = true;
         GetComponent<Image>().sprite = bouthSprite;
+        SpriteState spriteState = new SpriteState();
+        spriteState.selectedSprite = bouthSelectedSprite;
+        GetComponent<Button>().spriteState = spriteState;
     }
 }

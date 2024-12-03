@@ -423,6 +423,8 @@ MonoBehaviour:
   perk: {fileID: 11400000, guid: 5d202dad833f01a41b92ef0e3ba6b55b, type: 2}
   perkColor: {r: 0.5647059, g: 0.011764706, b: 0.5019608, a: 1}
   bouthSprite: {fileID: 21300000, guid: 76efb48ba24d49b4dbda3ab6766c9057, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: 59968f1b477389849ac1763ba830d164,
+    type: 3}
   perkRarity: 1
 --- !u!1 &1201652993563172254
 GameObject:
@@ -710,6 +712,8 @@ MonoBehaviour:
   perk: {fileID: 11400000, guid: a111b7fa5c94d68438265fc1a909d851, type: 2}
   perkColor: {r: 0.16470589, g: 0.65882355, b: 0.039215688, a: 1}
   bouthSprite: {fileID: 21300000, guid: 23815a4c27f5827459019263f5af9289, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: d75c3b6560df9cd4e95d36516be17ae9,
+    type: 3}
   perkRarity: 1
 --- !u!1 &1989500148834942521
 GameObject:
@@ -1547,6 +1551,8 @@ MonoBehaviour:
   perk: {fileID: 11400000, guid: 4701864d1c8f9bc4fa899f243e9cec9f, type: 2}
   perkColor: {r: 0, g: 0.05490196, b: 0.90588236, a: 1}
   bouthSprite: {fileID: 21300000, guid: e73f3c9c370476e458e849c85bf0a854, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: 5b6d7febb3c629844be04d338edaaf90,
+    type: 3}
   perkRarity: 2
 --- !u!1 &3514677743023449042
 GameObject:
@@ -1837,6 +1843,8 @@ MonoBehaviour:
   perk: {fileID: 11400000, guid: 9ee8d46764ff52c4fbdc5eeb108d45fb, type: 2}
   perkColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 1}
   bouthSprite: {fileID: 21300000, guid: a02a31de72497dd4db19eb61a97f3416, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: cde9ae38fcbfe604d976336e9071f57d,
+    type: 3}
   perkRarity: 1
 --- !u!1 &3807498734502917270
 GameObject:
@@ -2127,6 +2135,8 @@ MonoBehaviour:
   perk: {fileID: 11400000, guid: 9472b8c5dfaca2748b2c46cc0922d895, type: 2}
   perkColor: {r: 0.5647059, g: 0.011764706, b: 0.5019608, a: 1}
   bouthSprite: {fileID: 21300000, guid: 76efb48ba24d49b4dbda3ab6766c9057, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: 59968f1b477389849ac1763ba830d164,
+    type: 3}
   perkRarity: 2
 --- !u!1 &4515305638980371342
 GameObject:
@@ -2416,6 +2426,8 @@ MonoBehaviour:
   perk: {fileID: 11400000, guid: 0741bc707a94a6b48926828e95310ce9, type: 2}
   perkColor: {r: 0, g: 0.05490196, b: 0.90588236, a: 1}
   bouthSprite: {fileID: 21300000, guid: e73f3c9c370476e458e849c85bf0a854, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: 5b6d7febb3c629844be04d338edaaf90,
+    type: 3}
   perkRarity: 0
 --- !u!1 &5345461784566780714
 GameObject:
@@ -2572,6 +2584,8 @@ MonoBehaviour:
   perk: {fileID: 11400000, guid: 39baf15ff73faa54399a24c57cc9aece, type: 2}
   perkColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 1}
   bouthSprite: {fileID: 21300000, guid: a02a31de72497dd4db19eb61a97f3416, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: cde9ae38fcbfe604d976336e9071f57d,
+    type: 3}
   perkRarity: 0
 --- !u!1 &5697981905489734272
 GameObject:
@@ -2726,6 +2740,8 @@ MonoBehaviour:
   perk: {fileID: 11400000, guid: e0c789267980a914ba4db4693e5a8a9b, type: 2}
   perkColor: {r: 0.16470589, g: 0.65882355, b: 0.039215688, a: 1}
   bouthSprite: {fileID: 21300000, guid: 23815a4c27f5827459019263f5af9289, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: d75c3b6560df9cd4e95d36516be17ae9,
+    type: 3}
   perkRarity: 0
 --- !u!1 &5719359127965121940
 GameObject:
@@ -3755,6 +3771,8 @@ MonoBehaviour:
   perk: {fileID: 11400000, guid: 5d6655bfc274aad41bca777b94acd3c0, type: 2}
   perkColor: {r: 0, g: 0.05490196, b: 0.90588236, a: 1}
   bouthSprite: {fileID: 21300000, guid: e73f3c9c370476e458e849c85bf0a854, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: 5b6d7febb3c629844be04d338edaaf90,
+    type: 3}
   perkRarity: 1
 --- !u!1 &6993659829476150336
 GameObject:
@@ -4045,6 +4063,8 @@ MonoBehaviour:
   perk: {fileID: 11400000, guid: de30911e444a8334fadc4a8a9ac2eeb9, type: 2}
   perkColor: {r: 0.16470589, g: 0.65882355, b: 0.039215688, a: 1}
   bouthSprite: {fileID: 21300000, guid: 23815a4c27f5827459019263f5af9289, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: d75c3b6560df9cd4e95d36516be17ae9,
+    type: 3}
   perkRarity: 2
 --- !u!1 &7336118864355716244
 GameObject:
@@ -4549,6 +4569,8 @@ MonoBehaviour:
   perk: {fileID: 11400000, guid: a03278aad6683d94f92bd336360a9d68, type: 2}
   perkColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 1}
   bouthSprite: {fileID: 21300000, guid: a02a31de72497dd4db19eb61a97f3416, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: cde9ae38fcbfe604d976336e9071f57d,
+    type: 3}
   perkRarity: 2
 --- !u!1 &7800792247066814590
 GameObject:
@@ -4839,6 +4861,8 @@ MonoBehaviour:
   perk: {fileID: 11400000, guid: 19c03033794b73e44a399c15e6410b74, type: 2}
   perkColor: {r: 0.5647059, g: 0.011764706, b: 0.5019608, a: 1}
   bouthSprite: {fileID: 21300000, guid: 76efb48ba24d49b4dbda3ab6766c9057, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: 59968f1b477389849ac1763ba830d164,
+    type: 3}
   perkRarity: 0
 --- !u!1 &8050308478781260449
 GameObject:
