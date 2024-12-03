@@ -53,7 +53,7 @@ namespace _Project.Scripts.UI.Boss
                 _subscribedToBoss = true;
             }
             
-            if (!_subscribedToPlayer && PlayerInputController.Instance != null)
+            if (!_subscribedToPlayer && ReferenceManager.BlakeHeroCharacter != null)
             {
                 ReferenceManager.BlakeHeroCharacter.onDeath += OnPlayerDeath;
                 _subscribedToPlayer = true;
