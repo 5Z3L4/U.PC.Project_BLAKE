@@ -1,3 +1,5 @@
+using System;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -14,6 +16,7 @@ namespace _Project.Scripts.UI.Boss
         
         [SerializeField] private TextMeshProUGUI enemyName;
         [SerializeField] private Image progressFill;
+        [SerializeField] private ContentSizeFitter progressBarSizeFitter;
 
         private Sequence _sequence;
         private float _animationDuration = .5f;
@@ -23,6 +26,7 @@ namespace _Project.Scripts.UI.Boss
             enemyName.text = bossUIEnabler.BossCharacter.BossName.ToUpper();
             progressFill.color = TARGET_COLOR;
             progressFill.fillAmount = 1f;
+            RefreshSizeFitter().Forget();
             bossUIEnabler.BossCharacter.OnDamageTaken += RefreshBar;
         }
 
@@ -40,6 +44,11 @@ namespace _Project.Scripts.UI.Boss
 
             var currentAmount = progressFill.fillAmount;
             var boss = bossUIEnabler.BossCharacter;
+            if (boss == null)
+            {
+                return;
+            }
+            
             var targetAmount = (float)boss.Health / boss.DefaultHealth;
             
             _sequence = DOTween.Sequence(this);
@@ -48,9 +57,16 @@ namespace _Project.Scripts.UI.Boss
             var t2 = DOVirtual.Color(START_COLOR, TARGET_COLOR, _animationDuration,
                 c => progressFill.color = c);
 
-            _sequence.Append(t1);
-            _sequence.Append(t2);
+            _sequence.Insert(0, t1);
+            _sequence.Insert(0, t2);
             _sequence.OnComplete(() => _sequence = null);
+        }
+
+        private async UniTaskVoid RefreshSizeFitter()
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(.1f));
+            progressBarSizeFitter.enabled = false;
+            progressBarSizeFitter.enabled = true;
         }
     }
 }

@@ -1943,9 +1943,9 @@ RectTransform:
   m_Father: {fileID: 2126317072163227401}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 20, y: 0}
   m_SizeDelta: {x: 148.88, y: 40}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4794253577862559525
@@ -4303,6 +4303,7 @@ MonoBehaviour:
   bossUIEnabler: {fileID: 2900833655407902457}
   enemyName: {fileID: 7924334836848753545}
   progressFill: {fileID: 4098414074099100560}
+  progressBarSizeFitter: {fileID: 5334819236923768387}
 --- !u!1 &4155177754195708989
 GameObject:
   m_ObjectHideFlags: 0

@@ -89,6 +89,7 @@ public abstract class BlakeCharacter : MonoBehaviour, IDamageable
         
         //Debug.Log(instigator.name + " dealt " + damage + " damage to " + name);
         Health -= damage;
+        OnDamageTaken?.Invoke(instigator);
 
         if (health > 0)
         {
@@ -99,7 +100,6 @@ public abstract class BlakeCharacter : MonoBehaviour, IDamageable
             Die(instigator);
         }
 
-        OnDamageTaken?.Invoke(instigator);
         return true;
     }
 

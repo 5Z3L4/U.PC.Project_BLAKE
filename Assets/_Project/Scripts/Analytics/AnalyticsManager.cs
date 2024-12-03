@@ -7,15 +7,15 @@ namespace _Project.Scripts.Analytics
 {
     public class AnalyticsManager : Singleton<AnalyticsManager>
     {
+        [Header("Globals:")]
+        [SerializeField] private bool statisticSenderEnabled = true;
+        [SerializeField] private bool instantSendInfo;
         [Header("Analytics Enabled:")]
         [SerializeField] private bool heroDead;
         [SerializeField] private bool weaponPickup;
         [SerializeField] private bool levelCompleted;
         [SerializeField] private bool perkBought;
         [SerializeField] private bool weaponUpgradeBought;
-
-        [Space] 
-        [SerializeField] private bool instantSendInfo;
 
         private Dictionary<string, bool> _enabledAnalytics;
 
@@ -39,6 +39,12 @@ namespace _Project.Scripts.Analytics
             }
         }
 
+        public bool StatisticSenderEnabled
+        {
+            get => statisticSenderEnabled;
+            set => statisticSenderEnabled = value;
+        }
+
         private void Start()
         {
             AnalyticsService.Instance.StartDataCollection();
@@ -46,6 +52,11 @@ namespace _Project.Scripts.Analytics
 
         public void SendCustomData(string eventName, Dictionary<string, object> parameters, bool forceSendInfo = false)
         {
+            if (!StatisticSenderEnabled)
+            {
+                return;
+            }
+            
             if (!EnabledAnalytics.TryGetValue(eventName, out var isEnabled) || !isEnabled)
             {
                 return;

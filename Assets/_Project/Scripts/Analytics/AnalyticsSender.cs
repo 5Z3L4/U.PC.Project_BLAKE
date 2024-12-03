@@ -58,7 +58,7 @@ namespace _Project.Scripts.Analytics
 #endif
         }
 
-        public static void TrySendAnalytics(this BuyPerkButton _, PerkScriptableObject perk)
+        public static void TrySendAnalytics(this PerkShop _, PerkScriptableObject perk)
         {
 #if ENABLE_CLOUD_SERVICES_ANALYTICS
             var parameters = new Dictionary<string, object>()
