@@ -7,6 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1832985657401321405}
     m_Modifications:
+    - target: {fileID: 5066930501955082733, guid: 5f80609dd8c02b44d8a2dc26b5d75650,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.114
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066930501955082733, guid: 5f80609dd8c02b44d8a2dc26b5d75650,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.027
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066930501955082733, guid: 5f80609dd8c02b44d8a2dc26b5d75650,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.132
+      objectReference: {fileID: 0}
     - target: {fileID: 8623244368148286622, guid: 5f80609dd8c02b44d8a2dc26b5d75650,
         type: 3}
       propertyPath: m_RootOrder
@@ -15,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 8623244368148286622, guid: 5f80609dd8c02b44d8a2dc26b5d75650,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.16
+      value: 0.117
       objectReference: {fileID: 0}
     - target: {fileID: 8623244368148286622, guid: 5f80609dd8c02b44d8a2dc26b5d75650,
         type: 3}
@@ -67,8 +82,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rifle - Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 9051277490931650008, guid: 5f80609dd8c02b44d8a2dc26b5d75650,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.028699994
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051277490931650008, guid: 5f80609dd8c02b44d8a2dc26b5d75650,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.047199965
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051277490931650008, guid: 5f80609dd8c02b44d8a2dc26b5d75650,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.030200005
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f80609dd8c02b44d8a2dc26b5d75650, type: 3}
+--- !u!4 &1704134425629131793 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5066930501955082733, guid: 5f80609dd8c02b44d8a2dc26b5d75650,
+    type: 3}
+  m_PrefabInstance: {fileID: 5906215039420620284}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1895287489855598133 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5456813154298885065, guid: 5f80609dd8c02b44d8a2dc26b5d75650,
@@ -81,6 +117,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45534a2832c67be4097c3d61b065197a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &3200809899911286820 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9051277490931650008, guid: 5f80609dd8c02b44d8a2dc26b5d75650,
+    type: 3}
+  m_PrefabInstance: {fileID: 5906215039420620284}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7004908658024617958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -318,6 +360,11 @@ PrefabInstance:
       propertyPath: AIController
       value: 
       objectReference: {fileID: 1729589985311926593}
+    - target: {fileID: 312593950955178167, guid: 20caf66ddd7209d4291d40715d756be9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 923358e004b98664a8f591f9c95141aa, type: 2}
     - target: {fileID: 483932202671030062, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -373,6 +420,11 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: 0.000017547844
       objectReference: {fileID: 0}
+    - target: {fileID: 1048803626801262294, guid: 20caf66ddd7209d4291d40715d756be9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1401103945846129640, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -383,6 +435,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.03489117
       objectReference: {fileID: 0}
+    - target: {fileID: 1525747299600577729, guid: 20caf66ddd7209d4291d40715d756be9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 923358e004b98664a8f591f9c95141aa, type: 2}
     - target: {fileID: 1608314234480559651, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -403,6 +460,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.041861515
       objectReference: {fileID: 0}
+    - target: {fileID: 1731065876745346735, guid: 20caf66ddd7209d4291d40715d756be9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2481237706606521517, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -418,11 +480,16 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: -0.00064856844
       objectReference: {fileID: 0}
+    - target: {fileID: 2482170409597988962, guid: 20caf66ddd7209d4291d40715d756be9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 923358e004b98664a8f591f9c95141aa, type: 2}
     - target: {fileID: 3646392290756579506, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: m_Data.m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3200809899911286820}
     - target: {fileID: 4208969030171360393, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -483,11 +550,26 @@ PrefabInstance:
       propertyPath: HasLineOfSightReference.useConstant
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4250661716291628411, guid: 20caf66ddd7209d4291d40715d756be9,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'hand.R'\n\tTransform 'upper_arm.R'\n\tTransform
+        'forearm.L'\n\tTransform 'hand.L'\n\tTransform 'upper_arm.L'\n\tTransform
+        'forearm.R'\n\tTransform 'hand.R'\n\tTransform 'upper_arm.R'\n\tTransform
+        'forearm.L'\n\tTransform 'hand.L'\n\tand more ..."
+      objectReference: {fileID: 0}
     - target: {fileID: 4417422484271164543, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: rect.y
       value: 359
       objectReference: {fileID: 0}
+    - target: {fileID: 4460404993348149945, guid: 20caf66ddd7209d4291d40715d756be9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 923358e004b98664a8f591f9c95141aa, type: 2}
     - target: {fileID: 4562867205298956774, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -513,11 +595,16 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.03030269
       objectReference: {fileID: 0}
+    - target: {fileID: 5787247940712418942, guid: 20caf66ddd7209d4291d40715d756be9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6385241310686628531, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: m_Data.m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1704134425629131793}
     - target: {fileID: 6426853079096780474, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: health
@@ -568,6 +655,11 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: -0.00020899097
       objectReference: {fileID: 0}
+    - target: {fileID: 6993520951019724492, guid: 20caf66ddd7209d4291d40715d756be9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 923358e004b98664a8f591f9c95141aa, type: 2}
     - target: {fileID: 7446312994107534779, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: m_Name

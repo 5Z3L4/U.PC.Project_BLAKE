@@ -1618,8 +1618,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2626776064290363529}
   - {fileID: 1394081834947991096}
+  - {fileID: 2626776064290363529}
   m_Father: {fileID: 14534998339978154}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1636,8 +1636,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints:
-  - {fileID: 2626776064290363529}
   - {fileID: 1394081834947991096}
+  - {fileID: 2626776064290363529}
 --- !u!1 &3640105875550325979
 GameObject:
   m_ObjectHideFlags: 0
@@ -3675,7 +3675,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1394081834947991096}
   m_Layer: 0
-  m_Name: Waypoint2_2
+  m_Name: Waypoint2_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3694,7 +3694,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6112929601336388992}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5660369414016874658
 GameObject:
@@ -4684,7 +4684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2626776064290363529}
   m_Layer: 0
-  m_Name: Waypoint2_1
+  m_Name: Waypoint2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4703,7 +4703,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6112929601336388992}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8604912447141946516
 GameObject:
@@ -8024,6 +8024,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2171126759347209279}
     m_Modifications:
+    - target: {fileID: 462944844932855804, guid: 17811b68107a8274a9da1cf49cd3ac59,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 467a1290cf96ce24db1fa38db23ea5f0, type: 2}
     - target: {fileID: 5937502747897279073, guid: 17811b68107a8274a9da1cf49cd3ac59,
         type: 3}
       propertyPath: m_RootOrder
