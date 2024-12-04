@@ -339,8 +339,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: f976ef91a9b4399428aee523b24749af, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -368,7 +368,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -380,7 +380,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: d5bdec1917872f74dbfc7860f6139a62, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -422,6 +422,9 @@ MonoBehaviour:
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 5d202dad833f01a41b92ef0e3ba6b55b, type: 2}
   perkColor: {r: 0.5647059, g: 0.011764706, b: 0.5019608, a: 1}
+  bouthSprite: {fileID: 21300000, guid: 76efb48ba24d49b4dbda3ab6766c9057, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: 59968f1b477389849ac1763ba830d164,
+    type: 3}
   perkRarity: 1
 --- !u!1 &1201652993563172254
 GameObject:
@@ -624,8 +627,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: aec52968fe0b654489e3fb1992de9292, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -653,7 +656,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -665,7 +668,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: a1459543aca81d942b8b651a988126e3, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -708,6 +711,9 @@ MonoBehaviour:
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: a111b7fa5c94d68438265fc1a909d851, type: 2}
   perkColor: {r: 0.16470589, g: 0.65882355, b: 0.039215688, a: 1}
+  bouthSprite: {fileID: 21300000, guid: 23815a4c27f5827459019263f5af9289, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: d75c3b6560df9cd4e95d36516be17ae9,
+    type: 3}
   perkRarity: 1
 --- !u!1 &1989500148834942521
 GameObject:
@@ -908,15 +914,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.07075471, b: 0.07075471, a: 0.09803922}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 0a127599ac316ca429bad9bd1bf28fba, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1293,7 +1299,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 190, y: 50}
+  m_SizeDelta: {x: 168.199, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5082537435869079116
 CanvasRenderer:
@@ -1350,7 +1356,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.8
+  m_fontSize: 21.95
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1461,8 +1467,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 05b352b1759e78a47ad19df48f6227ca, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1490,7 +1496,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1502,7 +1508,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: 2cc18be0c00721a4bb414c09e6d0c035, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -1544,6 +1550,9 @@ MonoBehaviour:
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 4701864d1c8f9bc4fa899f243e9cec9f, type: 2}
   perkColor: {r: 0, g: 0.05490196, b: 0.90588236, a: 1}
+  bouthSprite: {fileID: 21300000, guid: e73f3c9c370476e458e849c85bf0a854, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: 5b6d7febb3c629844be04d338edaaf90,
+    type: 3}
   perkRarity: 2
 --- !u!1 &3514677743023449042
 GameObject:
@@ -1581,7 +1590,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 190, y: 50}
+  m_SizeDelta: {x: 164.106, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3315526203880249189
 CanvasRenderer:
@@ -1638,7 +1647,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.2
+  m_fontSize: 38.2
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1709,7 +1718,7 @@ RectTransform:
   m_GameObject: {fileID: 3542434591897009165}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5592462854580327175}
@@ -1749,8 +1758,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 9921a02d4190f354298e2b898ffb3e02, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1778,7 +1787,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1790,7 +1799,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: 194a984af6f73af42ae336da28971405, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -1833,6 +1842,9 @@ MonoBehaviour:
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 9ee8d46764ff52c4fbdc5eeb108d45fb, type: 2}
   perkColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 1}
+  bouthSprite: {fileID: 21300000, guid: a02a31de72497dd4db19eb61a97f3416, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: cde9ae38fcbfe604d976336e9071f57d,
+    type: 3}
   perkRarity: 1
 --- !u!1 &3807498734502917270
 GameObject:
@@ -2038,8 +2050,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: f976ef91a9b4399428aee523b24749af, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2067,7 +2079,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -2079,7 +2091,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: d5bdec1917872f74dbfc7860f6139a62, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -2122,6 +2134,9 @@ MonoBehaviour:
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 9472b8c5dfaca2748b2c46cc0922d895, type: 2}
   perkColor: {r: 0.5647059, g: 0.011764706, b: 0.5019608, a: 1}
+  bouthSprite: {fileID: 21300000, guid: 76efb48ba24d49b4dbda3ab6766c9057, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: 59968f1b477389849ac1763ba830d164,
+    type: 3}
   perkRarity: 2
 --- !u!1 &4515305638980371342
 GameObject:
@@ -2327,8 +2342,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 05b352b1759e78a47ad19df48f6227ca, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2356,7 +2371,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -2368,7 +2383,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: 2cc18be0c00721a4bb414c09e6d0c035, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -2410,6 +2425,9 @@ MonoBehaviour:
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 0741bc707a94a6b48926828e95310ce9, type: 2}
   perkColor: {r: 0, g: 0.05490196, b: 0.90588236, a: 1}
+  bouthSprite: {fileID: 21300000, guid: e73f3c9c370476e458e849c85bf0a854, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: 5b6d7febb3c629844be04d338edaaf90,
+    type: 3}
   perkRarity: 0
 --- !u!1 &5345461784566780714
 GameObject:
@@ -2480,8 +2498,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 9921a02d4190f354298e2b898ffb3e02, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2509,7 +2527,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -2521,7 +2539,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: 194a984af6f73af42ae336da28971405, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -2565,6 +2583,9 @@ MonoBehaviour:
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 39baf15ff73faa54399a24c57cc9aece, type: 2}
   perkColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 1}
+  bouthSprite: {fileID: 21300000, guid: a02a31de72497dd4db19eb61a97f3416, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: cde9ae38fcbfe604d976336e9071f57d,
+    type: 3}
   perkRarity: 0
 --- !u!1 &5697981905489734272
 GameObject:
@@ -2635,8 +2656,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: aec52968fe0b654489e3fb1992de9292, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2664,7 +2685,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -2676,7 +2697,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: a1459543aca81d942b8b651a988126e3, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -2718,6 +2739,9 @@ MonoBehaviour:
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: e0c789267980a914ba4db4693e5a8a9b, type: 2}
   perkColor: {r: 0.16470589, g: 0.65882355, b: 0.039215688, a: 1}
+  bouthSprite: {fileID: 21300000, guid: 23815a4c27f5827459019263f5af9289, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: d75c3b6560df9cd4e95d36516be17ae9,
+    type: 3}
   perkRarity: 0
 --- !u!1 &5719359127965121940
 GameObject:
@@ -2918,15 +2942,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.008944447, g: 0.3033978, b: 0.6320754, a: 0.09803922}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: fa0792cda6ae70b4b997f4b8ef8f5596, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3551,15 +3575,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.076508924, g: 0.6313726, b: 0.007843152, a: 0.09803922}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: cfa2a389bb47dd14c89235b315db9bd7, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3663,8 +3687,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 05b352b1759e78a47ad19df48f6227ca, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3692,7 +3716,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -3704,7 +3728,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: 2cc18be0c00721a4bb414c09e6d0c035, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -3746,6 +3770,9 @@ MonoBehaviour:
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 5d6655bfc274aad41bca777b94acd3c0, type: 2}
   perkColor: {r: 0, g: 0.05490196, b: 0.90588236, a: 1}
+  bouthSprite: {fileID: 21300000, guid: e73f3c9c370476e458e849c85bf0a854, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: 5b6d7febb3c629844be04d338edaaf90,
+    type: 3}
   perkRarity: 1
 --- !u!1 &6993659829476150336
 GameObject:
@@ -3951,8 +3978,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: aec52968fe0b654489e3fb1992de9292, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3980,7 +4007,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -3992,7 +4019,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: a1459543aca81d942b8b651a988126e3, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -4035,6 +4062,9 @@ MonoBehaviour:
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: de30911e444a8334fadc4a8a9ac2eeb9, type: 2}
   perkColor: {r: 0.16470589, g: 0.65882355, b: 0.039215688, a: 1}
+  bouthSprite: {fileID: 21300000, guid: 23815a4c27f5827459019263f5af9289, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: d75c3b6560df9cd4e95d36516be17ae9,
+    type: 3}
   perkRarity: 2
 --- !u!1 &7336118864355716244
 GameObject:
@@ -4413,7 +4443,7 @@ RectTransform:
   m_GameObject: {fileID: 7781799363043522593}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5520257126131006609}
@@ -4453,8 +4483,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 9921a02d4190f354298e2b898ffb3e02, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4482,7 +4512,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -4494,7 +4524,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: 194a984af6f73af42ae336da28971405, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -4538,6 +4568,9 @@ MonoBehaviour:
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: a03278aad6683d94f92bd336360a9d68, type: 2}
   perkColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 1}
+  bouthSprite: {fileID: 21300000, guid: a02a31de72497dd4db19eb61a97f3416, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: cde9ae38fcbfe604d976336e9071f57d,
+    type: 3}
   perkRarity: 2
 --- !u!1 &7800792247066814590
 GameObject:
@@ -4743,8 +4776,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: f976ef91a9b4399428aee523b24749af, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4772,7 +4805,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -4784,7 +4817,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: d5bdec1917872f74dbfc7860f6139a62, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -4827,6 +4860,9 @@ MonoBehaviour:
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 19c03033794b73e44a399c15e6410b74, type: 2}
   perkColor: {r: 0.5647059, g: 0.011764706, b: 0.5019608, a: 1}
+  bouthSprite: {fileID: 21300000, guid: 76efb48ba24d49b4dbda3ab6766c9057, type: 3}
+  bouthSelectedSprite: {fileID: 21300000, guid: 59968f1b477389849ac1763ba830d164,
+    type: 3}
   perkRarity: 0
 --- !u!1 &8050308478781260449
 GameObject:
@@ -4892,15 +4928,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.008944447, g: 0.3033978, b: 0.6320754, a: 0.09803922}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 3611eba05b1249b4cb599d262165dce0, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5241,7 +5277,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 190, y: 50}
+  m_SizeDelta: {x: 181.497, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7194382826803595624
 CanvasRenderer:
@@ -5298,7 +5334,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.8
+  m_fontSize: 34.2
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5376,7 +5412,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 190, y: 50}
+  m_SizeDelta: {x: 169.756, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &741381906289562211
 CanvasRenderer:
@@ -5433,7 +5469,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.75
+  m_fontSize: 40.05
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -2,6 +2,7 @@ using _Project.Scripts.GlobalHandlers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PerkShopButton : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class PerkShopButton : MonoBehaviour
     [SerializeField] private PerkShop shop;
     [SerializeField] private PerkScriptableObject perk;
     [SerializeField] private Color perkColor;
-    
+    [SerializeField] private Sprite bouthSprite;
+    [SerializeField] private Sprite bouthSelectedSprite;
+
 
     private bool bought = false;
     public bool PerkBought => bought;
@@ -21,7 +24,7 @@ public class PerkShopButton : MonoBehaviour
     {
         if(ReferenceManager.PlayerInputController.GetComponent<PlayerPerkManager>().GetPerkList().Contains(perk))
         {
-            bought = true;
+            Buy();
         }
     }
     public void OnClick()
@@ -32,5 +35,9 @@ public class PerkShopButton : MonoBehaviour
     public void Buy()
     {
         bought = true;
+        GetComponent<Image>().sprite = bouthSprite;
+        SpriteState spriteState = new SpriteState();
+        spriteState.selectedSprite = bouthSelectedSprite;
+        GetComponent<Button>().spriteState = spriteState;
     }
 }

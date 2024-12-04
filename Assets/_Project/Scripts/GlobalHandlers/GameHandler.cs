@@ -93,6 +93,10 @@ namespace _Project.Scripts.GlobalHandlers
 
         public void PauseWithoutUI()
         {
+            if(ReferenceManager.PlayerInputController != null)
+            {
+                ReferenceManager.PlayerInputController.SetPauseState();
+            }
             pausedGameCanvas.SetActive(true);
             IsGamePaused = true;
 
@@ -108,7 +112,10 @@ namespace _Project.Scripts.GlobalHandlers
                 child.SetActive(false);
             }
             playerUI.SetActive(true);
-
+            if (ReferenceManager.PlayerInputController != null)
+            {
+                ReferenceManager.PlayerInputController.EnableInputSystem();
+            }
             IsGamePaused = false;
         }
 
