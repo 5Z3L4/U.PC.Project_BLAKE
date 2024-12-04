@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BLAKE_Emmission_Screen_Noise_Modified
+  m_Name: Emmission_Screen_Noise_Modified_Color
   m_Shader: {fileID: -6465566751694194690, guid: dba493f206f0e574785cc8264091b0e2,
     type: 3}
   m_ValidKeywords: []
@@ -59,7 +59,7 @@ Material:
     m_Colors:
     - _CheckerboardFrequency: {r: 1000, g: 1000, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.029369859, g: 0.036414877, b: 0.03773582, a: 1}
+    - _EmissionColor: {r: 0, g: 0.1764706, b: 0.3137255, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 0, g: 1, b: 0, a: 0}
     - _TilingCheckerboard: {r: -1, g: 0, b: 0, a: 0}

@@ -515,6 +515,11 @@ PrefabInstance:
       propertyPath: time.constantValue
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4250661716291628404, guid: 20caf66ddd7209d4291d40715d756be9,
+        type: 3}
+      propertyPath: Angle
+      value: 360
+      objectReference: {fileID: 0}
     - target: {fileID: 4250661716291628405, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: Weapon
@@ -553,12 +558,7 @@ PrefabInstance:
     - target: {fileID: 4250661716291628411, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'hand.R'\n\tTransform 'upper_arm.R'\n\tTransform
-        'forearm.L'\n\tTransform 'hand.L'\n\tTransform 'upper_arm.L'\n\tTransform
-        'forearm.R'\n\tTransform 'hand.R'\n\tTransform 'upper_arm.R'\n\tTransform
-        'forearm.L'\n\tTransform 'hand.L'\n\tand more ..."
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4417422484271164543, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}

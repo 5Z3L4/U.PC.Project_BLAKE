@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BLAKE_Emmission_Screen_Glitching
+  m_Name: Emmission_Screen_Glitching_Modified
   m_Shader: {fileID: -6465566751694194690, guid: 306c64915270db04a8ba198b743feea7,
     type: 3}
   m_ValidKeywords: []
@@ -58,7 +58,6 @@ Material:
     - _QueueOffset: 0
     - _Rotate: 0
     m_Colors:
-    - _Color: {r: 1, g: 0.7803922, b: 0, a: 0}
-    - _Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - _Offset: {r: -0.12, g: -0.1, b: 0, a: 0}
+    - _Tiling: {r: 1.2, g: 1.2, b: 0, a: 0}
   m_BuildTextureStacks: []

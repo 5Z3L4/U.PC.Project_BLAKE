@@ -4255,7 +4255,7 @@ MonoBehaviour:
   raycastOrigin: {fileID: 6796527947840356956}
   fovCheckDelay: 0.1
   maxBackVisibilityDistance: 3
-  findPlayerFromBehindDelay: 0.75
+  findPlayerFromBehindDelay: 0
 --- !u!114 &6426853079096780474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4323,7 +4323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 4228835946638530776}
+  selectedEditorNode: {fileID: 4415879650037009705}
   repeatOnFinish: 1
   maxExecutionsPerTick: 1000
   parent: {fileID: 0}
@@ -5219,8 +5219,8 @@ MonoBehaviour:
     mode: 0
     blackboard: {fileID: 0}
     key: 
-    constantValue: 0.3
-  randomDeviation: 0.1
+    constantValue: 0
+  randomDeviation: 0
   continueOnRestart: 0
 --- !u!114 &4648309128689206776
 MonoBehaviour:
