@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1694021493691686669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1853414671531669819}
+  m_Layer: 0
+  m_Name: Target_IK.R
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1853414671531669819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694021493691686669}
+  m_LocalRotation: {x: 0.09660114, y: 0.7004771, z: 0.70335734, w: -0.072722025}
+  m_LocalPosition: {x: 0.036, y: 0.014, z: -0.114}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8623244368148286622}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: -88.051, y: 90, z: 103.755}
+--- !u!1 &3338855679059548768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8696086850139980478}
+  m_Layer: 0
+  m_Name: Target_IK.L
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8696086850139980478
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3338855679059548768}
+  m_LocalRotation: {x: -0.6180997, y: -0.7556866, z: -0.084341116, w: -0.19944237}
+  m_LocalPosition: {x: -0.078, y: -0.09, z: 0.104}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8623244368148286622}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: -353.161, y: 155.883, z: 77.099}
 --- !u!1 &8623244367694195943
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,6 +127,8 @@ Transform:
   - {fileID: 7858099758231041450}
   - {fileID: 376228567750297884}
   - {fileID: 1099738570135192408}
+  - {fileID: 1853414671531669819}
+  - {fileID: 8696086850139980478}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -177,6 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45534a2832c67be4097c3d61b065197a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drawDebugGizmos: 0
   WeaponDefinition: {fileID: 11400000, guid: 452ffb8d558fe4d458121137d9b90341, type: 2}
   bulletsSpawnPoint: {fileID: 8623244367694195942}
   muzzleFlashEffect: {fileID: 8779107436604917387}

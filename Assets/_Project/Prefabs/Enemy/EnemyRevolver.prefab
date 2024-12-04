@@ -1,67 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1407914768160602990
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7404864126632700446}
-  m_Layer: 0
-  m_Name: Target_IK.L
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7404864126632700446
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1407914768160602990}
-  m_LocalRotation: {x: -0.7040894, y: 0.06525445, z: 0.06525445, w: -0.7040894}
-  m_LocalPosition: {x: -0.0402, y: -0.0269, z: -0.10399997}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3463235467041817254}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: -259.41, y: 90, z: 90}
---- !u!1 &9154757957065622353
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5318800487855020933}
-  m_Layer: 0
-  m_Name: Target_IK.R
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5318800487855020933
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9154757957065622353}
-  m_LocalRotation: {x: 0.04941139, y: 0.70537835, z: 0.7066507, w: -0.025392922}
-  m_LocalPosition: {x: 0.018, y: -0.017, z: -0.07}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3463235467041817254}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: -88.051, y: 90, z: 96.065}
 --- !u!1001 &3368399620943772766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -186,15 +124,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45534a2832c67be4097c3d61b065197a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &3463235467041817254 stripped
+--- !u!4 &2855685969217779849 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2211575096574099192, guid: 7bafbe8de9e5c224f9c91487d46efe98,
+  m_CorrespondingSourceObject: {fileID: 657414330012337367, guid: 7bafbe8de9e5c224f9c91487d46efe98,
     type: 3}
   m_PrefabInstance: {fileID: 3368399620943772766}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &3463235467041817255 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2211575096574099193, guid: 7bafbe8de9e5c224f9c91487d46efe98,
+    type: 3}
+  m_PrefabInstance: {fileID: 3368399620943772766}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8360832783895626086 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6537344867832692024, guid: 7bafbe8de9e5c224f9c91487d46efe98,
     type: 3}
   m_PrefabInstance: {fileID: 3368399620943772766}
   m_PrefabAsset: {fileID: 0}
@@ -354,7 +298,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Data.m_Target
       value: 
-      objectReference: {fileID: 5318800487855020933}
+      objectReference: {fileID: 8360832783895626086}
     - target: {fileID: 3913361937030402353, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: isPatrolling
@@ -378,12 +322,7 @@ PrefabInstance:
     - target: {fileID: 4250661716291628411, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'hand.R'\n\tTransform 'upper_arm.R'\n\tTransform
-        'forearm.L'\n\tTransform 'hand.L'\n\tTransform 'upper_arm.L'\n\tTransform
-        'forearm.R'\n\tTransform 'hand.R'\n\tTransform 'upper_arm.R'\n\tTransform
-        'forearm.L'\n\tTransform 'hand.L'\n\tand more ..."
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4415879650037009705, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
@@ -444,7 +383,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Data.m_Target
       value: 
-      objectReference: {fileID: 7404864126632700446}
+      objectReference: {fileID: 2855685969217779849}
     - target: {fileID: 6993520951019724492, guid: 20caf66ddd7209d4291d40715d756be9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
