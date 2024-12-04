@@ -19,7 +19,10 @@ public class Fog : MonoBehaviour
     [SerializeField]
     private LayerMask objectsToHide;
     [SerializeField]
-    private bool turnedOn = true;
+    private bool turnedOn = false;
+    [SerializeField]
+    private GameObject LODFog;
+    private bool disabled = false;
 
     private List<FogParticle> particles = new List<FogParticle>();
     private Dictionary<Renderer, bool> hiddenObjects = new Dictionary<Renderer, bool>();
@@ -39,7 +42,6 @@ public class Fog : MonoBehaviour
 
     private void Update()
     {
-        if (!turnedOn) return;
         List<Renderer> toHide = new List<Renderer>();
         foreach(FogParticle particle in particles)
         {
@@ -54,14 +56,6 @@ public class Fog : MonoBehaviour
                     blocking = true;
                     break;
                 }
-            }
-            if (blocking)
-            {
-                particle.TurnOff();
-                continue;
-            } else
-            {
-                particle.TurnOn();
             }
             foreach (Collider hit in hits)
             {
@@ -81,6 +75,15 @@ public class Fog : MonoBehaviour
                     hiddenObjects.Add(renderer, true);
                     renderer.enabled = false;
                 }
+            }
+            if (blocking || !turnedOn)
+            {
+                particle.TurnOff();
+                continue;
+            }
+            else
+            {
+                particle.TurnOn();
             }
         }
 
@@ -128,16 +131,26 @@ public class Fog : MonoBehaviour
         }
         hiddenObjects.Clear();
         turnedOn = false;
+        LODFog?.SetActive(true);
+
     }
 
     private void OnDisable()
     {
+        disabled = true;
         TurnOffFog();
     }
 
     private void OnEnable()
     {
+        LODFog?.SetActive(true);
+        disabled = false;
+    }
+
+    public void Peek()
+    {
         turnedOn = true;
+        LODFog?.SetActive(false);
     }
 
 }
