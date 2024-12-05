@@ -17,7 +17,7 @@ MonoBehaviour:
   openKey: 96
   autoCompleteKey: 283
   historyKey: 284
-  autoInstantiate: 1
+  autoInstantiate: 0
   dontDestroyOnLoad: 1
   showTimeStamp: 1
   optimizeForOnGUI: 1

@@ -44,7 +44,7 @@ public class ShopCharacterScript : MonoBehaviour, IInteractable
     public void CloseShop()
     {
         shopMenu.SetActive(false);
-        Time.timeScale = 1f;
+        GameHandler.Instance.CloseAllCanvasAndUnpause();
         isOpen = false;
     }
 

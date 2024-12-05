@@ -268,38 +268,38 @@ namespace _Project.Scripts.UI.Gameplay
                 yield return new WaitForEndOfFrame();
 
             }
-
-            /*while(playerMovement.DashCooldownCountdown > 0)
-            {
-                dashCooldownImage.fillAmount = playerMovement.DashCooldownCountdown/playerMovement.DashCooldown;
-                dashCooldownUI.transform.position = player.transform.position + Vector3.up * 0.2f;
-                dashCooldownUI.transform.LookAt(Camera.main.transform);
-
-                yield return new WaitForEndOfFrame();
-            }
-        
-            dashCooldownImage.fillAmount = 0;*/
+            
             dashCooldownUI.SetActive(false);
         }
 
         private void OnDestroy()
         {
+            StopCoroutine(DashCooldownUI());
             playerMovement.OnDashPerformed -= StartDashCooldownUI;
 
+            playerMovement.OnPeek -= ShowText;
             playerMovement.OnDashAdded -= OnAddDash;
             playerMovement.OnDashRemoved -= OnRemoveDash;
             blakeHeroCharacter.OnDamageTaken -= HealthLeftUI;
             blakeHeroCharacter.onRespawn -= OnRespawnUIUpdate;
 
-            ReferenceManager.PlayerCurrencyController.OnPointsChanged -= RefreshPoints;
+            if (ReferenceManager.PlayerCurrencyController != null)
+            {
+                ReferenceManager.PlayerCurrencyController.OnPointsChanged -= RefreshPoints;
+            }
 
-            EnemyDeathMediator.Instance.OnRegisteredEnemyDeath -= UpdatePointsAndCombo;
-            EnemyDeathMediator.Instance.ComboController.OnComboTimerEnd -= HideComboTexts;
-            
-            playerMovement.OnPeek -= ShowText;
-            ReferenceManager.PlayerInputController.onMapPressEvent -= ShowMap;
-            ReferenceManager.PlayerInputController.onMapReleaseEvent -= HideMap;
-            ReferenceManager.PlayerInputController.onPeekingCancel -= HideText;
+            if (EnemyDeathMediator.Instance != null)
+            {
+                EnemyDeathMediator.Instance.OnRegisteredEnemyDeath -= UpdatePointsAndCombo;
+                EnemyDeathMediator.Instance.ComboController.OnComboTimerEnd -= HideComboTexts;
+            }
+
+            if (ReferenceManager.PlayerInputController != null)
+            {
+                ReferenceManager.PlayerInputController.onMapPressEvent -= ShowMap;
+                ReferenceManager.PlayerInputController.onMapReleaseEvent -= HideMap;
+                ReferenceManager.PlayerInputController.onPeekingCancel -= HideText;
+            }
         }
     }
 }
