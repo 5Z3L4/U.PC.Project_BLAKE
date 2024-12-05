@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using _Project.Scripts;
 using _Project.Scripts.GlobalHandlers;
-using Unity.VisualScripting;
+using _Project.Scripts.SceneHandlers;
 using UnityEngine;
 
 public class PlayerInteractables : MonoBehaviour
@@ -87,6 +86,11 @@ public class PlayerInteractables : MonoBehaviour
 
     private IInteractable GetClosestInteractable()
     {
+        if (SceneHandler.Instance.IsAnySceneLoading)
+        {
+            return null;
+        }
+        
         if (interactables.Count > 0)
         {
             IInteractable closest = null;
@@ -139,13 +143,14 @@ public class PlayerInteractables : MonoBehaviour
                 }
             }
 
-            for(int i = 0; i < invalidInteractables.Count; i++)
+            for(var i = 0; i < invalidInteractables.Count; i++)
             {
                 interactables.Remove(invalidInteractables[i]);
             }
 
             return closest;
         }
+        
         return null;
     }
 

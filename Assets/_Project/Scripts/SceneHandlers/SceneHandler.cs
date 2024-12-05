@@ -28,7 +28,9 @@ namespace _Project.Scripts.SceneHandlers
         [HideInInspector]
         public bool isNormalDifficulty = true; //only for DD purposes
 
-        public event Action OnMainMenuLoad; 
+        public event Action OnMainMenuLoad;
+
+        public bool IsAnySceneLoading => !isSceneLoadedProperly;
 
         protected override void Awake()
         {
