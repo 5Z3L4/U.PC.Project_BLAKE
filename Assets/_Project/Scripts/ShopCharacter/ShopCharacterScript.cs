@@ -39,6 +39,10 @@ public class ShopCharacterScript : MonoBehaviour, IInteractable
         shopMenu.SetActive(true);
         GameHandler.Instance.PauseWithoutUI();
         isOpen = true;
+        if (ReferenceManager.PlayerInputController != null)
+        {
+            ReferenceManager.PlayerInputController.escapeButtonEvent += CloseShop;
+        }
     }
 
     public void CloseShop()
@@ -46,19 +50,9 @@ public class ShopCharacterScript : MonoBehaviour, IInteractable
         shopMenu.SetActive(false);
         GameHandler.Instance.CloseAllCanvasAndUnpause();
         isOpen = false;
+        if (ReferenceManager.PlayerInputController != null)
+        {
+            ReferenceManager.PlayerInputController.escapeButtonEvent -= CloseShop;
+        }
     }
-
-    private void OnEnable()
-    {
-        if (ReferenceManager.PlayerInputController == null) return;
-        ReferenceManager.PlayerInputController.escapeButtonEvent += CloseShop;
-    }
-
-    private void OnDisable()
-    {
-        if (ReferenceManager.PlayerInputController == null) return;
-        ReferenceManager.PlayerInputController.escapeButtonEvent -= CloseShop;
-    }
-
-
 }
