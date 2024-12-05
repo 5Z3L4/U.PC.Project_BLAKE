@@ -32,7 +32,11 @@ namespace _Project.Scripts
 
         private void OnDestroy()
         {
-            SceneHandler.Instance.OnMainMenuLoad -= DestroyOnMainMenuLoad;
+            if (SceneHandler.Instance != null)
+            {
+                SceneHandler.Instance.OnMainMenuLoad -= DestroyOnMainMenuLoad;
+            }
+            
             ReferenceManager.BlakeHeroCharacter = null;
         }
 

@@ -13,6 +13,7 @@ namespace _Project.Scripts.Player
             Gameplay,
             Peeking
         }
+        
         private PlayerInputSystem inputSystem;
         private bool isPeeking = false;
         private InputState inputState = InputState.Gameplay;
@@ -26,6 +27,19 @@ namespace _Project.Scripts.Player
             inputSystem.RoomPeeking.SetCallbacks(this);
             inputSystem.Pause.SetCallbacks(this);
             ReferenceManager.PlayerInputController = this;
+        }
+
+        private void OnDestroy()
+        {
+            inputSystem.Gameplay.RemoveCallbacks(this);
+            inputSystem.RoomPeeking.RemoveCallbacks(this);
+            inputSystem.Pause.RemoveCallbacks(this);
+            inputSystem.Dispose();
+
+            if (ReferenceManager.PlayerInputController != null)
+            {
+                ReferenceManager.PlayerInputController = null;
+            }
         }
 
         private void Start()
