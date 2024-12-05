@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BLAKE_Emmission_Hologram
+  m_Name: NextFloorObject_Emmission_Hologram
   m_Shader: {fileID: -6465566751694194690, guid: 2fbd7056e16f28a4aa47865374da0f56,
     type: 3}
   m_ValidKeywords: []
@@ -43,18 +43,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DepthIntersectionDistance: 0
-    - _HologramSpacing: 20
-    - _HologramSpeed: 0.05
+    - _DepthIntersectionDistance: 0.5
+    - _HologramSpacing: 5
+    - _HologramSpeed: 0.2
     - _HologramTransparencyDither: 1
     - _Lerp: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RotationSpeed: 0.5
+    - _RotationSpeed: 0
     m_Colors:
-    - _Color: {r: 0, g: 0.7164221, b: 1, a: 0}
+    - _Color: {r: 0, g: 0.95345473, b: 1, a: 0}
     - _ColorBottom: {r: 1, g: 1, b: 1, a: 0}
-    - _FresnelColor: {r: 0, g: 1, b: 0, a: 0}
+    - _FresnelColor: {r: 0, g: 1, b: 0.76234245, a: 0}
     - _RotationAxis: {r: 0, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3249092318303312239
