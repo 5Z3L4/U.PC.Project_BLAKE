@@ -43,10 +43,10 @@ public class Fog : MonoBehaviour
 
     private void Update()
     {
+        if (disabled) return;
         List<Renderer> toHide = new List<Renderer>();
         foreach(FogParticle particle in particles)
         {
-            if (toHide.Count > 0 && !turnedOn) break;
             Vector3 localPosition = new Vector3(particle.x * particleSpacing, 0, particle.y * particleSpacing);
             Vector3 worldPosition = transform.TransformPoint(localPosition);
             Collider[] hits = Physics.OverlapCapsule(worldPosition - Vector3.up, worldPosition + Vector3.up, 0.2f, objectsToHide);
@@ -133,7 +133,10 @@ public class Fog : MonoBehaviour
         }
         hiddenObjects.Clear();
         turnedOn = false;
-        LODFog?.SetActive(true);
+        if (LODFog != null)
+        {
+            LODFog.SetActive(true);
+        }
 
     }
 
@@ -145,14 +148,21 @@ public class Fog : MonoBehaviour
 
     private void OnEnable()
     {
-        LODFog?.SetActive(true);
+        if (LODFog != null)
+        {
+            LODFog.SetActive(true);
+        }
+        TurnOffFog();
         disabled = false;
     }
 
     public void Peek()
     {
         turnedOn = true;
-        LODFog?.SetActive(false);
+        if (LODFog != null)
+        {
+            LODFog.SetActive(false);
+        }
     }
 
 }
