@@ -62,10 +62,13 @@ namespace GameFramework.Abilities
 
         private void OnDestroy()
         {
-            PlayerInputController.Instance.onShootBasicStartEvent -= OnShootBasicPressed;
-            PlayerInputController.Instance.onShootBasicCancelEvent -= OnShootBasicReleased;
-            PlayerInputController.Instance.onShootStrongStartEvent -= OnShootStrongPressed;
-            PlayerInputController.Instance.onShootStrongCancelEvent -= OnShootStrongReleased;
+            if (PlayerInputController.Instance != null)
+            {
+                PlayerInputController.Instance.onShootBasicStartEvent -= OnShootBasicPressed;
+                PlayerInputController.Instance.onShootBasicCancelEvent -= OnShootBasicReleased;
+                PlayerInputController.Instance.onShootStrongStartEvent -= OnShootStrongPressed;
+                PlayerInputController.Instance.onShootStrongCancelEvent -= OnShootStrongReleased;
+            }
         }
 
         #region Abilities
