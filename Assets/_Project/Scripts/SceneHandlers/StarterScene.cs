@@ -5,7 +5,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace _Project.Scripts.SceneHandler
+namespace _Project.Scripts.SceneHandlers
 {
     public class StarterScene : MonoBehaviour
     {

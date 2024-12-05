@@ -51,13 +51,15 @@ namespace _Project.Scripts.Floor_Generation
             if (ReferenceManager.PlayerInputController == null)
             {
                 player = Instantiate(playerPrefab, startingRoomTransform, Quaternion.identity);
-            } else
+            }
+            else
             {
                 player = ReferenceManager.PlayerInputController.gameObject;
                 player.transform.position = startingRoomTransform;
                 player.transform.rotation = Quaternion.identity;
                 ReferenceManager.PlayerInputController.gameObject.SetActive(true);
             }
+            
             virtualCamera = Instantiate(virtualCameraPrefab).GetComponent<CinemachineVirtualCamera>();
             cameraFollow = Instantiate(cameraFollowPrefab);
         

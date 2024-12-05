@@ -6,7 +6,7 @@ using _Project.Scripts.Patterns;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace _Project.Scripts.SceneHandler
+namespace _Project.Scripts.SceneHandlers
 {
     [RequireComponent(typeof(SceneHandler))]
     public class LevelHandler : Singleton<LevelHandler>
@@ -60,6 +60,7 @@ namespace _Project.Scripts.SceneHandler
             {
                 Destroy(ReferenceManager.PlayerInputController.gameObject);
             }
+            
             ReferenceManager.RoomManager.ClearRooms();
 
             sceneHandler.LoadMainMenu();

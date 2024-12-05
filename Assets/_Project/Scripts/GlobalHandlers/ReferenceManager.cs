@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using _Project.Scripts.Patterns;
 using _Project.Scripts.Player;
 using _Project.Scripts.PointsSystem;
-using _Project.Scripts.SceneHandler;
+using _Project.Scripts.SceneHandlers;
 using _Project.Scripts.VirtualCamera;
 using _Project.Scripts.Weapons.Upgrades;
 using Unity.Services.Core;
@@ -14,7 +14,7 @@ namespace _Project.Scripts.GlobalHandlers
     {
         private BlakeHeroCharacter blakeHeroCharacter;
         private PlayerInputController playerInputController;
-        private SceneHandler.SceneHandler sceneHandler;
+        private SceneHandler sceneHandler;
         private LevelHandler levelHandler;
         private MessageRouter messageRouter = new();
         private RoomManager roomManager;
@@ -44,7 +44,7 @@ namespace _Project.Scripts.GlobalHandlers
             }
         }
     
-        public static SceneHandler.SceneHandler SceneHandler
+        public static SceneHandlers.SceneHandler SceneHandler
         {
             get => Instance != null ? Instance.sceneHandler : null;
             set

@@ -47,8 +47,6 @@ public class PlayerMovement : MonoBehaviour
     
     public float DashCooldown => Math.Max(dashCooldown - dashCooldownReduction, 0.5f);
 
-    public float DashCooldownCountdown => dashCooldownCountdown;
-
     public List<Dash> Dashes => dashes;
 
     private void Awake()
@@ -84,12 +82,27 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat(DIRECTION, BlakeAnimatorHelper.CalculateDirection(rigidbodyCache.velocity, transform));
         animator.SetFloat(SPEED, rigidbodyCache.velocity.magnitude);
     }
-
-
-   void FixedUpdate()
+    
+    private void FixedUpdate()
     {
         MovePlayer();
         SpeedControl();
+    }
+    
+    private void OnDestroy()
+    {
+        if (ReferenceManager.PlayerInputController != null)
+        {
+            ReferenceManager.PlayerInputController.movementEvent -= MovementHandler;
+            ReferenceManager.PlayerInputController.mousePositionEvent -= MousePositionHandler;
+            ReferenceManager.PlayerInputController.dashEvent -= Dash;       
+        }
+
+        if (ReferenceManager.BlakeHeroCharacter != null)
+        {
+            ReferenceManager.BlakeHeroCharacter.onDeath -= Die;
+            ReferenceManager.BlakeHeroCharacter.onRespawn -= Respawn;
+        }
     }
 
     private float CalculateSpeed()

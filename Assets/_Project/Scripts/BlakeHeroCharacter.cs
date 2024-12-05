@@ -1,6 +1,7 @@
 using _Project.Scripts.Analytics;
 using _Project.Scripts.GlobalHandlers;
 using _Project.Scripts.PointsSystem;
+using _Project.Scripts.SceneHandlers;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -21,10 +22,17 @@ namespace _Project.Scripts
         private void Start()
         {
             onDeath += EnemyDeathMediator.Instance.PlayerCurrencyController.LosePointsOnDeath;
+            SceneHandler.Instance.OnMainMenuLoad += DestroyOnMainMenuLoad;
+        }
+
+        private void DestroyOnMainMenuLoad()
+        {
+            Destroy(gameObject);
         }
 
         private void OnDestroy()
         {
+            SceneHandler.Instance.OnMainMenuLoad -= DestroyOnMainMenuLoad;
             ReferenceManager.BlakeHeroCharacter = null;
         }
 
