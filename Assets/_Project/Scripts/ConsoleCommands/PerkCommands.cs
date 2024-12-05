@@ -8,7 +8,7 @@ namespace _Project.Scripts.ConsoleCommands
 {
     public class PerkCommands : BaseCommand
     {
-
+#if UNITY_EDITOR
         private readonly string NAME = "Perks";
         [SerializeField]
         private List<PerkScriptableObject> perkList = new();
@@ -63,5 +63,6 @@ namespace _Project.Scripts.ConsoleCommands
                 ReferenceManager.BlakeHeroCharacter?.GetComponent<PlayerPerkManager>()?.RemovePerk(perk);
             }
         }
+#endif
     }
 }

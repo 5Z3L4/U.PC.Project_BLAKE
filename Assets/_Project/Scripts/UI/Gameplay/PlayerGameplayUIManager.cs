@@ -268,22 +268,13 @@ namespace _Project.Scripts.UI.Gameplay
                 yield return new WaitForEndOfFrame();
 
             }
-
-            /*while(playerMovement.DashCooldownCountdown > 0)
-            {
-                dashCooldownImage.fillAmount = playerMovement.DashCooldownCountdown/playerMovement.DashCooldown;
-                dashCooldownUI.transform.position = player.transform.position + Vector3.up * 0.2f;
-                dashCooldownUI.transform.LookAt(Camera.main.transform);
-
-                yield return new WaitForEndOfFrame();
-            }
-        
-            dashCooldownImage.fillAmount = 0;*/
+            
             dashCooldownUI.SetActive(false);
         }
 
         private void OnDestroy()
         {
+            StopCoroutine(DashCooldownUI());
             playerMovement.OnDashPerformed -= StartDashCooldownUI;
 
             playerMovement.OnDashAdded -= OnAddDash;

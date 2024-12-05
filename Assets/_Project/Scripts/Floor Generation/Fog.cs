@@ -26,6 +26,7 @@ public class Fog : MonoBehaviour
 
     private void Awake()
     {
+        GetComponentInParent<Room>().OnResetEnemies += hiddenObjects.Clear;
         for (int i = 0; i < fogWidth; i++)
         {
             for (int j = 0; j < fogDepth; j++)
