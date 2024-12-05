@@ -45,6 +45,7 @@ public class Fog : MonoBehaviour
         List<Renderer> toHide = new List<Renderer>();
         foreach(FogParticle particle in particles)
         {
+            if (toHide.Count > 0 && !turnedOn) break;
             Vector3 localPosition = new Vector3(particle.x * particleSpacing, 0, particle.y * particleSpacing);
             Vector3 worldPosition = transform.TransformPoint(localPosition);
             Collider[] hits = Physics.OverlapCapsule(worldPosition - Vector3.up, worldPosition + Vector3.up, 0.2f, objectsToHide);
@@ -182,12 +183,14 @@ public class FogParticle
         turnedOn = false;
         particleSystem.Stop();
         particleSystem.Clear();
+        particleSystem.gameObject.SetActive(false);
     }
 
     public void TurnOn()
     {
         if (turnedOn) return;
         turnedOn = true;
+        particleSystem.gameObject.SetActive(true);
         particleSystem.Play();
     }
 }
