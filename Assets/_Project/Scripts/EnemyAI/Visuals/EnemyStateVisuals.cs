@@ -18,7 +18,12 @@ namespace _Project.Scripts.EnemyAI.Visuals
         
         private bool _isAttacking;
         private Sequence _tweenSequence;
-        
+
+        private void Awake()
+        {
+            GetComponent<EnemyCharacter>().onDeath += DisableMarkersImmediately;
+        }
+
         public void TryChangeEnemyVisuals(CombatState combatState)
         {
             if (_isAttacking)
@@ -90,14 +95,20 @@ namespace _Project.Scripts.EnemyAI.Visuals
             _tweenSequence = null;
         }
 
-        private void HideAnotherMarkers(GameObject marker)
+        private void DisableMarkersImmediately(BlakeCharacter _)
         {
-            if (marker != _yellowMarker)
+            _tweenSequence?.Kill(true);
+            HideAnotherMarkers(forceDisableAll:true);
+        }
+        
+        private void HideAnotherMarkers(GameObject marker = null, bool forceDisableAll = false)
+        {
+            if (marker != _yellowMarker || forceDisableAll)
             {
                 _yellowMarker.SetActive(false);
             }
             
-            if (marker != _redMarker)
+            if (marker != _redMarker || forceDisableAll)
             {
                 _redMarker.SetActive(false);
             }

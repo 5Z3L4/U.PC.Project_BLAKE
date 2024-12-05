@@ -99,6 +99,7 @@ public class Room : MonoBehaviour
 
     public delegate void OnEnemySpawn(EnemyCharacter character);
     public event OnEnemySpawn enemySpawned;
+    public event Action OnResetEnemies;
 
     public void CalculateFCost()
     {
@@ -117,7 +118,6 @@ public class Room : MonoBehaviour
     {
         roomsDoneCounter = FindObjectOfType<RoomsDoneCounter>();
         instantiatedWeapons = new List<GameObject>();
-
     }
 
     public void SetupDoorConnectors()
@@ -288,7 +288,6 @@ public class Room : MonoBehaviour
         minimapRoom.CompleteRoom();
     }
 
-
     public RoomConnector[] GetDoors()
     {
         return doors;
@@ -424,7 +423,6 @@ public class Room : MonoBehaviour
     {
         blakeHeroCharacter = player.GetComponent<BlakeHeroCharacter>();
         blakeHeroCharacter.onRespawn += ResetRoom;
-
     }
 
     private void ResetRoom()
@@ -452,7 +450,7 @@ public class Room : MonoBehaviour
             rt.Reset();
         }
 
-        //Invoke("ResetEnemies", 0.5f);
+        Invoke("ResetEnemies", 0.5f);
 
         foreach (var weapon in instantiatedWeapons.ToArray())
         {
@@ -473,7 +471,9 @@ public class Room : MonoBehaviour
             Destroy(enemy.gameObject);
         }
         
+        OnResetEnemies?.Invoke();
         spawnedEnemies.Clear();
+        SpawnEnemies();
     }
 
     private void Update()

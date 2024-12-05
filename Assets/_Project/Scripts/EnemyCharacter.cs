@@ -55,13 +55,12 @@ namespace _Project.Scripts
 
         public override void Die(GameObject killer)
         {
-            //animator.SetBool("IsAlive", false);
             explosionParticleInstantiated = Instantiate(explosionParticle, transform.position, Quaternion.identity);
 
-            _ = DestroySelf();
-            _ = DropWeapon(killer);
-
             base.Die(killer);
+            
+            DestroySelf().Forget();
+            DropWeapon(killer).Forget();
         }
 
         private async UniTaskVoid DestroySelf()
@@ -96,6 +95,7 @@ namespace _Project.Scripts
                     }
                 }
             }
+            
             Destroy(AIController.Weapon.gameObject);
 
             await UniTask.Delay(TimeSpan.FromSeconds(dropWeaponTime));

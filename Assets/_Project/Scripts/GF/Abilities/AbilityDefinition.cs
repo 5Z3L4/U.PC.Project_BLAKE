@@ -23,7 +23,6 @@ namespace GameFramework.Abilities
         private Ability abilityInstance;
         public Ability AbilityInstance { get => abilityInstance; }
 
-        public InputActionReference InputActionReference;
 
         private void OnValidate()
         {

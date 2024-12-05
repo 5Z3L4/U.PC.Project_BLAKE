@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 
 using UnityEngine;
-
+using _Project.Scripts.Player;
 using SolidUtilities.UnityEngineInternals;
 
 using GameFramework.System;
+using _Project.Scripts.Abilities;
 
 namespace GameFramework.Abilities
 {
@@ -39,13 +40,6 @@ namespace GameFramework.Abilities
         public partial void RegisterStateEvent(State state, StateDelegate stateDelegate);
 
         #endregion
-
-        #region Input
-
-        public partial void AbilityInputPressed(UnityEngine.InputSystem.InputAction.CallbackContext callbackContext);
-        public partial void AbilityInputReleased(UnityEngine.InputSystem.InputAction.CallbackContext callbackContext);
-
-        #endregion
     }
 
     public partial class AbilityManager : MonoBehaviour
@@ -58,6 +52,25 @@ namespace GameFramework.Abilities
             }
         }
 
+        private void Start()
+        {
+            PlayerInputController.Instance.onShootBasicStartEvent += OnShootBasicPressed;
+            PlayerInputController.Instance.onShootBasicCancelEvent += OnShootBasicReleased;
+            PlayerInputController.Instance.onShootStrongStartEvent += OnShootStrongPressed;
+            PlayerInputController.Instance.onShootStrongCancelEvent += OnShootStrongReleased;
+        }
+
+        private void OnDestroy()
+        {
+            if (PlayerInputController.Instance != null)
+            {
+                PlayerInputController.Instance.onShootBasicStartEvent -= OnShootBasicPressed;
+                PlayerInputController.Instance.onShootBasicCancelEvent -= OnShootBasicReleased;
+                PlayerInputController.Instance.onShootStrongStartEvent -= OnShootStrongPressed;
+                PlayerInputController.Instance.onShootStrongCancelEvent -= OnShootStrongReleased;
+            }
+        }
+
         #region Abilities
 
         public partial void GiveAbility(AbilityDefinition abilityDefinition, object sourceObject)
@@ -67,12 +80,6 @@ namespace GameFramework.Abilities
             Ability newAbility = abilityDefinition.AbilityInstance.ShallowCopy();
             availableAbilities.Add(newAbility);
 
-            if(newAbility.AbilityDefinition.InputActionReference != null)
-            {
-                newAbility.AbilityDefinition.InputActionReference.action.started += AbilityInputPressed;
-                newAbility.AbilityDefinition.InputActionReference.action.canceled += AbilityInputReleased;
-                newAbility.AbilityDefinition.InputActionReference.action.Enable();
-            }
 
             newAbility.SetupAbility(this, sourceObject);
             newAbility.OnGiveAbility();
@@ -95,15 +102,80 @@ namespace GameFramework.Abilities
                         return;
                     }
 
-                    if (availableAbilities[i].AbilityDefinition.InputActionReference != null)
-                    {
-                        availableAbilities[i].AbilityDefinition.InputActionReference.action.started -= AbilityInputPressed;
-                        availableAbilities[i].AbilityDefinition.InputActionReference.action.canceled -= AbilityInputReleased;
-                        availableAbilities[i].AbilityDefinition.InputActionReference.action.Disable();
-                    }
-
                     availableAbilities.RemoveAt(i);
                     return;
+                }
+            }
+        }
+
+        private void OnShootBasicPressed()
+        {
+            for (int i = 0; i < availableAbilities.Count; i++)
+            {
+                if (availableAbilities[i] is BasicAttack || availableAbilities[i] is BasicAttackHold)
+                {
+                    availableAbilities[i].IsInputPressed = true;
+
+                    if (availableAbilities[i].IsActive)
+                    {
+                        availableAbilities[i].InputPressed();
+                    }
+                    else
+                    {
+                        TryActivateAbility(availableAbilities[i].GetType());
+                    }
+                }
+            }
+        }
+
+        private void OnShootBasicReleased()
+        {
+            for (int i = 0; i < availableAbilities.Count; i++)
+            {
+                if (availableAbilities[i] is BasicAttack || availableAbilities[i] is BasicAttackHold)
+                {
+                    availableAbilities[i].IsInputPressed = false;
+
+                    if (availableAbilities[i].IsActive)
+                    {
+                        availableAbilities[i].InputReleased();
+                    }
+                }
+            }
+        }
+
+        private void OnShootStrongPressed()
+        {
+            for (int i = 0; i < availableAbilities.Count; i++)
+            {
+                if (availableAbilities[i] is RevolverStrong || availableAbilities[i] is SniperStrong)
+                {
+                    availableAbilities[i].IsInputPressed = true;
+
+                    if (availableAbilities[i].IsActive)
+                    {
+                        availableAbilities[i].InputPressed();
+                    }
+                    else
+                    {
+                        TryActivateAbility(availableAbilities[i].GetType());
+                    }
+                }
+            }
+        }
+
+        private void OnShootStrongReleased()
+        {
+            for (int i = 0; i < availableAbilities.Count; i++)
+            {
+                if (availableAbilities[i] is RevolverStrong || availableAbilities[i] is RevolverStrong)
+                {
+                    availableAbilities[i].IsInputPressed = false;
+
+                    if (availableAbilities[i].IsActive)
+                    {
+                        availableAbilities[i].InputReleased();
+                    }
                 }
             }
         }
@@ -201,44 +273,5 @@ namespace GameFramework.Abilities
 
         #endregion
 
-        #region Input
-
-        public partial void AbilityInputPressed(UnityEngine.InputSystem.InputAction.CallbackContext callbackContext)
-        {
-            for(int i = 0; i < availableAbilities.Count; i++)
-            {
-                if (availableAbilities[i].AbilityDefinition.InputActionReference.action == callbackContext.action)
-                {
-                    availableAbilities[i].IsInputPressed = true;
-
-                    if(availableAbilities[i].IsActive)
-                    {
-                        availableAbilities[i].InputPressed();
-                    }
-                    else
-                    {
-                        TryActivateAbility(availableAbilities[i].GetType());
-                    }
-                }
-            }
-        }
-
-        public partial void AbilityInputReleased(UnityEngine.InputSystem.InputAction.CallbackContext callbackContext)
-        {
-            for (int i = 0; i < availableAbilities.Count; i++)
-            {
-                if (availableAbilities[i].AbilityDefinition.InputActionReference.action == callbackContext.action)
-                {
-                    availableAbilities[i].IsInputPressed = false;
-
-                    if (availableAbilities[i].IsActive)
-                    {
-                        availableAbilities[i].InputReleased();
-                    }
-                }
-            }
-        }
-
-        #endregion
     }
 }

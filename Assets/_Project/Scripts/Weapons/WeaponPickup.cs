@@ -1,5 +1,6 @@
 using _Project.Scripts.Analytics;
 using _Project.Scripts.Weapons.Definition;
+using QuickOutline.Scripts;
 using UnityEngine;
 
 namespace _Project.Scripts.Weapons
@@ -19,9 +20,13 @@ namespace _Project.Scripts.Weapons
 
         private GameObject weaponGFX;
 
+        private Color _weaponPickupColorOnGround = Color.red;
+        private Outline.Mode _weaponPickupModeOnGround = Outline.Mode.OutlineAll;
+
         private void Start()
         {
             weaponGFX = Instantiate(WeaponDefinition.WeaponGFX, pickupGameObject.transform.position, pickupGameObject.transform.rotation, pickupGameObject.transform);
+            SetOutlineVisibilityOnGround();
         }
 
         private void Update()
@@ -86,6 +91,7 @@ namespace _Project.Scripts.Weapons
             {
                 playerInteractables.RemoveInteractable(this);
             }
+            
             Destroy(gameObject);
         }
 
@@ -99,6 +105,18 @@ namespace _Project.Scripts.Weapons
             weaponGFX = Instantiate(newWeapon.WeaponGFX, pickupGameObject.transform);
             weaponGFX.transform.localPosition = newWeapon.PickupLocationOffset;
             weaponGFX.transform.localRotation = newWeapon.PickupRotation;
+            
+            SetOutlineVisibilityOnGround();
+        }
+        
+        private void SetOutlineVisibilityOnGround()
+        {
+            var outline = weaponGFX.GetComponentInChildren<Outline>();
+            if (outline != null)
+            {
+                outline.OutlineColor = _weaponPickupColorOnGround;
+                outline.OutlineMode = _weaponPickupModeOnGround;
+            }
         }
     }
 

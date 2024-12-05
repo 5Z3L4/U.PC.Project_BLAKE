@@ -141,6 +141,18 @@ namespace _Project.Scripts.Player
                 escapeButtonEvent?.Invoke();
             }
         }
+
+        public void IsGamePaused(bool isPaused)
+        {
+            if(isPaused)
+            {
+                SetPauseState();
+            } 
+            else
+            {
+                EnableInputSystem();
+            }
+        }
     
         public void EnableInputSystem()
         {
@@ -188,6 +200,7 @@ namespace _Project.Scripts.Player
             inputSystem.Disable();
             inputSystem.Pause.Enable();
         }
+        
         public void OnCancel(InputAction.CallbackContext context)
         {
             if(context.performed)
