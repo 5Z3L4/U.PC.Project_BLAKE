@@ -15,27 +15,17 @@ namespace _Project.Scripts.GlobalHandlers
         [SerializeField]
         private GameObject playerUI;
 
-        private bool isGamePaused = false;
+        private bool _isGamePaused = false;
         
         public bool IsGamePaused
         {
-            get => isGamePaused;
+            get => _isGamePaused;
 
             private set
             {
-                isGamePaused = value;
-                Time.timeScale = isGamePaused ? 0f : 1f;
-                var input = ReferenceManager.PlayerInputController;
-                if(input != null)
-                {
-                    if(value)
-                    {
-                        input.SetPauseState();
-                    } else
-                    {
-                        input.EnableInputSystem();
-                    }
-                }
+                _isGamePaused = value;
+                Time.timeScale = _isGamePaused ? 0f : 1f;
+                ReferenceManager.PlayerInputController?.IsGamePaused(value);
             }
         }
 

@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using _Project.Scripts;
 using _Project.Scripts.GlobalHandlers;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -47,13 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     private List<Dash> dashes = new List<Dash>() { new Dash() };
     
-    public float DashCooldown
-    {
-        get
-        {
-            return Math.Max(dashCooldown - dashCooldownReduction, 0.5f);
-        }
-    }
+    public float DashCooldown => Math.Max(dashCooldown - dashCooldownReduction, 0.5f);
 
     public float DashCooldownCountdown => dashCooldownCountdown;
 
@@ -145,10 +137,18 @@ public class PlayerMovement : MonoBehaviour
     
    private void Rotation()
    {
-        if (mainCamera == null) return;
-       Plane playerPlane = new Plane(Vector3.up, gunHandlerTransform.position);
-       Ray ray = mainCamera.ScreenPointToRay(mousePosition);
+       if (GameHandler.Instance.IsGamePaused)
+       {
+           return;
+       }
        
+       if (mainCamera == null)
+       {
+           return;
+       }
+       
+       var playerPlane = new Plane(Vector3.up, gunHandlerTransform.position);
+       var ray = mainCamera.ScreenPointToRay(mousePosition);
        
        if (playerPlane.Raycast(ray, out var hitDistance))
        {

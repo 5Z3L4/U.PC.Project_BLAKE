@@ -1,3 +1,4 @@
+using _Project.Scripts.GlobalHandlers;
 using _Project.Scripts.Weapons;
 using UnityEngine;
 
@@ -9,6 +10,11 @@ namespace GameFramework.Abilities
 
         public override bool CanActivateAbility()
         {
+            if (GameHandler.Instance.IsGamePaused)
+            {
+                return false;
+            }
+            
             if (weaponSource == null)
             {
                 weaponSource = SourceObject as Weapon;
