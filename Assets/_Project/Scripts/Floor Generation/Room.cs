@@ -144,7 +144,7 @@ public class Room : MonoBehaviour
         ReferenceManager.PlayerInputController.onPeekingCancel += StopPeek;
         roomManager.GetComponent<FloorManager>().GetMainCamera().enabled = false;
         ReferenceManager.PlayerInputController.GetComponent<PlayerMovement>().Peek(this);
-
+        fog.GetComponent<Fog>().Peek();
         for(int i = 0; i < ((isControlPerkThreeActivated)?fogBlockerUpgradeAmount: fogBlockerAmount); i++)
         {
             activefogBlockers[i].gameObject.SetActive(true);
@@ -157,7 +157,8 @@ public class Room : MonoBehaviour
         if (peekCamera == null) return;
         roomManager.GetComponent<FloorManager>().GetMainCamera().enabled = true;
         peekCamera.gameObject.SetActive(false);
-        foreach(var fogBlocker in activefogBlockers)
+        fog.GetComponent<Fog>().TurnOffFog();
+        foreach (var fogBlocker in activefogBlockers)
         {
             fogBlocker.SetActive(false);
         }
