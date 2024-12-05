@@ -62,20 +62,21 @@ public class Fog : MonoBehaviour
             foreach (Collider hit in hits)
             {
                 Renderer[] renderers = hit.GetComponentsInChildren<Renderer>(); // This gets both MeshRenderer and SkinnedMeshRenderer
-
-                foreach (Renderer renderer in renderers)
-                {
-                    if (hiddenObjects.ContainsKey(renderer))
+                if (!turnedOn || (turnedOn && !blocking)){
+                    foreach (Renderer renderer in renderers)
                     {
-                        if (!hiddenObjects[renderer])
+                        if (hiddenObjects.ContainsKey(renderer))
                         {
-                            toHide.Add(renderer);
-                            renderer.enabled = false;
+                            if (!hiddenObjects[renderer])
+                            {
+                                toHide.Add(renderer);
+                                renderer.enabled = false;
+                            }
+                            continue;
                         }
-                        continue;
+                        hiddenObjects.Add(renderer, true);
+                        renderer.enabled = false;
                     }
-                    hiddenObjects.Add(renderer, true);
-                    renderer.enabled = false;
                 }
             }
             if (blocking || !turnedOn)
