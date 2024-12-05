@@ -61,8 +61,6 @@ public class PlayerInteractables : MonoBehaviour
         altInteractables.Remove(interactable);
     }
 
-
-
     private void Update()
     {
         SetUI();

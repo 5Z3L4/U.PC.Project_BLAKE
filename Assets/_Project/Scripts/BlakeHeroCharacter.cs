@@ -1,5 +1,6 @@
 using _Project.Scripts.Analytics;
 using _Project.Scripts.GlobalHandlers;
+using _Project.Scripts.Player.GFX;
 using _Project.Scripts.PointsSystem;
 using _Project.Scripts.SceneHandlers;
 using Unity.Mathematics;
@@ -9,6 +10,8 @@ namespace _Project.Scripts
 {
     public class BlakeHeroCharacter : BlakeCharacter
     {
+        [SerializeField] private WhiteAlphaColorBlender whiteAlphaColorBlender;
+        
         private void Awake()
         {
             ReferenceManager.BlakeHeroCharacter = this;
@@ -22,22 +25,30 @@ namespace _Project.Scripts
         private void Start()
         {
             onDeath += EnemyDeathMediator.Instance.PlayerCurrencyController.LosePointsOnDeath;
+            OnDamageTaken += LightUpPlayer;
             SceneHandler.Instance.OnMainMenuLoad += DestroyOnMainMenuLoad;
-        }
-
-        private void DestroyOnMainMenuLoad()
-        {
-            Destroy(gameObject);
         }
 
         private void OnDestroy()
         {
+            onDeath -= EnemyDeathMediator.Instance.PlayerCurrencyController.LosePointsOnDeath;
+            OnDamageTaken -= LightUpPlayer;
             if (SceneHandler.Instance != null)
             {
                 SceneHandler.Instance.OnMainMenuLoad -= DestroyOnMainMenuLoad;
             }
             
             ReferenceManager.BlakeHeroCharacter = null;
+        }
+
+        private void LightUpPlayer(GameObject _)
+        {
+            whiteAlphaColorBlender.LightUpPlayer(timeBetweenDamages);
+        }
+
+        private void DestroyOnMainMenuLoad()
+        {
+            Destroy(gameObject);
         }
 
         public override void Die(GameObject killer)
