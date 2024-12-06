@@ -88,6 +88,8 @@ public class PlayerInteractables : MonoBehaviour
     {
         if (SceneHandler.Instance.IsAnySceneLoading)
         {
+            interactables.Clear();
+            altInteractables.Clear();
             return null;
         }
         

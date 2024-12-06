@@ -29,8 +29,6 @@ namespace _Project.Scripts.GlobalHandlers
             {
                 RemoveURPDebug();
             }
-            
-            Destroy(gameObject);
         }
 
         private void EnableDeveloperConsole()

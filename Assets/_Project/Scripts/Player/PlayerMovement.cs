@@ -149,12 +149,7 @@ public class PlayerMovement : MonoBehaviour
     }
     
    private void Rotation()
-   {
-       if (GameHandler.Instance.IsGamePaused)
-       {
-           return;
-       }
-       
+   { 
        if (mainCamera == null)
        {
            return;
