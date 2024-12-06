@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using _Project.Scripts.GlobalHandlers;
 using _Project.Scripts.Patterns;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace _Project.Scripts.SceneHandler
+namespace _Project.Scripts.SceneHandlers
 {
     public class SceneHandler : Singleton<SceneHandler>
     {
@@ -27,6 +28,10 @@ namespace _Project.Scripts.SceneHandler
         [HideInInspector]
         public bool isNormalDifficulty = true; //only for DD purposes
 
+        public event Action OnMainMenuLoad;
+
+        public bool IsAnySceneLoading => !isSceneLoadedProperly;
+
         protected override void Awake()
         {
             base.Awake();
@@ -48,6 +53,7 @@ namespace _Project.Scripts.SceneHandler
         public void LoadMainMenu()
         {
             StartCoroutine(LoadNewSceneAdditive(mainMenu));
+            OnMainMenuLoad?.Invoke();
         }
 
         public void LoadNewLevel(string sceneToLoadString)

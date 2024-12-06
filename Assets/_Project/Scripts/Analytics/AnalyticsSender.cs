@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using _Project.Scripts.Floor_Generation;
 using _Project.Scripts.GlobalHandlers;
-using _Project.Scripts.SceneHandler;
+using _Project.Scripts.SceneHandlers;
 using _Project.Scripts.Weapons;
 using _Project.Scripts.Weapons.Definition;
 using _Project.Scripts.Weapons.Statistics;

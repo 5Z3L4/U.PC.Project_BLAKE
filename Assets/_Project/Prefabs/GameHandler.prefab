@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
   pausedGameCanvas: {fileID: 0}
+  playerUI: {fileID: 0}
