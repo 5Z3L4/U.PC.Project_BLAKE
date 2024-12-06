@@ -44,12 +44,7 @@ namespace _Project.Scripts.SceneHandlers
             StartCoroutine(LoadNewSceneAdditive(firstFloor));
             PerkShop.ResetShopValues();
         }
-
-        public void LoadGame()
-        {
-            Debug.Log("loadgame");
-        }
-
+        
         public void LoadMainMenu()
         {
             StartCoroutine(LoadNewSceneAdditive(mainMenu));

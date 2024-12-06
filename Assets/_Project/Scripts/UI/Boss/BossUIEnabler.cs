@@ -1,7 +1,6 @@
 using System;
 using _Project.Scripts.EnemyBoss.Shield;
 using _Project.Scripts.GlobalHandlers;
-using _Project.Scripts.Player;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -62,6 +61,11 @@ namespace _Project.Scripts.UI.Boss
 
         private void TryEnableHealthBar(Room room)
         {
+            if (room == null)
+            {
+                return;
+            }
+            
             if (room.GetRoomType() == RoomType.Boss && !room.IsBeaten)
             {
                 BossRoom = room;
@@ -118,6 +122,31 @@ namespace _Project.Scripts.UI.Boss
         {
             await UniTask.Delay(TimeSpan.FromSeconds(1f));
             ForceDisableHeathBar();
+        }
+
+        private void OnDestroy()
+        {
+            if (ReferenceManager.RoomManager != null)
+            {
+                var manager = ReferenceManager.RoomManager;
+                manager.onRoomEnter -= TryEnableHealthBar;
+                manager.onRoomLeave -= TryDisableHealthBar;
+            }
+
+            if (ReferenceManager.LevelHandler != null)
+            {
+                ReferenceManager.LevelHandler.onNextLevel -= RefreshRoomManagerEvents;
+            }
+
+            if (BossCharacter != null)
+            {
+                BossCharacter.onDeath -= OnBossKilled;
+            }
+            
+            if (ReferenceManager.BlakeHeroCharacter != null)
+            {
+                ReferenceManager.BlakeHeroCharacter.onDeath -= OnPlayerDeath;
+            }
         }
     }
 }
