@@ -31,8 +31,6 @@ namespace _Project.Scripts
 
         private void OnDestroy()
         {
-            onDeath -= EnemyDeathMediator.Instance.PlayerCurrencyController.LosePointsOnDeath;
-            OnDamageTaken -= LightUpPlayer;
             if (SceneHandler.Instance != null)
             {
                 SceneHandler.Instance.OnMainMenuLoad -= DestroyOnMainMenuLoad;
