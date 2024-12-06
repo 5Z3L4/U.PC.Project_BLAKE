@@ -39,7 +39,7 @@ MonoBehaviour:
   ProjectilesPerShot: 1
   MagazineSize: 5
   Range: 15
-  LoudnessRange: 2
+  LoudnessRange: 1
   EnemyLayerMask:
     serializedVersion: 2
     m_Bits: 512
