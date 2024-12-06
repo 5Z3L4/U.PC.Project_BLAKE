@@ -19,7 +19,10 @@ public class Fog : MonoBehaviour
     [SerializeField]
     private LayerMask objectsToHide;
     [SerializeField]
-    private bool turnedOn = true;
+    private bool turnedOn = false;
+    [SerializeField]
+    private GameObject LODFog;
+    private bool disabled = false;
 
     private List<FogParticle> particles = new List<FogParticle>();
     private Dictionary<Renderer, bool> hiddenObjects = new Dictionary<Renderer, bool>();
@@ -40,7 +43,7 @@ public class Fog : MonoBehaviour
 
     private void Update()
     {
-        if (!turnedOn) return;
+        if (disabled) return;
         List<Renderer> toHide = new List<Renderer>();
         foreach(FogParticle particle in particles)
         {
@@ -56,32 +59,34 @@ public class Fog : MonoBehaviour
                     break;
                 }
             }
-            if (blocking)
-            {
-                particle.TurnOff();
-                continue;
-            } else
-            {
-                particle.TurnOn();
-            }
             foreach (Collider hit in hits)
             {
                 Renderer[] renderers = hit.GetComponentsInChildren<Renderer>(); // This gets both MeshRenderer and SkinnedMeshRenderer
-
-                foreach (Renderer renderer in renderers)
-                {
-                    if (hiddenObjects.ContainsKey(renderer))
+                if (!turnedOn || (turnedOn && !blocking)){
+                    foreach (Renderer renderer in renderers)
                     {
-                        if (!hiddenObjects[renderer])
+                        if (hiddenObjects.ContainsKey(renderer))
                         {
-                            toHide.Add(renderer);
-                            renderer.enabled = false;
+                            if (!hiddenObjects[renderer])
+                            {
+                                toHide.Add(renderer);
+                                renderer.enabled = false;
+                            }
+                            continue;
                         }
-                        continue;
+                        hiddenObjects.Add(renderer, true);
+                        renderer.enabled = false;
                     }
-                    hiddenObjects.Add(renderer, true);
-                    renderer.enabled = false;
                 }
+            }
+            if (blocking || !turnedOn)
+            {
+                particle.TurnOff();
+                continue;
+            }
+            else
+            {
+                particle.TurnOn();
             }
         }
 
@@ -129,16 +134,36 @@ public class Fog : MonoBehaviour
         }
         hiddenObjects.Clear();
         turnedOn = false;
+        if (LODFog != null)
+        {
+            LODFog.SetActive(true);
+        }
+
     }
 
     private void OnDisable()
     {
+        disabled = true;
         TurnOffFog();
     }
 
     private void OnEnable()
     {
+        if (LODFog != null)
+        {
+            LODFog.SetActive(true);
+        }
+        TurnOffFog();
+        disabled = false;
+    }
+
+    public void Peek()
+    {
         turnedOn = true;
+        if (LODFog != null)
+        {
+            LODFog.SetActive(false);
+        }
     }
 
 }
@@ -170,12 +195,14 @@ public class FogParticle
         turnedOn = false;
         particleSystem.Stop();
         particleSystem.Clear();
+        particleSystem.gameObject.SetActive(false);
     }
 
     public void TurnOn()
     {
         if (turnedOn) return;
         turnedOn = true;
+        particleSystem.gameObject.SetActive(true);
         particleSystem.Play();
     }
 }
