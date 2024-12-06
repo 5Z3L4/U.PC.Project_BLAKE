@@ -1,4 +1,5 @@
 using _Project.Scripts.Patterns;
+using _Project.Scripts.UI.Gameplay;
 using UnityEngine;
 
 namespace _Project.Scripts.GlobalHandlers
@@ -26,6 +27,32 @@ namespace _Project.Scripts.GlobalHandlers
                 _isGamePaused = value;
                 Time.timeScale = _isGamePaused ? 0f : 1f;
                 ReferenceManager.PlayerInputController?.IsGamePaused(value);
+            }
+        }
+
+        private GameObject PausedGameCanvas
+        {
+            get
+            {
+                if (pausedGameCanvas == null)
+                {
+                    pausedGameCanvas = Resources.FindObjectsOfTypeAll<PausedGameCanvasController>()[0].gameObject;
+                }
+
+                return pausedGameCanvas;
+            }
+        }
+
+        private GameObject PlayerUI
+        {
+            get
+            {
+                if (playerUI == null)
+                {
+                    playerUI = Resources.FindObjectsOfTypeAll<PlayerGameplayUIManager>()[0].gameObject;
+                }
+
+                return playerUI;
             }
         }
 
@@ -62,9 +89,9 @@ namespace _Project.Scripts.GlobalHandlers
         private GameObject OpenPlayerUICanvas(string canvasName, bool pauseGame = true)
         {
             GameObject openedCanvas = null;
-            for (var i = 0; i < pausedGameCanvas.transform.childCount; i++)
+            for (var i = 0; i < PausedGameCanvas.transform.childCount; i++)
             {
-                var child = pausedGameCanvas.transform.GetChild(i).gameObject;
+                var child = PausedGameCanvas.transform.GetChild(i).gameObject;
                 var canvasFound = child.name == canvasName;
                 
                 if(canvasFound)
@@ -75,7 +102,7 @@ namespace _Project.Scripts.GlobalHandlers
                 child.SetActive(canvasFound);
             }
 
-            pausedGameCanvas.SetActive(true);
+            PausedGameCanvas.SetActive(true);
 
             IsGamePaused = pauseGame;
             return openedCanvas;
@@ -87,21 +114,22 @@ namespace _Project.Scripts.GlobalHandlers
             {
                 ReferenceManager.PlayerInputController.SetPauseState();
             }
-            pausedGameCanvas.SetActive(true);
+            
+            PausedGameCanvas.SetActive(true);
             IsGamePaused = true;
 
-            playerUI.SetActive(false);
+            PlayerUI.SetActive(false);
         }
 
         public void CloseAllCanvasAndUnpause()
         {
-            pausedGameCanvas.SetActive(false);
-            for(int i = 0; i < pausedGameCanvas.transform.childCount; i++)
+            PausedGameCanvas.SetActive(false);
+            for(int i = 0; i < PausedGameCanvas.transform.childCount; i++)
             {
-                var child = pausedGameCanvas.transform.GetChild(i).gameObject;
+                var child = PausedGameCanvas.transform.GetChild(i).gameObject;
                 child.SetActive(false);
             }
-            playerUI.SetActive(true);
+            PlayerUI.SetActive(true);
             if (ReferenceManager.PlayerInputController != null)
             {
                 ReferenceManager.PlayerInputController.EnableInputSystem();

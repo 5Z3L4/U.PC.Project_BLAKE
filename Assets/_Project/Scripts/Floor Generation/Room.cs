@@ -256,6 +256,11 @@ public class Room : MonoBehaviour
 
     private void SpawnEnemies()
     {
+        if (!GlobalStartSettings.Instance.EnableEnemies)
+        {
+            return;
+        }
+        
         if (spawners.Count <= 0)
         {
             return;

@@ -11,9 +11,12 @@ namespace _Project.Scripts.GlobalHandlers
     {
         [SerializeField] private bool _enableDeveloperConsole;
         [SerializeField] private bool _removeURPDebug;
+        [SerializeField] private bool _enableEnemies;
         
         [Space]
         [SerializeField] private BaseCommand _devConsoleCommandsPrefab;
+
+        public bool EnableEnemies => _enableEnemies;
         
         private void Start()
         {
