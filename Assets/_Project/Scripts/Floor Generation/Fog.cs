@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
 
 public class Fog : MonoBehaviour
 {
@@ -19,17 +17,12 @@ public class Fog : MonoBehaviour
     [SerializeField]
     private LayerMask objectsToHide;
     [SerializeField]
-    private bool turnedOn = false;
-    [SerializeField]
     private GameObject LODFog;
-    private bool disabled = false;
 
     private List<FogParticle> particles = new List<FogParticle>();
-    private Dictionary<Renderer, bool> hiddenObjects = new Dictionary<Renderer, bool>();
 
     private void Awake()
     {
-        GetComponentInParent<Room>().OnResetEnemies += hiddenObjects.Clear;
         for (int i = 0; i < fogWidth; i++)
         {
             for (int j = 0; j < fogDepth; j++)
@@ -39,6 +32,7 @@ public class Fog : MonoBehaviour
                 particles.Add(new FogParticle(i, j, Instantiate(particlePrefab, world, Quaternion.identity, this.transform)));
             }
         }
+        gameObject.SetActive(false);
     }
 
     private void Update()
@@ -98,7 +92,6 @@ public class Fog : MonoBehaviour
 
     public void TurnOffFog()
     {
-        turnedOn = false;
         if (LODFog != null)
         {
             LODFog.SetActive(true);
@@ -109,7 +102,6 @@ public class Fog : MonoBehaviour
 
     public void DisableFog()
     {
-        turnedOn = false;
         if (LODFog != null)
         {
             LODFog.SetActive(false);
@@ -120,18 +112,24 @@ public class Fog : MonoBehaviour
 
     public void EnableFog()
     {
-        gameObject.SetActive(true);
-        turnedOn = false;
+        gameObject.SetActive(false);
         if (LODFog != null)
         {
             LODFog.SetActive(true);
+        } else
+        {
+            gameObject.SetActive(true);
         }
+    }
+
+    public void Start()
+    {
+        EnableFog();
     }
 
 
     public void Peek()
     {
-        turnedOn = true;
         if (LODFog != null)
         {
             LODFog.SetActive(false);
