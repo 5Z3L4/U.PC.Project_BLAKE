@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 2250193661021338524}
   - component: {fileID: 2250193661021338525}
   - component: {fileID: 8762673793604440}
+  - component: {fileID: -3259215461149915740}
   m_Layer: 12
   m_Name: WeaponPickup
   m_TagString: Untagged
@@ -96,7 +97,21 @@ MonoBehaviour:
   WeaponDefinition: {fileID: 0}
   pickupGameObject: {fileID: 4758205076925276579}
   rotateForce: 5
-  SendAnalyticsDataOnPickup: 0
+--- !u!114 &-3259215461149915740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2250193661021338515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdc2f61f1c0782488c98dbbe008661c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hideUnderLayer:
+    serializedVersion: 2
+    m_Bits: 65536
 --- !u!1 &4758205076925276579
 GameObject:
   m_ObjectHideFlags: 0

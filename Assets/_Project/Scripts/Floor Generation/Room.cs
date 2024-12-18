@@ -144,12 +144,20 @@ public class Room : MonoBehaviour
         ReferenceManager.PlayerInputController.onPeekingCancel += StopPeek;
         roomManager.GetComponent<FloorManager>().GetMainCamera().enabled = false;
         ReferenceManager.PlayerInputController.GetComponent<PlayerMovement>().Peek(this);
-        fog.GetComponent<Fog>().Peek();
         for(int i = 0; i < ((isControlPerkThreeActivated)?fogBlockerUpgradeAmount: fogBlockerAmount); i++)
         {
             activefogBlockers[i].gameObject.SetActive(true);
         }
         peekCamera.gameObject.SetActive(true);
+        foreach(var enemy in spawnedEnemies)
+        {
+            Renderer[] renderer = enemy.GetComponentsInChildren<Renderer>();
+            foreach (var render in renderer)
+            {
+                render.enabled = true;
+            }
+        }
+        fog.GetComponent<Fog>().Peek();
     }
 
     public void StopPeek()
@@ -163,7 +171,14 @@ public class Room : MonoBehaviour
             fogBlocker.SetActive(false);
         }
         ReferenceManager.PlayerInputController.onPeekingCancel -= StopPeek;
-
+        foreach (var enemy in spawnedEnemies)
+        {
+            Renderer[] renderer = enemy.GetComponentsInChildren<Renderer>();
+            foreach (var render in renderer)
+            {
+                render.enabled = false;
+            }
+        }
     }
 
     public bool HavePeekingCam()
@@ -349,15 +364,11 @@ public class Room : MonoBehaviour
         if (activeRoom == this) return;
         minimapRoom.VisitRoom();
         fog.SetActive(false);
-        /*if (activeRoom != null && activeRoom != this)
+        if (fog.GetComponent<Fog>() != null)
         {
-            List<Room> roomsToDisable = activeRoom.GetNeigbours();
-            if (roomsToDisable.Contains(this)) roomsToDisable.Remove(this);
-            foreach (Room room in roomsToDisable)
-            {
-                room.DisableRoom();
-            }
-        }*/
+            fog.GetComponent<Fog>().DisableFog();
+        }
+
         List<Room> roomsToActivate = GetNeigbours();
         if (roomsToActivate.Contains(activeRoom)) roomsToActivate.Remove(activeRoom);
 
@@ -441,7 +452,9 @@ public class Room : MonoBehaviour
         }
         minimapRoom.ForgetRoom();
         fog.SetActive(true);
-        foreach(RoomTrigger rt in triggers)
+        fog.GetComponent<Fog>().EnableFog();
+
+        foreach (RoomTrigger rt in triggers)
         {
             rt.Reset();
         }
