@@ -141,16 +141,23 @@ public class Room : MonoBehaviour
     public void Peek()
     {
         if (peekCamera == null) return;
-        EnableEnemiesInRoom();
         ReferenceManager.PlayerInputController.onPeekingCancel += StopPeek;
         roomManager.GetComponent<FloorManager>().GetMainCamera().enabled = false;
         ReferenceManager.PlayerInputController.GetComponent<PlayerMovement>().Peek(this);
-        fog.GetComponent<Fog>().Peek();
         for(int i = 0; i < ((isControlPerkThreeActivated)?fogBlockerUpgradeAmount: fogBlockerAmount); i++)
         {
             activefogBlockers[i].gameObject.SetActive(true);
         }
         peekCamera.gameObject.SetActive(true);
+        foreach(var enemy in spawnedEnemies)
+        {
+            Renderer[] renderer = enemy.GetComponentsInChildren<Renderer>();
+            foreach (var render in renderer)
+            {
+                render.enabled = true;
+            }
+        }
+        fog.GetComponent<Fog>().Peek();
     }
 
     public void StopPeek()
@@ -164,7 +171,14 @@ public class Room : MonoBehaviour
             fogBlocker.SetActive(false);
         }
         ReferenceManager.PlayerInputController.onPeekingCancel -= StopPeek;
-        DisableEnemiesInRoom();
+        foreach (var enemy in spawnedEnemies)
+        {
+            Renderer[] renderer = enemy.GetComponentsInChildren<Renderer>();
+            foreach (var render in renderer)
+            {
+                render.enabled = false;
+            }
+        }
     }
 
     public bool HavePeekingCam()
@@ -256,11 +270,6 @@ public class Room : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        if (!GlobalStartSettings.Instance.EnableEnemies)
-        {
-            return;
-        }
-        
         if (spawners.Count <= 0)
         {
             return;
@@ -280,8 +289,6 @@ public class Room : MonoBehaviour
             spawnedEnemies.Add(spawnedEnemyCharacter);
             enemySpawned?.Invoke(spawnedEnemyCharacter);
         }
-        
-        DisableEnemiesInRoom();
     }
 
     public RoomType GetRoomType()
@@ -321,14 +328,12 @@ public class Room : MonoBehaviour
     {
         if (IsPlayerInsideFog()) return;
         fog.SetActive(false);
-        EnableEnemiesInRoom();
     }
 
     public void EnableFog()
     {
         if (IsPlayerInsideFog()) return;
         fog.SetActive(true);
-        DisableEnemiesInRoom();
     }
 
     public void DisableRoom()
@@ -357,18 +362,13 @@ public class Room : MonoBehaviour
         if (IsPlayerInside()) return;
         Room activeRoom = roomManager.GetActiveRoom();
         if (activeRoom == this) return;
-        EnableEnemiesInRoom();
         minimapRoom.VisitRoom();
         fog.SetActive(false);
-        /*if (activeRoom != null && activeRoom != this)
+        if (fog.GetComponent<Fog>() != null)
         {
-            List<Room> roomsToDisable = activeRoom.GetNeigbours();
-            if (roomsToDisable.Contains(this)) roomsToDisable.Remove(this);
-            foreach (Room room in roomsToDisable)
-            {
-                room.DisableRoom();
-            }
-        }*/
+            fog.GetComponent<Fog>().DisableFog();
+        }
+
         List<Room> roomsToActivate = GetNeigbours();
         if (roomsToActivate.Contains(activeRoom)) roomsToActivate.Remove(activeRoom);
 
@@ -452,7 +452,9 @@ public class Room : MonoBehaviour
         }
         minimapRoom.ForgetRoom();
         fog.SetActive(true);
-        foreach(RoomTrigger rt in triggers)
+        fog.GetComponent<Fog>().EnableFog();
+
+        foreach (RoomTrigger rt in triggers)
         {
             rt.Reset();
         }
@@ -526,10 +528,13 @@ public class Room : MonoBehaviour
         {
             blakeHeroCharacter.onRespawn -= ResetRoom;
         }
-        
         if (IsPlayerInside()) return;
+        /*if(roomManager.GetActiveRoom() == this)
+        {
+            roomManager.SetActiveRoom(null);
+
+        }*/
         
-        DisableEnemiesInRoom();
     }
 
     public List<Room> GetNeigbours()
@@ -611,22 +616,6 @@ public class Room : MonoBehaviour
     {
         if (blakeHeroCharacter == null) return;
         blakeHeroCharacter.onRespawn -= ResetRoom;
-    }
-
-    private void EnableEnemiesInRoom()
-    {
-        foreach (var enemy in spawnedEnemies)
-        {
-            enemy.gameObject.SetActive(true);
-        }
-    }
-    
-    private void DisableEnemiesInRoom()
-    {
-        foreach (var enemy in spawnedEnemies)
-        {
-            enemy.gameObject.SetActive(false);
-        }
     }
 
     ~Room() {
