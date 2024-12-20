@@ -19,33 +19,27 @@ public class Fog : MonoBehaviour
     [SerializeField]
     private LayerMask objectsToHide;
     [SerializeField]
-    private bool turnedOn = false;
-    [SerializeField]
     private GameObject LODFog;
-    private bool disabled = false;
 
     private List<FogParticle> particles = new List<FogParticle>();
-    private Dictionary<Renderer, bool> hiddenObjects = new Dictionary<Renderer, bool>();
 
     private void Awake()
     {
-        GetComponentInParent<Room>().OnResetEnemies += hiddenObjects.Clear;
         for (int i = 0; i < fogWidth; i++)
         {
             for (int j = 0; j < fogDepth; j++)
             {
-                Vector3 local = new Vector3(i * particleSpacing, transform.position.y + particlesYOffset, j* particleSpacing);
+                Vector3 local = new Vector3(i * particleSpacing, transform.position.y + particlesYOffset, j * particleSpacing);
                 Vector3 world = transform.TransformPoint(local);
                 particles.Add(new FogParticle(i, j, Instantiate(particlePrefab, world, Quaternion.identity, this.transform)));
             }
         }
+        gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        if (disabled) return;
-        List<Renderer> toHide = new List<Renderer>();
-        foreach(FogParticle particle in particles)
+        foreach (FogParticle particle in particles)
         {
             Vector3 localPosition = new Vector3(particle.x * particleSpacing, 0, particle.y * particleSpacing);
             Vector3 worldPosition = transform.TransformPoint(localPosition);
@@ -59,27 +53,7 @@ public class Fog : MonoBehaviour
                     break;
                 }
             }
-            foreach (Collider hit in hits)
-            {
-                Renderer[] renderers = hit.GetComponentsInChildren<Renderer>(); // This gets both MeshRenderer and SkinnedMeshRenderer
-                if (!turnedOn || (turnedOn && !blocking)){
-                    foreach (Renderer renderer in renderers)
-                    {
-                        if (hiddenObjects.ContainsKey(renderer))
-                        {
-                            if (!hiddenObjects[renderer])
-                            {
-                                toHide.Add(renderer);
-                                renderer.enabled = false;
-                            }
-                            continue;
-                        }
-                        hiddenObjects.Add(renderer, true);
-                        renderer.enabled = false;
-                    }
-                }
-            }
-            if (blocking || !turnedOn)
+            if (blocking)
             {
                 particle.TurnOff();
                 continue;
@@ -88,14 +62,6 @@ public class Fog : MonoBehaviour
             {
                 particle.TurnOn();
             }
-        }
-
-        List<Renderer> keys = new List<Renderer>(hiddenObjects.Keys);
-        foreach(Renderer key in keys)
-        {
-            if (toHide.Contains(key)) continue;
-            key.enabled = true;
-            hiddenObjects[key] = false;
         }
     }
 
@@ -114,9 +80,10 @@ public class Fog : MonoBehaviour
                     Gizmos.DrawWireSphere(worldPosition + Vector3.up, 0.2f);
                 }
             }
-        } else
+        }
+        else
         {
-            foreach(var particle in particles)
+            foreach (var particle in particles)
             {
                 Vector3 localPosition = new Vector3(particle.x * particleSpacing, 0, particle.y * particleSpacing);
                 Vector3 worldPosition = transform.TransformPoint(localPosition);
@@ -128,42 +95,50 @@ public class Fog : MonoBehaviour
 
     public void TurnOffFog()
     {
-        foreach(var mr in hiddenObjects.Keys)
-        {
-            mr.enabled = true;
-        }
-        hiddenObjects.Clear();
-        turnedOn = false;
         if (LODFog != null)
         {
             LODFog.SetActive(true);
         }
+        gameObject.SetActive(false);
 
     }
 
-    private void OnDisable()
+    public void DisableFog()
     {
-        disabled = true;
-        TurnOffFog();
-    }
-
-    private void OnEnable()
-    {
-        if (LODFog != null)
-        {
-            LODFog.SetActive(true);
-        }
-        TurnOffFog();
-        disabled = false;
-    }
-
-    public void Peek()
-    {
-        turnedOn = true;
         if (LODFog != null)
         {
             LODFog.SetActive(false);
         }
+        gameObject.SetActive(false);
+
+    }
+
+    public void EnableFog()
+    {
+        gameObject.SetActive(false);
+        if (LODFog != null)
+        {
+            LODFog.SetActive(true);
+        }
+        else
+        {
+            gameObject.SetActive(true);
+        }
+    }
+
+    public void Start()
+    {
+        EnableFog();
+    }
+
+
+    public void Peek()
+    {
+        if (LODFog != null)
+        {
+            LODFog.SetActive(false);
+        }
+        gameObject.SetActive(true);
     }
 
 }
