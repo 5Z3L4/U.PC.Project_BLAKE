@@ -436,8 +436,6 @@ public class Room : MonoBehaviour
             }
         }
         minimapRoom.ForgetRoom();
-        fog.SetActive(true);
-        fog.GetComponent<Fog>().EnableFog();
 
         foreach (RoomTrigger rt in triggers)
         {
@@ -461,6 +459,8 @@ public class Room : MonoBehaviour
         {
             blakeHeroCharacter.onRespawn -= ResetRoom;
         }
+        fog.SetActive(true);
+        fog.GetComponent<Fog>().TurnOffFog();
     }
 
     private void ResetEnemies()
