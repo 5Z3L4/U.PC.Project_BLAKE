@@ -371,7 +371,7 @@ MonoBehaviour:
   isInitialized: 0
   isBeaten: 0
   spawnPoint: {fileID: 2417886148915629074}
-  fog: {fileID: 8254830620980703638}
+  fog: {fileID: 8455451739056050687}
   fogBlockerPrefab: {fileID: 0}
   fogBlockerAmount: 0
   fogBlockerUpgradeAmount: 0
@@ -1743,6 +1743,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8162648518036933331, guid: 5eb8d842ec346324399a61330b405947,
+        type: 3}
+      propertyPath: fogDepth
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162648518036933331, guid: 5eb8d842ec346324399a61330b405947,
+        type: 3}
+      propertyPath: fogWidth
+      value: 22
+      objectReference: {fileID: 0}
     - target: {fileID: 8302520594924336758, guid: 5eb8d842ec346324399a61330b405947,
         type: 3}
       propertyPath: m_Name
@@ -1781,9 +1791,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 123698119031785440}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8254830620980703638 stripped
+--- !u!1 &8455451739056050687 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 8302520594924336758, guid: 5eb8d842ec346324399a61330b405947,
+  m_CorrespondingSourceObject: {fileID: 8421936114698491423, guid: 5eb8d842ec346324399a61330b405947,
     type: 3}
   m_PrefabInstance: {fileID: 123698119031785440}
   m_PrefabAsset: {fileID: 0}

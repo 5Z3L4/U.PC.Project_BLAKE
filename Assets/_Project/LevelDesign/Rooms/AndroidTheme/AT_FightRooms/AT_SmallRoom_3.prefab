@@ -778,7 +778,7 @@ MonoBehaviour:
   isInitialized: 0
   isBeaten: 0
   spawnPoint: {fileID: 2417886148915629074}
-  fog: {fileID: 9085014028192198788}
+  fog: {fileID: 8776587856599666925}
   fogBlockerPrefab: {fileID: 7778639131620135934, guid: a74e00e8d8d5a7d4abc33b2fafc3c687,
     type: 3}
   fogBlockerAmount: 1
@@ -4438,9 +4438,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 949149434883753714}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &9085014028192198788 stripped
+--- !u!1 &8776587856599666925 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 8302520594924336758, guid: 5eb8d842ec346324399a61330b405947,
+  m_CorrespondingSourceObject: {fileID: 8421936114698491423, guid: 5eb8d842ec346324399a61330b405947,
     type: 3}
   m_PrefabInstance: {fileID: 949149434883753714}
   m_PrefabAsset: {fileID: 0}
