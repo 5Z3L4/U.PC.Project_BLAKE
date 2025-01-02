@@ -141,16 +141,15 @@ public class Room : MonoBehaviour
     public void Peek()
     {
         if (peekCamera == null) return;
-        EnableEnemiesInRoom();
         ReferenceManager.PlayerInputController.onPeekingCancel += StopPeek;
         roomManager.GetComponent<FloorManager>().GetMainCamera().enabled = false;
         ReferenceManager.PlayerInputController.GetComponent<PlayerMovement>().Peek(this);
-        fog.GetComponent<Fog>().Peek();
-        for(int i = 0; i < ((isControlPerkThreeActivated)?fogBlockerUpgradeAmount: fogBlockerAmount); i++)
+        for (int i = 0; i < ((isControlPerkThreeActivated) ? fogBlockerUpgradeAmount : fogBlockerAmount); i++)
         {
             activefogBlockers[i].gameObject.SetActive(true);
         }
         peekCamera.gameObject.SetActive(true);
+        fog.GetComponent<Fog>().Peek();
     }
 
     public void StopPeek()
@@ -164,7 +163,6 @@ public class Room : MonoBehaviour
             fogBlocker.SetActive(false);
         }
         ReferenceManager.PlayerInputController.onPeekingCancel -= StopPeek;
-        DisableEnemiesInRoom();
     }
 
     public bool HavePeekingCam()
@@ -174,10 +172,10 @@ public class Room : MonoBehaviour
 
     public bool CanBePeeked()
     {
-        if(!HavePeekingCam()) return false;
-        if(isBeaten) return false;
+        if (!HavePeekingCam()) return false;
+        if (isBeaten) return false;
         if (spawnedEnemies.Count > 0 && IsPlayerInside()) return false;
-        
+
         return true;
     }
     public void SetupFogBlockers()
@@ -185,7 +183,7 @@ public class Room : MonoBehaviour
         if (fogBlockerPrefab == null) return;
         if (fogPoints.Length == 0) return;
         List<Transform> avaiblePoints = new List<Transform>(fogPoints);
-        for(int i = 0; i < fogBlockerUpgradeAmount; i++)
+        for (int i = 0; i < fogBlockerUpgradeAmount; i++)
         {
             var point = avaiblePoints[UnityEngine.Random.Range(0, avaiblePoints.Count)];
             var fogBlocker = Instantiate(fogBlockerPrefab, point.position, Quaternion.identity, this.transform);
@@ -203,7 +201,7 @@ public class Room : MonoBehaviour
     {
         fogBlockerSize += scale;
 
-        foreach(var blocker in activefogBlockers)
+        foreach (var blocker in activefogBlockers)
         {
             blocker.transform.localScale = Vector3.one;
             blocker.transform.localScale *= fogBlockerSize;
@@ -218,25 +216,25 @@ public class Room : MonoBehaviour
     public void InitializeRoom(RoomManager rm)
     {
         roomManager = rm;
-        foreach(RandomizedRoomObject randomObject in randomObjects)
+        foreach (RandomizedRoomObject randomObject in randomObjects)
         {
             randomObject.InitializeRandomObject();
         }
-        
 
-        if(minimapRoom != null && roomManager.GetMinimapFloor() != null)
+
+        if (minimapRoom != null && roomManager.GetMinimapFloor() != null)
         {
             minimapRoom.transform.parent = roomManager.GetMinimapFloor();
         }
 
-        if(fog != null)
+        if (fog != null)
         {
             fog.SetActive(true);
         }
 
         //Build NavMesh
         NavMeshSurface[] surfaces = GetComponentsInChildren<NavMeshSurface>();
-        foreach(NavMeshSurface surface in surfaces)
+        foreach (NavMeshSurface surface in surfaces)
         {
             surface.BuildNavMesh();
         }
@@ -256,18 +254,13 @@ public class Room : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        if (!GlobalStartSettings.Instance.EnableEnemies)
-        {
-            return;
-        }
-        
         if (spawners.Count <= 0)
         {
             return;
         }
-        
+
         anyEnemyAlive = true;
-        
+
         //Spawn enemies
         foreach (EnemySpawner enemy in spawners)
         {
@@ -280,8 +273,6 @@ public class Room : MonoBehaviour
             spawnedEnemies.Add(spawnedEnemyCharacter);
             enemySpawned?.Invoke(spawnedEnemyCharacter);
         }
-        
-        DisableEnemiesInRoom();
     }
 
     public RoomType GetRoomType()
@@ -305,9 +296,9 @@ public class Room : MonoBehaviour
     public RoomConnector[] GetFreeDoors()
     {
         List<RoomConnector> freeDoors = new List<RoomConnector>();
-        foreach(RoomConnector door in doors)
+        foreach (RoomConnector door in doors)
         {
-            if(door.GetConnector() == null) freeDoors.Add(door);
+            if (door.GetConnector() == null) freeDoors.Add(door);
         }
         return freeDoors.ToArray();
     }
@@ -321,32 +312,31 @@ public class Room : MonoBehaviour
     {
         if (IsPlayerInsideFog()) return;
         fog.SetActive(false);
-        EnableEnemiesInRoom();
     }
 
     public void EnableFog()
     {
         if (IsPlayerInsideFog()) return;
         fog.SetActive(true);
-        DisableEnemiesInRoom();
     }
 
     public void DisableRoom()
     {
         gameObject.SetActive(false);
         var toDelete = new List<GameObject>();
-        foreach(var weapon in instantiatedWeapons)
+        foreach (var weapon in instantiatedWeapons)
         {
             if (weapon != null)
             {
                 weapon.gameObject.SetActive(false);
-            } else
+            }
+            else
             {
                 toDelete.Add(weapon);
             }
         }
 
-        foreach(var delete in toDelete)
+        foreach (var delete in toDelete)
         {
             instantiatedWeapons.Remove(delete);
         }
@@ -357,18 +347,13 @@ public class Room : MonoBehaviour
         if (IsPlayerInside()) return;
         Room activeRoom = roomManager.GetActiveRoom();
         if (activeRoom == this) return;
-        EnableEnemiesInRoom();
         minimapRoom.VisitRoom();
         fog.SetActive(false);
-        /*if (activeRoom != null && activeRoom != this)
+        if (fog.GetComponent<Fog>() != null)
         {
-            List<Room> roomsToDisable = activeRoom.GetNeigbours();
-            if (roomsToDisable.Contains(this)) roomsToDisable.Remove(this);
-            foreach (Room room in roomsToDisable)
-            {
-                room.DisableRoom();
-            }
-        }*/
+            fog.GetComponent<Fog>().DisableFog();
+        }
+
         List<Room> roomsToActivate = GetNeigbours();
         if (roomsToActivate.Contains(activeRoom)) roomsToActivate.Remove(activeRoom);
 
@@ -451,8 +436,8 @@ public class Room : MonoBehaviour
             }
         }
         minimapRoom.ForgetRoom();
-        fog.SetActive(true);
-        foreach(RoomTrigger rt in triggers)
+
+        foreach (RoomTrigger rt in triggers)
         {
             rt.Reset();
         }
@@ -474,6 +459,8 @@ public class Room : MonoBehaviour
         {
             blakeHeroCharacter.onRespawn -= ResetRoom;
         }
+        fog.SetActive(true);
+        fog.GetComponent<Fog>().TurnOffFog();
     }
 
     private void ResetEnemies()
@@ -482,7 +469,7 @@ public class Room : MonoBehaviour
         {
             Destroy(enemy.gameObject);
         }
-        
+
         OnResetEnemies?.Invoke();
         spawnedEnemies.Clear();
         SpawnEnemies();
@@ -490,9 +477,9 @@ public class Room : MonoBehaviour
 
     private void Update()
     {
-        if(!isBeaten && isInitialized && (IsPlayerInsideFog() || IsPlayerInside()) && roomManager.GetActiveRoom() == this)
+        if (!isBeaten && isInitialized && (IsPlayerInsideFog() || IsPlayerInside()) && roomManager.GetActiveRoom() == this)
         {
-            if(spawnedEnemies.Count == 0)
+            if (spawnedEnemies.Count == 0)
             {
                 if (blakeHeroCharacter == null) return;
                 BeatLevel();
@@ -504,7 +491,7 @@ public class Room : MonoBehaviour
                         roomConnector.GetConnector().UnlockDoor();
                     }
                 }
-                if(blakeHeroCharacter != null)
+                if (blakeHeroCharacter != null)
                 {
                     blakeHeroCharacter.SetRespawnPosition(GetSpawnPointPosition());
                 }
@@ -526,16 +513,19 @@ public class Room : MonoBehaviour
         {
             blakeHeroCharacter.onRespawn -= ResetRoom;
         }
-        
         if (IsPlayerInside()) return;
-        
-        DisableEnemiesInRoom();
+        /*if(roomManager.GetActiveRoom() == this)
+        {
+            roomManager.SetActiveRoom(null);
+
+        }*/
+
     }
 
     public List<Room> GetNeigbours()
     {
         List<Room> neigbours = new List<Room>();
-        foreach(RoomConnector door in doors)
+        foreach (RoomConnector door in doors)
         {
             RoomConnector neighbour = door.GetConnector();
             if (neighbour == null) continue;
@@ -547,9 +537,9 @@ public class Room : MonoBehaviour
 
     public bool IsPlayerInside()
     {
-        foreach(RoomTrigger rt in triggers)
+        foreach (RoomTrigger rt in triggers)
         {
-            if(rt.IsPlayerInside()) return true;
+            if (rt.IsPlayerInside()) return true;
         }
         return false;
     }
@@ -613,23 +603,8 @@ public class Room : MonoBehaviour
         blakeHeroCharacter.onRespawn -= ResetRoom;
     }
 
-    private void EnableEnemiesInRoom()
+    ~Room()
     {
-        foreach (var enemy in spawnedEnemies)
-        {
-            enemy.gameObject.SetActive(true);
-        }
-    }
-    
-    private void DisableEnemiesInRoom()
-    {
-        foreach (var enemy in spawnedEnemies)
-        {
-            enemy.gameObject.SetActive(false);
-        }
-    }
-
-    ~Room() {
         blakeHeroCharacter.onRespawn -= ResetRoom;
     }
 }
