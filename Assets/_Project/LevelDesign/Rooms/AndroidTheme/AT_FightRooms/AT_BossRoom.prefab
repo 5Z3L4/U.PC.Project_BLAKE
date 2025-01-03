@@ -12041,6 +12041,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3342506616054151640}
     m_Modifications:
+    - target: {fileID: 3303493997216348281, guid: 5befa03a0496fe1468d4241fa17f3896,
+        type: 3}
+      propertyPath: m_Extents.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303493997216348281, guid: 5befa03a0496fe1468d4241fa17f3896,
+        type: 3}
+      propertyPath: m_Extents.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6321364037401133516, guid: 5befa03a0496fe1468d4241fa17f3896,
         type: 3}
       propertyPath: m_Name
@@ -20481,6 +20491,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3342506616054151640}
     m_Modifications:
+    - target: {fileID: 3303493997216348281, guid: 5befa03a0496fe1468d4241fa17f3896,
+        type: 3}
+      propertyPath: m_Extents.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303493997216348281, guid: 5befa03a0496fe1468d4241fa17f3896,
+        type: 3}
+      propertyPath: m_Extents.z
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6321364037401133516, guid: 5befa03a0496fe1468d4241fa17f3896,
         type: 3}
       propertyPath: m_Name
@@ -22811,6 +22831,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3342506616054151640}
     m_Modifications:
+    - target: {fileID: 3303493997216348281, guid: 5befa03a0496fe1468d4241fa17f3896,
+        type: 3}
+      propertyPath: m_Extents.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303493997216348281, guid: 5befa03a0496fe1468d4241fa17f3896,
+        type: 3}
+      propertyPath: m_Extents.z
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6321364037401133516, guid: 5befa03a0496fe1468d4241fa17f3896,
         type: 3}
       propertyPath: m_Name
@@ -25636,6 +25666,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3342506616054151640}
     m_Modifications:
+    - target: {fileID: 3303493997216348281, guid: 5befa03a0496fe1468d4241fa17f3896,
+        type: 3}
+      propertyPath: m_Extents.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303493997216348281, guid: 5befa03a0496fe1468d4241fa17f3896,
+        type: 3}
+      propertyPath: m_Extents.z
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6321364037401133516, guid: 5befa03a0496fe1468d4241fa17f3896,
         type: 3}
       propertyPath: m_Name
