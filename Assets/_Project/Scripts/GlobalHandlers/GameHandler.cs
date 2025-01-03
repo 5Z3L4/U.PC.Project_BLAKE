@@ -17,7 +17,8 @@ namespace _Project.Scripts.GlobalHandlers
         private GameObject playerUI;
 
         private bool _isGamePaused = false;
-        
+        private bool _wasShownControls = false;
+
         public bool IsGamePaused
         {
             get => _isGamePaused;
@@ -58,7 +59,11 @@ namespace _Project.Scripts.GlobalHandlers
 
         private void Start()
         {
-            ShowPlayerControlsPopup();
+            if (!_wasShownControls)
+            {
+                ShowPlayerControlsPopup();
+                _wasShownControls = true;
+            }
         }
 
         public void PlayerWin()

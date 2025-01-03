@@ -83,7 +83,7 @@ public class Room : MonoBehaviour
     private List<RoomOverlapTrigger> fogTriggers = new List<RoomOverlapTrigger>();
     private RoomsDoneCounter roomsDoneCounter;
     private List<GameObject> instantiatedWeapons;
-    private bool anyEnemyAlive = false;
+    private bool isPeeking = false;
 
     [HideInInspector]
     public int gCost;
@@ -150,6 +150,7 @@ public class Room : MonoBehaviour
         }
         peekCamera.gameObject.SetActive(true);
         fog.GetComponent<Fog>().Peek();
+        isPeeking = true;
     }
 
     public void StopPeek()
@@ -157,12 +158,15 @@ public class Room : MonoBehaviour
         if (peekCamera == null) return;
         roomManager.GetComponent<FloorManager>().GetMainCamera().enabled = true;
         peekCamera.gameObject.SetActive(false);
-        fog.GetComponent<Fog>().TurnOffFog();
+        if(!IsPlayerInside()) {
+            fog.GetComponent<Fog>().TurnOffFog();
+        }
         foreach (var fogBlocker in activefogBlockers)
         {
             fogBlocker.SetActive(false);
         }
         ReferenceManager.PlayerInputController.onPeekingCancel -= StopPeek;
+        isPeeking = false;
     }
 
     public bool HavePeekingCam()
@@ -259,7 +263,6 @@ public class Room : MonoBehaviour
             return;
         }
 
-        anyEnemyAlive = true;
 
         //Spawn enemies
         foreach (EnemySpawner enemy in spawners)
@@ -498,6 +501,11 @@ public class Room : MonoBehaviour
             }
         }
 
+        if(IsPlayerInside() && isPeeking)
+        {
+            StopPeek();
+        }
+
         if (roomManager != null)
         {
             if (!isBeaten && roomManager.GetActiveRoom() == this && (!IsPlayerInside() && !IsPlayerInsideFog()) && spawnedEnemies.Count > 0)
@@ -586,10 +594,6 @@ public class Room : MonoBehaviour
     {
         spawnedEnemies.Remove(blakeCharacter as EnemyCharacter);
 
-        if (spawnedEnemies.Count <= 0)
-        {
-            anyEnemyAlive = false;
-        }
     }
 
     public void AddSpawnedWeapon(GameObject weapon)
