@@ -98,14 +98,14 @@ namespace _Project.Scripts.Weapons
 
         public override bool CanPrimaryAttack()
         {
+            if (Time.time - lastFireTime < masterShootDelayTime) return false;
+            if (isTryingToShoot) return false;
             if(BulletsLeft <= 1 && !weaponsManager.throwOnNoAmmo)
             {
                 StartCoroutine("UnequipSelf");
                 return BulletsLeft == 1;
             }
             
-            if (Time.time - lastFireTime < masterShootDelayTime) return false;
-            if (isTryingToShoot) return false;
 
             return true;
         }
@@ -113,12 +113,25 @@ namespace _Project.Scripts.Weapons
         private IEnumerator UnequipSelf()
         {
             yield return new WaitForEndOfFrame();
+            if (audioSource != null && audioSource.isPlaying)
+            {
+                var detachedAudio = new GameObject("DetachedAudioSource");
+                var detachedSource = detachedAudio.AddComponent<AudioSource>();
+                detachedSource.clip = audioSource.clip;
+                detachedSource.volume = audioSource.volume;
+                detachedSource.pitch = audioSource.pitch;
+                detachedSource.spatialBlend = audioSource.spatialBlend;
+                detachedSource.minDistance = audioSource.minDistance;
+                detachedSource.maxDistance = audioSource.maxDistance;
+                detachedSource.transform.position = audioSource.transform.position;
 
+                detachedSource.Play();
+                Destroy(detachedAudio, detachedSource.clip.length);
+            }
             if (Owner.TryGetComponent(out WeaponsManager weaponsManager))
             {
                 weaponsManager.Unequip(weaponsManager.ActiveWeaponIndex);
                 weaponsManager.SetActiveIndex(weaponsManager.ActiveWeaponIndex - 1);
-                Destroy(gameObject);
             }
         }
 
