@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perkName: Control Two
-  perkDesc: "zwi\u0119ksza promie\u0144 podgl\u0105danych obszar\xF3w"
+  perkDesc: increases the radius of the peeking areas
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 5d202dad833f01a41b92ef0e3ba6b55b, type: 2}
   perkColor: {r: 0.6666667, g: 0, b: 0.8862745, a: 1}
@@ -706,8 +706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perkName: Permamence Two
-  perkDesc: "po przej\u015Bciu na kolejne pi\u0119tro, zwi\u0119ksza maksumaln\u0105
-    ilo\u015B\u0107 dopuszczalnych zgon\xF3w o 1"
+  perkDesc: you gain +1 to respawn limit every next floor
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: a111b7fa5c94d68438265fc1a909d851, type: 2}
   perkColor: {r: 0.019607844, g: 1, b: 0, a: 1}
@@ -1546,7 +1545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perkName: Agility Three
-  perkDesc: "podw\xF3jny dash ALE przeciwnicy s\u0105 nieco szybsi"
+  perkDesc: ability to double dash <b>BUT the enemies run slightly faster</b>
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 4701864d1c8f9bc4fa899f243e9cec9f, type: 2}
   perkColor: {r: 0.1254902, g: 0.35686275, b: 0.99607843, a: 1}
@@ -1837,8 +1836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perkName: Savage Two
-  perkDesc: "mo\u017Cliwo\u015B\u0107 rzucenia broni w przeciwnika, gdy sko\u0144czy
-    si\u0119 w niej amunicja"
+  perkDesc: ability to throw a firearm when its ammo is 0
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 9ee8d46764ff52c4fbdc5eeb108d45fb, type: 2}
   perkColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 1}
@@ -2129,8 +2127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perkName: Control Three
-  perkDesc: "w trybie podgl\u0105du odkrywane s\u0105 3 losowe obszary zamiast 1
-    <b>ALE mno\u017Cnik Punkt\xF3w zaczyna si\u0119 nalicza\u0107 od 0.7x</b>"
+  perkDesc: all peeking areas are revelead instead of 1 while peeking a room <b>BUT
+    the Points multiplier starts from 0.7x instead of 1x</b>
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 9472b8c5dfaca2748b2c46cc0922d895, type: 2}
   perkColor: {r: 0.6666667, g: 0, b: 0.8862745, a: 1}
@@ -2421,7 +2419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perkName: Agility One
-  perkDesc: "zwi\u0119kszona og\xF3lna pr\u0119dko\u015B\u0107 ruchu"
+  perkDesc: increased movement speed
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 0741bc707a94a6b48926828e95310ce9, type: 2}
   perkColor: {r: 0.1254902, g: 0.35686275, b: 0.99607843, a: 1}
@@ -2577,9 +2575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perkName: Savage One
-  perkDesc: "zab\xF3jstwa katan\u0105 daj\u0105 dodatkowe 50% punkt\xF3w za zab\xF3jstwo
-    (bior\u0105c pod uwag\u0119 warto\u015B\u0107 otrzymanych punkt\xF3w ju\u017C
-    po modyfikacji przez mno\u017Cnik)"
+  perkDesc: +50% more Points from Katana kills
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 39baf15ff73faa54399a24c57cc9aece, type: 2}
   perkColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 1}
@@ -2735,7 +2731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perkName: Permamence One
-  perkDesc: "zachowujesz cz\u0119\u015B\u0107 Punkt\xF3w po \u015Bmierci"
+  perkDesc: you lose 10% of Points after death instead of 20%
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: e0c789267980a914ba4db4693e5a8a9b, type: 2}
   perkColor: {r: 0.019607844, g: 1, b: 0, a: 1}
@@ -3766,7 +3762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perkName: Agility Two
-  perkDesc: "skr\xF3cony czas odnowienia dasha"
+  perkDesc: reduced dash cooldown
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 5d6655bfc274aad41bca777b94acd3c0, type: 2}
   perkColor: {r: 0.1254902, g: 0.35686275, b: 0.99607843, a: 1}
@@ -4057,8 +4053,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perkName: Permamence Three
-  perkDesc: "tarcza, poch\u0142aniaj\u0105ca jeden punkt obra\u017Ce\u0144, kt\xF3ra
-    pojawia si\u0119 po osi\u0105gni\u0119ciu combo x5"
+  perkDesc: after you reach x4 combo you gain a shield that absorbs 1 point of damage
+    (the shield does not stack)
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: de30911e444a8334fadc4a8a9ac2eeb9, type: 2}
   perkColor: {r: 0.019607844, g: 1, b: 0, a: 1}
@@ -4562,9 +4558,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perkName: Savage Three
-  perkDesc: "mo\u017Cliwo\u015B\u0107 noszenia dw\xF3ch broni palnych <b>ALE przeciwnicy
-    nie zostawiaj\u0105 amunicji po \u015Bmierci (nie wypadaj\u0105 na ziemi\u0119
-    te bronie, kt\xF3re nosimy)</b>"
+  perkDesc: ability to carry two firearms <b>BUT the enemies don't drop the ammo
+    for the firearms you carry</b>
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: a03278aad6683d94f92bd336360a9d68, type: 2}
   perkColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 1}
@@ -4855,8 +4850,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perkName: Control One
-  perkDesc: "informacja o liczbie przeciwnik\xF3w w podgl\u0105danym pokoju - bez
-    podanej pozycji"
+  perkDesc: you get an information about the enemy count in the room while peeking
+    it
   shop: {fileID: 3461548577045841010}
   perk: {fileID: 11400000, guid: 19c03033794b73e44a399c15e6410b74, type: 2}
   perkColor: {r: 0.6666667, g: 0, b: 0.8862745, a: 1}
