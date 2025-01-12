@@ -1,6 +1,9 @@
+using System;
 using _Project.Scripts.Interfaces;
 using _Project.Scripts.Weapons.Definition;
 using _Project.Scripts.Weapons.Statistics;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -9,6 +12,9 @@ namespace _Project.Scripts.Weapons
 {
     public class MeleeWeapon : Weapon
     {
+        [SerializeField]
+        public ParticleSystem weaponFlashEffect;
+        
         private PlayableDirector playableDirector;
         private Transform characterTransform;
 
@@ -20,6 +26,13 @@ namespace _Project.Scripts.Weapons
         private Collider[] raycastCollidersFound;
         private int maxSpreadRangePerSide;
         private float lastAttackTime;
+        
+        private float masterShootDelayTime => currentWeaponStats.AttackDelayTime + shootDelayTime;
+        
+        //Enemy only
+        private float effectDuration = 0f;
+        private float shootDelayTime = 0f;
+        private bool isTryingToAttack = false;
 
         private void OnDisable()
         {
@@ -38,19 +51,48 @@ namespace _Project.Scripts.Weapons
 
         public override bool CanPrimaryAttack()
         {
-            return Time.time - lastAttackTime > currentWeaponStats.AttackDelayTime;
+            if (Time.time - lastAttackTime < masterShootDelayTime) return false;
+            if (isTryingToAttack) return false;
+            
+            return true;
         }
 
         public override void PrimaryAttack()
         {
+            CastPrimaryAttack().Forget();
+        }
+
+        private async UniTaskVoid CastPrimaryAttack()
+        {
+            isTryingToAttack = true;
+            
+            if (weaponOwnerIsEnemy)
+            {
+                CastEnemyWeaponVFX();
+                await UniTask.Delay(TimeSpan.FromSeconds(shootDelayTime), cancellationToken: this.GetCancellationTokenOnDestroy());
+            }
+            
             playableDirector.Stop();
             playableDirector.Play();
             audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
             audioSource.Play();
             
-            lastAttackTime = Time.time;
-
             MakeRaycast();
+
+            lastAttackTime = Time.time;
+            isTryingToAttack = false;
+        }
+        
+        private void CastEnemyWeaponVFX()
+        {
+            weaponFlashEffect.Play();
+            DOVirtual.DelayedCall(effectDuration, TryStopEnemyMuzzleFlashVFX);
+        }
+
+        private void TryStopEnemyMuzzleFlashVFX()
+        {
+            weaponFlashEffect.Clear();
+            weaponFlashEffect.Stop();
         }
 
         private void MakeRaycast()
@@ -107,6 +149,12 @@ namespace _Project.Scripts.Weapons
             meleeWeaponDefinition = definition;
 
             baseWeaponStats = meleeWeaponDefinition.GetWeaponStatistics();
+            
+            if (weaponOwnerIsEnemy)
+            { 
+                effectDuration = meleeWeaponDefinition.EffectDuration; 
+                shootDelayTime = meleeWeaponDefinition.AttackDelayTime;
+            }
             
             raycastCollidersFound = new Collider[meleeWeaponDefinition.MaxNumberOfEnemies];
             RestoreMeleeWeaponStatistics();

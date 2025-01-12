@@ -57,7 +57,7 @@ namespace _Project.Scripts.Weapons
 
         public override void PrimaryAttack()
         {
-            _ = CastPrimaryAttack();
+            CastPrimaryAttack().Forget();
         }
 
         private async UniTaskVoid CastPrimaryAttack()
