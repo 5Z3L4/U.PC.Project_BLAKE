@@ -8,7 +8,7 @@ namespace _Project.Scripts.Weapons.Definition
     {
         [Space(10), Header("Weapon statistics")]
 
-        public float AttackDelayTime;
+        public float WaitingTimeForNextAttack;
         
         public float SpereCastRadius;
         
@@ -20,10 +20,16 @@ namespace _Project.Scripts.Weapons.Definition
         [Tooltip("Performance value: \n -higher value store more data \n -too low value can cause not damaging enemy")]
         public int MaxNumberOfEnemies;
         
+        [Space(10), Header("ENEMY ONLY")] 
+        [Header("Weapon flash")]
+        public float EffectDuration;
+        
+        public float AttackDelayTime;
+        
         public MeleeWeaponStatistics GetWeaponStatistics()
         {
             return new MeleeWeaponStatistics(
-                    AttackDelayTime,
+                    WaitingTimeForNextAttack,
                     SpereCastRadius,
                     MaxSpreadRange,
                     EnemyLayerMask,
