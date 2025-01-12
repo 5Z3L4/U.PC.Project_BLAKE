@@ -24,14 +24,14 @@ public class PerkShop : MonoBehaviour
     private PerkScriptableObject perkToBuy;
 
     private static int perkRarityOneCost = 1000;
-    private static int perkRarityTwoCost = 2000;
-    private static int perkRarityThreeCost = 3000;
+    private static int perkRarityTwoCost = 1500;
+    private static int perkRarityThreeCost = 2000;
 
     public static void ResetShopValues()
     {
         perkRarityOneCost = 1000;
-        perkRarityTwoCost = 2000;
-        perkRarityThreeCost = 3000;
+        perkRarityTwoCost = 1500;
+        perkRarityThreeCost = 2000;
     }
 
     public void SetPerk(string name, string desc, PerkScriptableObject perk, PerkShopButton button, Color perkColor)
@@ -91,10 +91,10 @@ public class PerkShop : MonoBehaviour
                 perkRarityOneCost += 250;
                 break;
             case PerkRarity.Two:
-                perkRarityTwoCost += 500;
+                perkRarityTwoCost += 375;
                 break;
             case PerkRarity.Three:
-                perkRarityThreeCost += 750;
+                perkRarityThreeCost += 500;
                 break;
         }
         
