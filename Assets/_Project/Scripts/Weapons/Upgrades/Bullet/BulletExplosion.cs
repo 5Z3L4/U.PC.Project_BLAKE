@@ -15,14 +15,26 @@ namespace _Project.Scripts.Weapons.Upgrades.Bullet
         {
             Destroy(gameObject, particles.main.duration);
             particles.Play();
-            
-            var colliders = Physics.OverlapSphere(transform.position, explosionRadius);
-            foreach (var collider in colliders)
+
+            var bulletPos = transform.position;
+            var colliders = Physics.OverlapSphere(bulletPos, explosionRadius);
+            foreach (var coll in colliders)
             {
-                if (collider.transform.TryGetComponent<IDamageable>(out var damageable))
+                var isDamageable = coll.transform.TryGetComponent<IDamageable>(out var damageable);
+                if (!isDamageable)
                 {
-                    damageable?.TryTakeDamage(instigator, 1);
+                    continue;
                 }
+
+                var enemyPos = coll.transform.position;
+                var rayTarget = new Vector3(enemyPos.x, bulletPos.y, enemyPos.z);
+                Physics.Linecast(bulletPos, rayTarget, out var hit);
+                if (hit.transform != coll.transform)
+                {
+                    continue;
+                }
+                
+                damageable?.TryTakeDamage(instigator, 1);
             }
         }
 
