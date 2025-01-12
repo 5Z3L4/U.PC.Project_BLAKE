@@ -29,7 +29,7 @@ MonoBehaviour:
   BasicBullet: {fileID: -5621749900764010926, guid: 47b4b245cadfcdb448ce3f20b32bf11f,
     type: 3}
   WaitingTimeForNextShoot: 1
-  BulletType: 1
+  BulletType: 2
   SpreadType: 3
   Spread: 10
   SpreadStep: -1

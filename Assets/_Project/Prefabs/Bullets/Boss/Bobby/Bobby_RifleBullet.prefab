@@ -93,7 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95279484a24a1f4196ae3eebaa4c82f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 25
-  penetrateAmount: 999
-  explosionPrefab: {fileID: 0}
+  bulletSpeed: 20
+  penetrateAmount: 0
+  explosionPrefab: {fileID: 1857074250340478989, guid: 0cebf7a4e68d3fb45a8b8e50a81f3c09,
+    type: 3}
   rotationSpeed: 1
