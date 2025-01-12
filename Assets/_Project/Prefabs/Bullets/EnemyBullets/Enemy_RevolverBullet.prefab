@@ -129,7 +129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 37
-  destroyTime: 4
   penetrateAmount: 1
   explosionPrefab: {fileID: 0}
 --- !u!96 &-1506205009848016853
