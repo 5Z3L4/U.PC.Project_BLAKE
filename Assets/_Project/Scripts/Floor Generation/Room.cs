@@ -6,6 +6,7 @@ using _Project.Scripts;
 using _Project.Scripts.Floor_Generation;
 using Cinemachine;
 using _Project.Scripts.GlobalHandlers;
+using _Project.Scripts.Weapons;
 
 public enum RoomType
 {
@@ -82,7 +83,7 @@ public class Room : MonoBehaviour
     private List<RoomTrigger> triggers = new List<RoomTrigger>();
     private List<RoomOverlapTrigger> fogTriggers = new List<RoomOverlapTrigger>();
     private RoomsDoneCounter roomsDoneCounter;
-    private List<GameObject> instantiatedWeapons;
+    private List<WeaponPickup> instantiatedWeapons;
     private bool anyEnemyAlive = false;
 
     [HideInInspector]
@@ -117,7 +118,7 @@ public class Room : MonoBehaviour
     private void Awake()
     {
         roomsDoneCounter = FindObjectOfType<RoomsDoneCounter>();
-        instantiatedWeapons = new List<GameObject>();
+        instantiatedWeapons = new List<WeaponPickup>();
     }
 
     public void SetupDoorConnectors()
@@ -323,7 +324,7 @@ public class Room : MonoBehaviour
     public void DisableRoom()
     {
         gameObject.SetActive(false);
-        var toDelete = new List<GameObject>();
+        var toDelete = new List<WeaponPickup>();
         foreach (var weapon in instantiatedWeapons)
         {
             if (weapon != null)
@@ -397,7 +398,7 @@ public class Room : MonoBehaviour
             enemy.GetComponent<AIController>().UpdatePlayerRef();
         }
 
-        var toDelete = new List<GameObject>();
+        var toDelete = new List<WeaponPickup>();
         foreach (var weapon in instantiatedWeapons)
         {
             if (weapon != null)
@@ -451,7 +452,8 @@ public class Room : MonoBehaviour
 
         foreach (var weapon in instantiatedWeapons.ToArray())
         {
-            Destroy(weapon);
+
+            Destroy(weapon.gameObject);
             instantiatedWeapons.Remove(weapon);
         }
 
@@ -592,7 +594,7 @@ public class Room : MonoBehaviour
         }
     }
 
-    public void AddSpawnedWeapon(GameObject weapon)
+    public void AddSpawnedWeapon(WeaponPickup weapon)
     {
         instantiatedWeapons.Add(weapon);
     }

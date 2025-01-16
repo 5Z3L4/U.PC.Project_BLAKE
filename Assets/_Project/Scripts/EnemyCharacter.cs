@@ -106,7 +106,7 @@ namespace _Project.Scripts
                 var weaponPickupInstantiated = Instantiate(weaponPickup, transform.position, Quaternion.identity);
                 weaponPickupInstantiated.WeaponDefinition = weapon.WeaponDefinition;
                 weaponPickupInstantiated.WeaponInstanceInfo = weapon.GenerateWeaponInstanceInfo(true);
-                SpawnedInRoom.AddSpawnedWeapon(weaponPickupInstantiated.gameObject);
+                SpawnedInRoom.AddSpawnedWeapon(weaponPickupInstantiated);
             }
         }
     }
