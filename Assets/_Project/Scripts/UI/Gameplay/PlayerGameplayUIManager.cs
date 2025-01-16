@@ -59,6 +59,8 @@ namespace _Project.Scripts.UI.Gameplay
         private GameObject controlOnePerkObject;
         [SerializeField]
         private GameObject controlOnePerkText;
+        [SerializeField]
+        private OptionsHandler optionsHandler;
 
         private GameObject player;
         private WeaponsManager weaponsManager;
@@ -77,7 +79,7 @@ namespace _Project.Scripts.UI.Gameplay
             ReferenceManager.PlayerInputController.onMapPressEvent += ShowMap;
             ReferenceManager.PlayerInputController.onMapReleaseEvent += HideMap;
             floorManager.FloorGeneratorEnd -= FloorManagerOnFloorGeneratorEnd;
-        
+            optionsHandler.Awake();
             if (player == null || weaponsManager == null)
             {
                 player = playerTransform.gameObject;

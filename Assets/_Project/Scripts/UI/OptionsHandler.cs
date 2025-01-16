@@ -65,7 +65,7 @@ public class OptionsHandler : MonoBehaviour
     [SerializeField] 
     private Slider gameplaySfxVolumeSlider;
 
-    public void Start()
+    public void Awake()
     {
         SetResolutions();
         SetAllSliders();
