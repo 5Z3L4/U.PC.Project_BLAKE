@@ -286,6 +286,16 @@ public class Room : MonoBehaviour
         roomsDoneCounter.AddBeatenRoom();
         isBeaten = true;
         minimapRoom.CompleteRoom();
+        foreach(var door in doors)
+        {
+            var adjecentConnector = door.GetConnector();
+            if (adjecentConnector == null) continue;
+            if(adjecentConnector.GetRoom().IsBeaten)
+            {
+                door.OpenDoor();
+                adjecentConnector.OpenDoor();
+            }
+        }
     }
 
     public RoomConnector[] GetDoors()
