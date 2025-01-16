@@ -58,6 +58,10 @@ public class Room : MonoBehaviour
 
     [SerializeField]
     private Transform spawnPoint;
+    [SerializeField]
+    private List<GameObject> respawnableObjects;
+    private List<Respawnable> respawnables = new List<Respawnable>();
+    private List<GameObject> spawnedRespawnables = new List<GameObject>();
 
     [Header("Fog")]
     private bool isControlPerkActivated = false;
@@ -119,6 +123,22 @@ public class Room : MonoBehaviour
     {
         roomsDoneCounter = FindObjectOfType<RoomsDoneCounter>();
         instantiatedWeapons = new List<WeaponPickup>();
+    }
+
+    private void SpawnRespawnables()
+    {
+        respawnables.Clear();
+        foreach (var respawnable in respawnableObjects)
+        {
+            respawnables.Add(new Respawnable(respawnable, respawnable.transform));
+            respawnable.SetActive(false);
+        }
+
+        foreach(var respawnable in respawnables)
+        {
+            var go = Instantiate(respawnable.original, respawnable.transform.position, respawnable.transform.rotation, respawnable.transform.parent);
+            go.SetActive(true);
+        }
     }
 
     public void SetupDoorConnectors()
@@ -249,7 +269,10 @@ public class Room : MonoBehaviour
 
         SetupFogBlockers();
         SpawnEnemies();
-
+        if(!isBeaten)
+        {
+            SpawnRespawnables();
+        }
         isInitialized = true;
     }
 
@@ -370,7 +393,6 @@ public class Room : MonoBehaviour
 
         if (!isBeaten)
         {
-
             if (spawnedEnemies.Count == 0)
             {
                 BeatLevel();
@@ -449,12 +471,19 @@ public class Room : MonoBehaviour
         }
 
         Invoke("ResetEnemies", 0.5f);
-
+        
         foreach (var weapon in instantiatedWeapons.ToArray())
         {
-
             Destroy(weapon.gameObject);
             instantiatedWeapons.Remove(weapon);
+        }
+
+        foreach(var go in spawnedRespawnables)
+        {
+            if(go != null)
+            {
+                Destroy(go);
+            }
         }
 
         if (blakeHeroCharacter != null)
@@ -471,7 +500,7 @@ public class Room : MonoBehaviour
         {
             Destroy(enemy.gameObject);
         }
-
+        SpawnRespawnables();
         OnResetEnemies?.Invoke();
         spawnedEnemies.Clear();
         SpawnEnemies();
