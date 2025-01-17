@@ -33,5 +33,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   MaxNumberOfEnemies: 1
-  EffectDuration: 0.5
-  AttackDelayTime: 0.5
+  EffectDuration: 0.3
+  AttackDelayTime: 0.3

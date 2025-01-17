@@ -14,6 +14,8 @@ namespace _Project.Scripts.Weapons
     {
         [SerializeField]
         public ParticleSystem weaponFlashEffect;
+        [SerializeField]
+        public ParticleSystem weaponAttackEffect;
         
         private PlayableDirector playableDirector;
         private Transform characterTransform;
@@ -76,6 +78,7 @@ namespace _Project.Scripts.Weapons
             playableDirector.Play();
             audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
             audioSource.Play();
+            weaponAttackEffect.Play();
             
             MakeRaycast();
 
