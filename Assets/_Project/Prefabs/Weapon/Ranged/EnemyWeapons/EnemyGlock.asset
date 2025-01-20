@@ -26,17 +26,21 @@ MonoBehaviour:
   Scale: {x: 1, y: 1, z: 1}
   PickupLocationOffset: {x: 0, y: 0, z: 0}
   PickupRotation: {x: 0, y: 0, z: 0, w: 0}
-  BasicBullet: {fileID: 8745238448183679225, guid: a068551a7488b474fa34d68d5f97afbe,
+  BasicBullet: {fileID: 8745238448183679225, guid: f9cd9a2728488a34c8594dd64a47dd00,
     type: 3}
   WaitingTimeForNextShoot: 0.4
   BulletType: 1
   SpreadType: 5
-  Spread: 10
+  Spread: 1
   SpreadStep: -1
   SpreadThreshold: -1
   SpreadResetThreshold: 3
   ProjectilesPerShot: 1
   MagazineSize: 6
   Range: 12
+  LoudnessRange: 0
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   EffectDuration: 0.5
   ShootDelayTime: 0.5

@@ -27,7 +27,7 @@ MonoBehaviour:
   Scale: {x: 1, y: 1, z: 1}
   PickupLocationOffset: {x: 0, y: 0, z: 0}
   PickupRotation: {x: 0, y: 0, z: 0, w: 0}
-  BasicBullet: {fileID: 8745238448183679225, guid: 3834453275fdaab4aa045b723129cc96,
+  BasicBullet: {fileID: 8745238448183679225, guid: e3db8ea5b92dede40ab468587aaaee0a,
     type: 3}
   WaitingTimeForNextShoot: 0.7
   BulletType: 1
@@ -39,5 +39,9 @@ MonoBehaviour:
   ProjectilesPerShot: 1
   MagazineSize: 5
   Range: 18
+  LoudnessRange: 0
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   EffectDuration: 0.5
   ShootDelayTime: 0.5

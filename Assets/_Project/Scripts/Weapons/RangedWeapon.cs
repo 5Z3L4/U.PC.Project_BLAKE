@@ -18,6 +18,8 @@ namespace _Project.Scripts.Weapons
         [SerializeField]
         public ParticleSystem muzzleFlashEffect;
         [SerializeField]
+        public ParticleSystem shootEffect;
+        [SerializeField]
         private bool infinityAmmo = false;
 
         private RangedWeaponDefinition rangedWeaponDefinition;
@@ -94,6 +96,11 @@ namespace _Project.Scripts.Weapons
         {
             muzzleFlashEffect.Clear();
             muzzleFlashEffect.Stop();
+        }
+
+        private void CastWeaponShootVFX()
+        {
+            shootEffect.Play();
         }
 
         public override bool CanPrimaryAttack()
@@ -181,6 +188,7 @@ namespace _Project.Scripts.Weapons
             //TODO: Add pooling
             var bulletPrefab = rangedWeaponDefinition.BasicBullet;
             var bullet = Instantiate(bulletPrefab, bulletsSpawnPoint.position, transform.rotation);
+            CastWeaponShootVFX();
                 
             bullet.SetupBullet(bulletSpreadValue, transform.parent.gameObject, currentWeaponStats.Range, currentWeaponStats.BulletType);
         }
