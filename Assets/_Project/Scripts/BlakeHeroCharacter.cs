@@ -52,7 +52,7 @@ namespace _Project.Scripts
         public override void Die(GameObject killer)
         {
             this.TrySendAnalytics(killer);
-        
+            FindAnyObjectByType<SummaryScreen>(FindObjectsInactive.Include).SetKiller(killer.name);
             explosionParticleInstantiated = Instantiate(explosionParticle, transform.position, quaternion.identity);
             gameObject.SetActive(false);
             Invoke("Respawn", 2f);
