@@ -7146,6 +7146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainAudioMixer: {fileID: 24100000, guid: 051cac1ae2a9c8a439448df8a83e6ded, type: 2}
+  settingsCanvas: {fileID: 6962711334280918810}
   resolutionsDropdown: {fileID: 6962711335939027363}
   fullScreenValueText: {fileID: 6962711335509361618}
   vSyncValueText: {fileID: 6962711334322245477}
@@ -10192,8 +10193,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6962711334294845117}
   m_HandleRect: {fileID: 6962711334294845106}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.7923077
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

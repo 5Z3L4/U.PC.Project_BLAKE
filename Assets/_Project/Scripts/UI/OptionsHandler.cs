@@ -19,6 +19,8 @@ public class OptionsHandler : MonoBehaviour
 
     [SerializeField] 
     private AudioMixer mainAudioMixer;
+    [SerializeField]
+    private GameObject settingsCanvas;
     
     [Space]
     
@@ -70,6 +72,7 @@ public class OptionsHandler : MonoBehaviour
         SetResolutions();
         SetAllSliders();
         SetGraphics();
+        settingsCanvas.SetActive(false);
     }
 
     private void SetResolutions()
