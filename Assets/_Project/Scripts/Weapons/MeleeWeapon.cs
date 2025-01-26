@@ -122,7 +122,10 @@ namespace _Project.Scripts.Weapons
                 {
                     continue;
                 }
-                
+                if(Physics.Raycast(new Ray(transform.position, targetDir), out RaycastHit hit ,currentWeaponStats.SphereCastRadius)) { }
+                {
+                    if (hit.collider.gameObject != colliderFound.gameObject) return;
+                }
                 var damageable = colliderFound.transform.GetComponentInParent<IDamageable>();
                 damageable?.TryTakeDamage(transform.parent.gameObject, 1);
             }
