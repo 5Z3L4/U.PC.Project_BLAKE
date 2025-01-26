@@ -138,6 +138,7 @@ public class Room : MonoBehaviour
         {
             var go = Instantiate(respawnable.original, respawnable.transform.position, respawnable.transform.rotation, respawnable.transform.parent);
             go.SetActive(true);
+            spawnedRespawnables.Add(go);
         }
     }
 
