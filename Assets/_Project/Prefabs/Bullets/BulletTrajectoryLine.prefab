@@ -145,3 +145,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPointTransform: {fileID: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 33537
