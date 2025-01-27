@@ -181,6 +181,8 @@ MonoBehaviour:
   WeaponDefinition: {fileID: 11400000, guid: 192f2a38e975b264ea96f899ff1490ca, type: 2}
   bulletsSpawnPoint: {fileID: 7102642101703529464}
   muzzleFlashEffect: {fileID: 7613061997944859563}
+  shootEffect: {fileID: 218533226855143631, guid: 015eef42be59a1f448314b9b8db6607f,
+    type: 3}
   infinityAmmo: 1
   throwableWeapon: {fileID: 2687323088996113468, guid: 87d2308fcbd07604ea09fa0ca282b68e,
     type: 3}
