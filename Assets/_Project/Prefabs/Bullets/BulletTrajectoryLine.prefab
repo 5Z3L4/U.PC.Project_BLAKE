@@ -147,4 +147,4 @@ MonoBehaviour:
   attackPointTransform: {fileID: 0}
   mask:
     serializedVersion: 2
-    m_Bits: 33537
+    m_Bits: 33541
