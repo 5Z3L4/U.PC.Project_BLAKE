@@ -77,7 +77,10 @@ namespace _Project.Scripts.UI.Gameplay
             ReferenceManager.PlayerInputController.onMapPressEvent += ShowMap;
             ReferenceManager.PlayerInputController.onMapReleaseEvent += HideMap;
             floorManager.FloorGeneratorEnd -= FloorManagerOnFloorGeneratorEnd;
-        
+            if(GameHandler.Instance != null)
+            {
+                GameHandler.Instance.ShowControls();
+            }
             if (player == null || weaponsManager == null)
             {
                 player = playerTransform.gameObject;

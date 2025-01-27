@@ -17,7 +17,7 @@ namespace _Project.Scripts.GlobalHandlers
         private GameObject playerUI;
 
         private bool _isGamePaused = false;
-        private bool _wasShownControls = false;
+        public bool _wasShownControls = false;
 
         public bool IsGamePaused
         {
@@ -57,7 +57,7 @@ namespace _Project.Scripts.GlobalHandlers
             }
         }
 
-        private void Start()
+        public void ShowControls()
         {
             if (!_wasShownControls)
             {
@@ -98,13 +98,17 @@ namespace _Project.Scripts.GlobalHandlers
             {
                 var child = PausedGameCanvas.transform.GetChild(i).gameObject;
                 var canvasFound = child.name == canvasName;
-                
+                var backgroundFade = child.name == "BackgroundFade";
                 if(canvasFound)
                 {
                     openedCanvas = child;
                 }
                 
                 child.SetActive(canvasFound);
+                if(backgroundFade)
+                {
+                    child.SetActive(backgroundFade);
+                }
             }
 
             PausedGameCanvas.SetActive(true);
