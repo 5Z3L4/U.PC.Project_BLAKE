@@ -68,6 +68,9 @@ MonoBehaviour:
   WeaponDefinition: {fileID: 11400000, guid: 466cf86f521ace44fa65215b3bbdf104, type: 2}
   weaponFlashEffect: {fileID: 3699271043108291809}
   weaponAttackEffect: {fileID: 2612849060259513478}
+  mask:
+    serializedVersion: 2
+    m_Bits: 389
 --- !u!82 &8945000990863372136
 AudioSource:
   m_ObjectHideFlags: 0
