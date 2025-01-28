@@ -19,13 +19,13 @@ public abstract class BlakeCharacter : MonoBehaviour, IDamageable
     }
 
     public int RespawnsLeft => maxRespawns - respawnCounter;
-
     public bool IsAlive => !isDead;
     public int DefaultHealth => defaultHealth;
 
     private bool hasShield = false;
 
     protected int respawnCounter = 0;
+    
     [SerializeField]
     protected int maxRespawns = 3;
 

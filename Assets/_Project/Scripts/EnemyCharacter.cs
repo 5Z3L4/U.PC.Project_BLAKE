@@ -8,7 +8,6 @@ namespace _Project.Scripts
 {
     public class EnemyCharacter : BlakeCharacter
     {
-
         [SerializeField]
         private float speed = 6f;
         [SerializeField]

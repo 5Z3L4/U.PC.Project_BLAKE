@@ -15,6 +15,7 @@ public class FloorGenerator : MonoBehaviour
     [Header("Base Rooms Settings")]
     [SerializeField]
     private RoomPool baseRoomPool;
+    
     [SerializeField]
     private int smallRoomAmount = 3;
     private int smallRoomCount = 0;
