@@ -93,7 +93,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4911671507802568297}
-  - {fileID: 4421358381094183988}
+  - {fileID: 5178494521435837239}
   - {fileID: 6595183174842882689}
   - {fileID: 5648182839905681307}
   - {fileID: 8440141732402605767}
@@ -214,7 +214,7 @@ MonoBehaviour:
   drawDebugGizmos: 0
   WeaponDefinition: {fileID: 11400000, guid: 38f322b9e88f2a149a1f3d198afce634, type: 2}
   bulletsSpawnPoint: {fileID: 4911671507802568297}
-  muzzleFlashEffect: {fileID: 2991482714960598805}
+  muzzleFlashEffect: {fileID: 5982336110416584726}
   shootEffect: {fileID: 8623051603826867087}
   infinityAmmo: 0
   throwableWeapon: {fileID: 2687323088996113468, guid: 87d2308fcbd07604ea09fa0ca282b68e,
@@ -335,7 +335,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1692722893842820761}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4530263374855074344
+--- !u!1001 &4924930113815905579
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -370,17 +370,17 @@ PrefabInstance:
     - target: {fileID: 253723907958396444, guid: dd6b5430b733a9545afad824c91d82b8,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 253723907958396444, guid: dd6b5430b733a9545afad824c91d82b8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 253723907958396444, guid: dd6b5430b733a9545afad824c91d82b8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 253723907958396444, guid: dd6b5430b733a9545afad824c91d82b8,
         type: 3}
@@ -404,17 +404,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd6b5430b733a9545afad824c91d82b8, type: 3}
---- !u!198 &2991482714960598805 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 1683602060878046525, guid: dd6b5430b733a9545afad824c91d82b8,
-    type: 3}
-  m_PrefabInstance: {fileID: 4530263374855074344}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4421358381094183988 stripped
+--- !u!4 &5178494521435837239 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 253723907958396444, guid: dd6b5430b733a9545afad824c91d82b8,
     type: 3}
-  m_PrefabInstance: {fileID: 4530263374855074344}
+  m_PrefabInstance: {fileID: 4924930113815905579}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5982336110416584726 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1683602060878046525, guid: dd6b5430b733a9545afad824c91d82b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 4924930113815905579}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6296902215674215534
 PrefabInstance:
