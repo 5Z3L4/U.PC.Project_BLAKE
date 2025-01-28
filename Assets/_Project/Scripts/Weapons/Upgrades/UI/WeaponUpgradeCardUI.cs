@@ -25,6 +25,7 @@ namespace _Project.Scripts.Weapons.Upgrades.UI
 
         public Button BuyButton => buyButton;
         public TextMeshProUGUI WeaponName => weaponName;
+        public WeaponUpgradeData WeaponUpgradeData { get; private set; }
 
         private void OnEnable()
         {
@@ -38,6 +39,7 @@ namespace _Project.Scripts.Weapons.Upgrades.UI
 
         public void SetupCard(WeaponUpgradeData upgradeData, WeaponUpgradeRarityEnum weaponRarity)
         {
+            WeaponUpgradeData = upgradeData;
             borderImage.color = GetColorByRarity(weaponRarity);
             weaponName.text = upgradeData.WeaponDefinition.WeaponName;
             buyButtonText.text = $"{BUY_BUTTON_PREFIX} {upgradeData.UpgradeCost}";
