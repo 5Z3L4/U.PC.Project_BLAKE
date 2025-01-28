@@ -6,6 +6,7 @@ using _Project.Scripts;
 using _Project.Scripts.Floor_Generation;
 using Cinemachine;
 using _Project.Scripts.GlobalHandlers;
+using _Project.Scripts.Weapons;
 
 public enum RoomType
 {
@@ -57,6 +58,10 @@ public class Room : MonoBehaviour
 
     [SerializeField]
     private Transform spawnPoint;
+    [SerializeField]
+    private List<GameObject> respawnableObjects;
+    private List<Respawnable> respawnables = new List<Respawnable>();
+    private List<GameObject> spawnedRespawnables = new List<GameObject>();
 
     [Header("Fog")]
     private bool isControlPerkActivated = false;
@@ -82,8 +87,9 @@ public class Room : MonoBehaviour
     private List<RoomTrigger> triggers = new List<RoomTrigger>();
     private List<RoomOverlapTrigger> fogTriggers = new List<RoomOverlapTrigger>();
     private RoomsDoneCounter roomsDoneCounter;
-    private List<GameObject> instantiatedWeapons;
     private bool isPeeking = false;
+    private List<WeaponPickup> instantiatedWeapons;
+    private bool anyEnemyAlive = false;
 
     [HideInInspector]
     public int gCost;
@@ -117,7 +123,24 @@ public class Room : MonoBehaviour
     private void Awake()
     {
         roomsDoneCounter = FindObjectOfType<RoomsDoneCounter>();
-        instantiatedWeapons = new List<GameObject>();
+        instantiatedWeapons = new List<WeaponPickup>();
+    }
+
+    private void SpawnRespawnables()
+    {
+        respawnables.Clear();
+        foreach (var respawnable in respawnableObjects)
+        {
+            respawnables.Add(new Respawnable(respawnable, respawnable.transform));
+            respawnable.SetActive(false);
+        }
+
+        foreach(var respawnable in respawnables)
+        {
+            var go = Instantiate(respawnable.original, respawnable.transform.position, respawnable.transform.rotation, respawnable.transform.parent);
+            go.SetActive(true);
+            spawnedRespawnables.Add(go);
+        }
     }
 
     public void SetupDoorConnectors()
@@ -252,7 +275,10 @@ public class Room : MonoBehaviour
 
         SetupFogBlockers();
         SpawnEnemies();
-
+        if(!isBeaten)
+        {
+            SpawnRespawnables();
+        }
         isInitialized = true;
     }
 
@@ -336,7 +362,7 @@ public class Room : MonoBehaviour
     public void DisableRoom()
     {
         gameObject.SetActive(false);
-        var toDelete = new List<GameObject>();
+        var toDelete = new List<WeaponPickup>();
         foreach (var weapon in instantiatedWeapons)
         {
             if (weapon != null)
@@ -382,7 +408,6 @@ public class Room : MonoBehaviour
 
         if (!isBeaten)
         {
-
             if (spawnedEnemies.Count == 0)
             {
                 BeatLevel();
@@ -410,7 +435,7 @@ public class Room : MonoBehaviour
             enemy.GetComponent<AIController>().UpdatePlayerRef();
         }
 
-        var toDelete = new List<GameObject>();
+        var toDelete = new List<WeaponPickup>();
         foreach (var weapon in instantiatedWeapons)
         {
             if (weapon != null)
@@ -461,11 +486,19 @@ public class Room : MonoBehaviour
         }
 
         Invoke("ResetEnemies", 0.5f);
-
+        
         foreach (var weapon in instantiatedWeapons.ToArray())
         {
-            Destroy(weapon);
+            Destroy(weapon.gameObject);
             instantiatedWeapons.Remove(weapon);
+        }
+
+        foreach(var go in spawnedRespawnables)
+        {
+            if(go != null)
+            {
+                Destroy(go);
+            }
         }
 
         if (blakeHeroCharacter != null)
@@ -482,7 +515,7 @@ public class Room : MonoBehaviour
         {
             Destroy(enemy.gameObject);
         }
-
+        SpawnRespawnables();
         OnResetEnemies?.Invoke();
         spawnedEnemies.Clear();
         SpawnEnemies();
@@ -606,7 +639,7 @@ public class Room : MonoBehaviour
 
     }
 
-    public void AddSpawnedWeapon(GameObject weapon)
+    public void AddSpawnedWeapon(WeaponPickup weapon)
     {
         instantiatedWeapons.Add(weapon);
     }

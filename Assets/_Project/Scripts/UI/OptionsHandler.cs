@@ -19,6 +19,8 @@ public class OptionsHandler : MonoBehaviour
 
     [SerializeField] 
     private AudioMixer mainAudioMixer;
+    [SerializeField]
+    private GameObject settingsCanvas;
     
     [Space]
     
@@ -65,11 +67,12 @@ public class OptionsHandler : MonoBehaviour
     [SerializeField] 
     private Slider gameplaySfxVolumeSlider;
 
-    public void Start()
+    public void Awake()
     {
         SetResolutions();
         SetAllSliders();
         SetGraphics();
+        settingsCanvas.SetActive(false);
     }
 
     private void SetResolutions()
