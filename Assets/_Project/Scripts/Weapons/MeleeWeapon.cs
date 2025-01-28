@@ -16,6 +16,8 @@ namespace _Project.Scripts.Weapons
         public ParticleSystem weaponFlashEffect;
         [SerializeField]
         public ParticleSystem weaponAttackEffect;
+        [SerializeField]
+        private LayerMask mask;
         
         private PlayableDirector playableDirector;
         private Transform characterTransform;
@@ -122,7 +124,13 @@ namespace _Project.Scripts.Weapons
                 {
                     continue;
                 }
-                
+                if(Physics.Raycast(new Ray(characterTransform.position, targetDir), out RaycastHit hit ,currentWeaponStats.SphereCastRadius, mask)) { }
+                {
+                    if (hit.collider != null)
+                    {
+                        if (hit.collider.gameObject != colliderFound.gameObject) continue;
+                    }
+                }
                 var damageable = colliderFound.transform.GetComponentInParent<IDamageable>();
                 damageable?.TryTakeDamage(transform.parent.gameObject, 1);
             }
