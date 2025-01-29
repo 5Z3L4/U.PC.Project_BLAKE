@@ -51,6 +51,7 @@ MonoBehaviour:
     type: 3}
   statisticUpgradePrefab: {fileID: 7841235560872325844, guid: ed1afbd75036f2249bbd6fbd8508f4c1,
     type: 3}
+  onlyOneUpgradePerLevel: 0
   baseMeleeWeaponDrawChance: 0.1
   baseRerollCost: 40
   baseRerollMultiplier: 2

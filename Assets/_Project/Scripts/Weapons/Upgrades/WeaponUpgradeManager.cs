@@ -20,6 +20,7 @@ namespace _Project.Scripts.Weapons.Upgrades
         [SerializeField] private WeaponUpgradeHolder weaponUpgradeHolder;
         [SerializeField] private WeaponUpgradeCardUI upgradeCardPrefab;
         [SerializeField] private WeaponStatisticUpgradeUI statisticUpgradePrefab;
+        [SerializeField] private bool onlyOneUpgradePerLevel;
         [SerializeField] private float baseMeleeWeaponDrawChance;
         [SerializeField] private int baseRerollCost;
         [SerializeField] private float baseRerollMultiplier;
@@ -97,7 +98,7 @@ namespace _Project.Scripts.Weapons.Upgrades
             }
         }
 
-        private void CreateUpgrade()
+        private void CreateUpgrade(int siblingIndex = -1)
         {
             for (var i = 0; i < UPGRADES_REROLL_MAX_TRIES; i++)
             {
@@ -108,7 +109,7 @@ namespace _Project.Scripts.Weapons.Upgrades
                     continue;
                 }
                 
-                CreateCard(upgradeData.Item1, upgradeData.Item2);
+                CreateCard(upgradeData.Item1, upgradeData.Item2, siblingIndex);
                 return;
             }
             
@@ -187,9 +188,9 @@ namespace _Project.Scripts.Weapons.Upgrades
             return WeaponUpgradeRarityEnum.Undefined;
         }
 
-        private void CreateCard(WeaponUpgradeData upgradeData, IWeaponStatistics weaponStatistics)
+        private void CreateCard(WeaponUpgradeData upgradeData, IWeaponStatistics weaponStatistics, int siblingIndex)
         {
-            var instantiatedCard = weaponUpgradeUIManager.CreateNewUpgradeCard(upgradeCardPrefab);
+            var instantiatedCard = weaponUpgradeUIManager.CreateNewUpgradeCard(upgradeCardPrefab, siblingIndex);
             instantiatedCard.SetupCard(upgradeData, upgradeData.WeaponUpgradeRarity);
             
             instantiatedCard.BuyButton.onClick.AddListener(() => OnUpgradeBought(upgradeData));
@@ -207,13 +208,22 @@ namespace _Project.Scripts.Weapons.Upgrades
             float upgradeValue)
         {
             var instantiatedStatistic = instantiatedCard.CreateNewUpgradeStatistic(statisticUpgradePrefab);
-            
             instantiatedStatistic.SetupStatistic(upgradeName, currentValue, upgradeValue);
+        }
+
+        private void RedrawCard(WeaponUpgradeData upgradeData)
+        {
+            dictionaryOfUpgrades.Remove(upgradeData);
+            weaponUpgradeUIManager.DestroyCard(upgradeData, out var siblingIndex);
+            CreateUpgrade(siblingIndex);
         }
         
         private void OnUpgradeBought(WeaponUpgradeData upgradeData)
         {
-            weaponUpgradeUIManager.CloseUI();
+            if (onlyOneUpgradePerLevel)
+            {
+                weaponUpgradeUIManager.CloseUI();
+            }
             
             if (dictionaryOfUpgrades.TryGetValue(upgradeData, out var statistics))
             {
@@ -223,9 +233,18 @@ namespace _Project.Scripts.Weapons.Upgrades
                 ReferenceManager.PlayerCurrencyController.RemovePoints(upgradeData.UpgradeCost);
                 
                 this.TrySendAnalytics(upgradeData, dictionaryOfUpgrades);
-                ResetAllValues();
                 
-                isUpgradeAvailable = false;
+                if (onlyOneUpgradePerLevel)
+                {
+                    ResetAllValues();
+                    isUpgradeAvailable = false;
+                }
+                else
+                {
+                    RedrawCard(upgradeData);
+                }
+                
+                Debug.Log($"Upgraded: {upgradeData.UpgradeCost} | {upgradeData.WeaponUpgradeRarity} | {upgradeData.WeaponDefinition.WeaponName}");
             }
             else
             {

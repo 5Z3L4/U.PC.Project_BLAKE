@@ -45,8 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
-  blakeHeroCharacter: {fileID: 0}
-  playerInputController: {fileID: 0}
-  sceneHandler: {fileID: 0}
-  levelHandler: {fileID: 0}
-  roomManager: {fileID: 0}
+  renamePrefab: 0

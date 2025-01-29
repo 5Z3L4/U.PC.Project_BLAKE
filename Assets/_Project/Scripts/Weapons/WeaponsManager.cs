@@ -13,6 +13,7 @@ namespace _Project.Scripts.Weapons
         [SerializeField]
         private List<GameObject> attachSockets = new List<GameObject>();
 
+        public event Action<Weapon> OnWeaponUpdateEvent;
         public event Action<Weapon> OnWeaponChangedEvent;
         public event Action<Weapon> OnPlayerPickupWeaponEvent;
         public event Action<Weapon> OnPrimaryAttack;
@@ -130,6 +131,11 @@ namespace _Project.Scripts.Weapons
         public void OnPlayerPickupWeapon()
         {
             OnPlayerPickupWeaponEvent?.Invoke(weapons[activeWeaponIndex]);
+        }
+
+        public void OnWeaponUpdate()
+        {
+            OnWeaponUpdateEvent?.Invoke(weapons[activeWeaponIndex]);
         }
 
         public int GetFreeIndex()

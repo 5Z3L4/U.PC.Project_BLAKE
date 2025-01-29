@@ -15,6 +15,9 @@ namespace _Project.Scripts.Weapons
         [SerializeField] 
         private float rotateForce = 12f;
 
+        [SerializeField] 
+        private bool addAmmoWhenWalkedOn = true;
+
         [HideInInspector]
         public WeaponInstanceInfo WeaponInstanceInfo;
 
@@ -31,6 +34,11 @@ namespace _Project.Scripts.Weapons
                 weaponGFX = Instantiate(WeaponDefinition.WeaponGFX, pickupGameObject.transform.position, pickupGameObject.transform.rotation, pickupGameObject.transform);
             }
             SetOutlineVisibilityOnGround();
+
+            foreach (var customCollider in GetComponentsInChildren<WeaponPickupCustomCollider>())
+            {
+                customCollider.OnObjectTriggerEnter += TryAddAmmoIfWalkedOn;
+            }
         }
 
         private void Update()
@@ -120,6 +128,59 @@ namespace _Project.Scripts.Weapons
             {
                 outline.OutlineColor = _weaponPickupColorOnGround;
                 outline.OutlineMode = _weaponPickupModeOnGround;
+            }
+        }
+
+        private void TryAddAmmoIfWalkedOn(Collider other)
+        {
+            if (!addAmmoWhenWalkedOn)
+            {
+                return;
+            }
+
+            if (!other.CompareTag("Player"))
+            {
+                return;
+            }
+            
+            var weaponsManager = other.GetComponent<WeaponsManager>();
+            if(weaponsManager == null)
+            {
+                Debug.LogError("WeaponsManager is not valid");
+                return;
+            }
+
+            for (var i = weaponsManager.Weapons.Count - 1; i >= 0; i--)
+            {
+                var weapon = weaponsManager.Weapons[i];
+                if (weapon == null)
+                {
+                    continue;
+                }
+                
+                if (weapon.WeaponDefinition != WeaponDefinition)
+                {
+                    continue;
+                }
+
+                if (weapon is not RangedWeapon rangedWeapon)
+                {
+                    continue;
+                }
+
+                if (rangedWeapon.HasFullMagazine)
+                {
+                    continue;
+                }
+
+                if (WeaponInstanceInfo is not RangedWeaponInstanceInfo rangedWeaponInstanceInfo)
+                {
+                    rangedWeaponInstanceInfo = rangedWeapon.GenerateWeaponInstanceInfo(true) as RangedWeaponInstanceInfo;
+                }
+
+                rangedWeaponInstanceInfo.bulletsLeft += rangedWeapon.BulletsLeft;
+                rangedWeapon.LoadWeaponInstanceInfo(rangedWeaponInstanceInfo);
+                Destroy(gameObject);
             }
         }
     }

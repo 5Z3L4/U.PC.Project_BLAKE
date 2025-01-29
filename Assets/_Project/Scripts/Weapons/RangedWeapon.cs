@@ -43,6 +43,7 @@ namespace _Project.Scripts.Weapons
         public float Range => currentWeaponStats.Range;
         public int BulletsLeft { get; set; }
         public RangedWeaponStatistics CurrentRangedWeaponStatistics => currentWeaponStats;
+        public bool HasFullMagazine => BulletsLeft >= currentWeaponStats.MagazineSize;
 
 
         protected override void Awake()
@@ -309,7 +310,7 @@ namespace _Project.Scripts.Weapons
             baseWeaponStats = rangedWeaponDefinition.GetWeaponStatistics();
 
             if (weaponOwnerIsEnemy)
-            { 
+            {
                 effectDuration = rangedWeaponDefinition.EffectDuration; 
                 shootDelayTime = rangedWeaponDefinition.ShootDelayTime;
             }
@@ -341,14 +342,12 @@ namespace _Project.Scripts.Weapons
         public void ApplyRangedWeaponStatistics(RangedWeaponStatistics rangedWeaponStatistics)
         {
             currentWeaponStats = rangedWeaponStatistics;
-
             ResetSpread();
         }
 
         public void RestoreRangedWeaponStatistics()
         {
             currentWeaponStats = baseWeaponStats + weaponUpgrades;
-            
             ResetSpread();
         }
 
@@ -368,8 +367,10 @@ namespace _Project.Scripts.Weapons
         {
             if (weaponInstanceInfo is RangedWeaponInstanceInfo rangedWeaponInstanceInfo)
             {
-                BulletsLeft = rangedWeaponInstanceInfo.bulletsLeft;
+                BulletsLeft = Mathf.Min(rangedWeaponInstanceInfo.bulletsLeft, currentWeaponStats.MagazineSize);
             }
+            
+            base.LoadWeaponInstanceInfo(weaponInstanceInfo);
         }
 
 #if UNITY_EDITOR

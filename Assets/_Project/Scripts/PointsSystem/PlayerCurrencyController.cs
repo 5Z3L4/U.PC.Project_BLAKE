@@ -18,6 +18,10 @@ namespace _Project.Scripts.PointsSystem
         [SerializeField]
         private float deathPointsModifier = 0;
         public float Points => points;
+
+#if UNITY_EDITOR
+        private bool _debugMode;
+#endif
         
         protected override void Awake()
         {
@@ -55,6 +59,12 @@ namespace _Project.Scripts.PointsSystem
 
         public bool HasPlayerEnoughPoints(float pointsToSpend)
         {
+#if UNITY_EDITOR
+            if (_debugMode)
+            {
+                return true;
+            }
+#endif
             return points >= pointsToSpend;
         }
 
@@ -74,5 +84,21 @@ namespace _Project.Scripts.PointsSystem
         {
             OnPointsChanged?.Invoke(this.points);
         }
+
+
+#if UNITY_EDITOR
+        public void SetDebugMode(bool isEnabled)
+        {
+            if (isEnabled)
+            {
+                points = 10000;
+                _debugMode = true;
+            }
+            else
+            {
+                _debugMode = false;
+            }
+        }
+#endif
     }
 }
