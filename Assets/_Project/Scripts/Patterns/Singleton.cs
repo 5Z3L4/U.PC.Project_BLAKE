@@ -76,6 +76,7 @@ namespace _Project.Scripts.Patterns
         /// <remarks>It is best to keep a singleton on one game object as it may mark the game object as don't destroy on load (Unity can be weird).</remarks>
         /// </summary>
         public bool dontDestroyOnLoad = false;
+        public bool renamePrefab = false;
 
         /// <summary>
         /// Sets up the instance field. And names the game object.
@@ -117,7 +118,7 @@ namespace _Project.Scripts.Patterns
 
             if (dontDestroyOnLoad) DontDestroyOnLoad(this);
             
-            gameObject.name = GetSingletonName();
+            if (renamePrefab) gameObject.name = GetSingletonName();
 
             _initialized = true;
         }

@@ -48,6 +48,8 @@ namespace _Project.Scripts.EnemyAI
         private void OnDisable()
         {
             _canSeePlayer = false;
+            cts.Cancel();
+            cts.Dispose();
         }
 
         private async UniTaskVoid FOVRoutine()

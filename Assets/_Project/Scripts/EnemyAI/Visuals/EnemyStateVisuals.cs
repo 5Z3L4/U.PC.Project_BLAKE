@@ -58,7 +58,8 @@ namespace _Project.Scripts.EnemyAI.Visuals
 
         private void OnAlarmedState()
         {
-            AnimateVisual(_yellowMarker, AnimationType.PunchPosition).Forget();
+            AnimateVisual(_yellowMarker, AnimationType.PunchPosition)
+                .AttachExternalCancellation(gameObject.GetCancellationTokenOnDestroy()).Forget();
         }
 
         private void OnAttackingState()
@@ -66,7 +67,8 @@ namespace _Project.Scripts.EnemyAI.Visuals
             if (!_isAttacking)
             {
                 _isAttacking = true;
-                AnimateVisual(_redMarker, AnimationType.PunchScale, 2f).Forget();
+                AnimateVisual(_redMarker, AnimationType.PunchScale, 2f)
+                    .AttachExternalCancellation(gameObject.GetCancellationTokenOnDestroy()).Forget();
             }
         }
 
