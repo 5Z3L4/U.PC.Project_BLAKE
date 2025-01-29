@@ -57,7 +57,7 @@ public class SummaryScreen : MonoBehaviour
         playTimeText.text = string.Format("Play Time: {0:D2}:{1:D2}", Mathf.Floor(time / 60).ToString(), Mathf.FloorToInt(time % 60).ToString());
         weaponText.text = string.Format($"Most efficient weapon: {ReferenceManager.BlakeHeroCharacter.GetComponent<WeaponsManager>().GetBestWeaponName()}");
         var counter = FloorManager.Instance.roomsDoneCounter;
-        roomsText.text = string.Format($"Rooms beaten: {counter.RoomsBeaten}/{counter.RoomsInitialized}");
+        roomsText.text = string.Format($"Rooms: {counter.RoomsBeaten}/{counter.RoomsInitialized}");
         var floorCounter = LevelHandler.Instance.GetLevelList();
         floorText.text = string.Format($"Floor: {LevelHandler.Instance.GetIndex() + 1}/{floorCounter.Length}");
     }

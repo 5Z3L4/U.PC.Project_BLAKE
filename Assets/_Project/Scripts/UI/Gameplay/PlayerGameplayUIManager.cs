@@ -213,7 +213,6 @@ namespace _Project.Scripts.UI.Gameplay
         private void RefreshPoints(float points)
         {
             pointsCounter.text = $"Points: {Mathf.FloorToInt(points)}";
-            SummaryHandler.Instance.points = points;
         }
 
         private void HideComboTexts()
