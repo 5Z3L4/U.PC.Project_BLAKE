@@ -93,6 +93,10 @@ namespace _Project.Scripts.SceneHandlers
             if(ReferenceManager.RoomManager != null){
                 ReferenceManager.RoomManager.ClearRooms();
             }
+            if(GameHandler.Instance != null)
+            {
+                GameHandler.Instance._wasShownControls = false;
+            }
         }
     }
 }

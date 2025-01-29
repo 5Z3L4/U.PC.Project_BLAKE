@@ -177,9 +177,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45534a2832c67be4097c3d61b065197a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drawDebugGizmos: 0
   WeaponDefinition: {fileID: 11400000, guid: 5e20d309039b82b4298dc99a0d35a518, type: 2}
   bulletsSpawnPoint: {fileID: 8623244367694195942}
   muzzleFlashEffect: {fileID: 670550068612472688}
+  shootEffect: {fileID: 218533226855143631, guid: 015eef42be59a1f448314b9b8db6607f,
+    type: 3}
   infinityAmmo: 0
   throwableWeapon: {fileID: 2687323088996113468, guid: 87d2308fcbd07604ea09fa0ca282b68e,
     type: 3}

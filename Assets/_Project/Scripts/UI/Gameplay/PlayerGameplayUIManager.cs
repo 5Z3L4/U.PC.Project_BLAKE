@@ -62,6 +62,8 @@ namespace _Project.Scripts.UI.Gameplay
         private GameObject controlOnePerkObject;
         [SerializeField]
         private GameObject controlOnePerkText;
+        [SerializeField]
+        private OptionsHandler optionsHandler;
 
         private GameObject player;
         private WeaponsManager weaponsManager;
@@ -80,7 +82,11 @@ namespace _Project.Scripts.UI.Gameplay
             ReferenceManager.PlayerInputController.onMapPressEvent += ShowMap;
             ReferenceManager.PlayerInputController.onMapReleaseEvent += HideMap;
             floorManager.FloorGeneratorEnd -= FloorManagerOnFloorGeneratorEnd;
-        
+            if(GameHandler.Instance != null)
+            {
+                GameHandler.Instance.ShowControls();
+            }
+            optionsHandler.Awake();
             if (player == null || weaponsManager == null)
             {
                 player = playerTransform.gameObject;
@@ -206,7 +212,7 @@ namespace _Project.Scripts.UI.Gameplay
 
         private void RefreshPoints(float points)
         {
-            pointsCounter.text = $"Points: {points}";
+            pointsCounter.text = $"Points: {Mathf.FloorToInt(points)}";
             SummaryHandler.Instance.points = points;
         }
 

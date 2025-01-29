@@ -534,6 +534,7 @@ MonoBehaviour:
   isInitialized: 0
   isBeaten: 0
   spawnPoint: {fileID: 2417886148915629074}
+  respawnableObjects: []
   fog: {fileID: 8837184760782685497}
   fogBlockerPrefab: {fileID: 0}
   fogBlockerAmount: 1

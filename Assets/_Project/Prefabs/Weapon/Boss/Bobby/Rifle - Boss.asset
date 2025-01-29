@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponPrefab: {fileID: 8623244368148286623, guid: 7f1ae854a1323cd41a3361fdb2926a68,
     type: 3}
-  WeaponGFX: {fileID: 539712161414889713, guid: 7e0af4d7e171e6148a07c86bfa73cbee,
+  WeaponGFX: {fileID: 539712161414889713, guid: 75df49ad0b6c4ae42ba527c705c9d94d,
     type: 3}
   WeaponName: Rifle
   DropRate: 0
@@ -31,7 +31,7 @@ MonoBehaviour:
   WaitingTimeForNextShoot: 1
   BulletType: 1
   SpreadType: 3
-  Spread: 10
+  Spread: 4
   SpreadStep: -1
   SpreadThreshold: -1
   SpreadResetThreshold: 3

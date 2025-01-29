@@ -9217,6 +9217,7 @@ MonoBehaviour:
     type: 3}
   controlOnePerkObject: {fileID: 7398680565896284593}
   controlOnePerkText: {fileID: 8323483488333231074}
+  optionsHandler: {fileID: 1843804026935041630}
 --- !u!1 &8010867085668922118
 GameObject:
   m_ObjectHideFlags: 0
@@ -9504,7 +9505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5372489883344052164
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11785,11 +11786,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Settings_Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6962711334280918810, guid: 96724f12224f3584a96953ed3a409d4b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6962711334280919013, guid: 96724f12224f3584a96953ed3a409d4b,
         type: 3}
       propertyPath: m_Pivot.x
@@ -12084,3 +12080,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8734173954268668895}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1843804026935041630 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6962711335503330689, guid: 96724f12224f3584a96953ed3a409d4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8734173954268668895}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8989e5135cb7cf4abd870f659833b0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
