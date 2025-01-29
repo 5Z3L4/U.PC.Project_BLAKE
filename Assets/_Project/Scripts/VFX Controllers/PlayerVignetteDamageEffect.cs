@@ -52,5 +52,18 @@ namespace _Project.Scripts.VFX_Controllers
                 _vignette.intensity.value = targetVignetteIntensity;
             }
         }
+
+        private void OnDestroy()
+        {
+            if (ReferenceManager.Instance != null)
+            {
+                ReferenceManager.Instance.OnFloorLoad -= OnPlayerSpawned;
+            }
+
+            if (ReferenceManager.BlakeHeroCharacter != null)
+            {
+                ReferenceManager.BlakeHeroCharacter.OnDamageTaken -= TakeDamage;
+            }
+        }
     }
 }

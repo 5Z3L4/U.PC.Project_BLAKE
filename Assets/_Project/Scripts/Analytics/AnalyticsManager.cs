@@ -73,7 +73,6 @@ namespace _Project.Scripts.Analytics
         private void OnDestroy()
         {
             AnalyticsService.Instance?.Flush();
-            AnalyticsService.Instance?.StopDataCollection();
         }
     }
 }
