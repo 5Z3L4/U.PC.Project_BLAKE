@@ -20,6 +20,9 @@ namespace _Project.Scripts.UI.Gameplay
         [SerializeField] 
         private MinimapCameraFollow minimapCamera;
 
+        [SerializeField]
+        private SummaryScreen summary;
+
         [SerializeField, Space] 
         private TextMeshProUGUI weaponName;
 
@@ -189,7 +192,6 @@ namespace _Project.Scripts.UI.Gameplay
         private void UpdatePointsAndCombo(ComboAndPointsValues comboAndPointsValues)
         {
             RefreshPoints(comboAndPointsValues.Points);
-            
             if (!comboAndPointsValues.ShouldComboStart)
             {
                 return;

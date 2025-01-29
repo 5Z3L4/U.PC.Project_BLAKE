@@ -41,6 +41,7 @@ namespace _Project.Scripts.SceneHandlers
         public void StartNewGame()
         {
             GetComponent<LevelHandler>().ResetValues();
+            SummaryHandler.Instance.StartTimer();
             StartCoroutine(LoadNewSceneAdditive(firstFloor));
             PerkShop.ResetShopValues();
         }

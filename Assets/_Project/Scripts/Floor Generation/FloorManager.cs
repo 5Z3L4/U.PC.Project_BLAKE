@@ -26,7 +26,7 @@ namespace _Project.Scripts.Floor_Generation
         private CinemachineVirtualCamera virtualCamera;
         private GameObject cameraFollow;
 
-        public RoomsDoneCounter RoomsDoneCounter { get; private set; }
+        public RoomsDoneCounter roomsDoneCounter { get; private set; }
 
 
         protected override void Awake()
@@ -34,7 +34,7 @@ namespace _Project.Scripts.Floor_Generation
             base.Awake();
             
             floorGenerator = GetComponent<FloorGenerator>();
-            RoomsDoneCounter = GetComponent<RoomsDoneCounter>();
+            roomsDoneCounter = GetComponent<RoomsDoneCounter>();
         }
 
         private void Start()
@@ -59,7 +59,7 @@ namespace _Project.Scripts.Floor_Generation
                 player.transform.rotation = Quaternion.identity;
                 ReferenceManager.PlayerInputController.gameObject.SetActive(true);
             }
-            
+            roomsDoneCounter.Initialize();
             virtualCamera = Instantiate(virtualCameraPrefab).GetComponent<CinemachineVirtualCamera>();
             cameraFollow = Instantiate(cameraFollowPrefab);
         

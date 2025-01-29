@@ -43,6 +43,7 @@ namespace _Project.Scripts.PointsSystem
         public void AddPoints(float points)
         {
             this.points += points;
+            SummaryHandler.Instance.points += points;
             OnPointsChanged?.Invoke(this.points);
         }
 

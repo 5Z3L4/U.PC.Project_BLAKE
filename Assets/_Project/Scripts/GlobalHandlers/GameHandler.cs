@@ -23,7 +23,7 @@ namespace _Project.Scripts.GlobalHandlers
         {
             get => _isGamePaused;
 
-            private set
+            set
             {
                 _isGamePaused = value;
                 Time.timeScale = _isGamePaused ? 0f : 1f;

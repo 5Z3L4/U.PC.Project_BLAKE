@@ -59,7 +59,8 @@ public class AIController : MonoBehaviour
         {
             NavMeshAgent.isStopped = true;
         }
-        
+        ReferenceManager.BlakeHeroCharacter?.GetComponent<WeaponsManager>()?.AddKillToWeapon(ReferenceManager.BlakeHeroCharacter.GetComponent<WeaponsManager>().CurrentActiveWeapon.WeaponDefinition);
+        SummaryHandler.Instance.kills++;
         GetComponent<MBTExecutor>().enabled = false;
         enabled = false;
     }

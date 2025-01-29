@@ -64,7 +64,7 @@ public abstract class BlakeCharacter : MonoBehaviour, IDamageable
         isDead = true;
         if (respawnCounter >= maxRespawns)
         {
-            ReferenceManager.LevelHandler.EndRun();
+            ReferenceManager.LevelHandler.EndRun(false);
             return;
         }
         

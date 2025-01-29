@@ -16,7 +16,7 @@ public class RoomsDoneCounter : MonoBehaviour
         floorGenerator = GetComponent<FloorGenerator>();
     }
 
-    private void Start()
+    public void Initialize()
     {
         roomsInitialized = floorGenerator.MaxRooms;
     }
