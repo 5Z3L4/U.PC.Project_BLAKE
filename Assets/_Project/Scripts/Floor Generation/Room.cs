@@ -489,7 +489,9 @@ public class Room : MonoBehaviour
         
         foreach (var weapon in instantiatedWeapons.ToArray())
         {
-            Destroy(weapon.gameObject);
+            if (weapon != null)
+                Destroy(weapon.gameObject);
+
             instantiatedWeapons.Remove(weapon);
         }
 
