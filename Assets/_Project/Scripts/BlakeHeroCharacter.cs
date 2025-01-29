@@ -3,6 +3,7 @@ using _Project.Scripts.GlobalHandlers;
 using _Project.Scripts.Player.GFX;
 using _Project.Scripts.PointsSystem;
 using _Project.Scripts.SceneHandlers;
+using System.Text.RegularExpressions;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -52,7 +53,12 @@ namespace _Project.Scripts
         public override void Die(GameObject killer)
         {
             this.TrySendAnalytics(killer);
-            FindAnyObjectByType<SummaryScreen>(FindObjectsInactive.Include).SetKiller(killer.name);
+            string killerName = "";
+            if(killer.TryGetComponent(out EnemyPointsData enemy))
+            {
+                killerName = Regex.Replace(enemy.EnemyTypeEnum.ToString(), "(?<!^)([A-Z])", " $1");
+            }
+            FindAnyObjectByType<SummaryScreen>(FindObjectsInactive.Include).SetKiller(killerName);
             explosionParticleInstantiated = Instantiate(explosionParticle, transform.position, quaternion.identity);
             gameObject.SetActive(false);
             Invoke("Respawn", 2f);

@@ -63,7 +63,9 @@ namespace _Project.Scripts.Weapons
 
         public string GetBestWeaponName()
         {
-            string usedWeapons = weaponKills.OrderByDescending(pair => pair.Value).First().Key;
+            string usedWeapons = "None";
+            if (weaponKills.Count > 0)
+                usedWeapons = weaponKills.OrderByDescending(pair => pair.Value).First().Key;
             return usedWeapons;
         }
 
