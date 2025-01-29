@@ -263,7 +263,6 @@ public class Room : MonoBehaviour
             return;
         }
 
-
         //Spawn enemies
         foreach (EnemySpawner enemy in spawners)
         {

@@ -88,6 +88,7 @@ namespace _Project.Scripts.UI.Gameplay
                 weaponsManager.OnPrimaryAttack += RefreshUI;
                 weaponsManager.OnPlayerPickupWeaponEvent += RefreshUI;
                 weaponsManager.OnWeaponChangedEvent += RefreshUI;
+                weaponsManager.OnWeaponUpdateEvent += RefreshUI;
                 RefreshUI(weaponsManager.Weapons[weaponsManager.ActiveWeaponIndex]);
             }
         

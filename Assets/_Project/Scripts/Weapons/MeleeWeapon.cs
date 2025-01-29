@@ -212,7 +212,7 @@ namespace _Project.Scripts.Weapons
 
         public override void LoadWeaponInstanceInfo(WeaponInstanceInfo weaponInstanceInfo)
         {
-        
+            base.LoadWeaponInstanceInfo(weaponInstanceInfo);
         }
     }
 }
