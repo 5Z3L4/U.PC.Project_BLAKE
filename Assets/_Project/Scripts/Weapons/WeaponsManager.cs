@@ -4,6 +4,7 @@ using _Project.Scripts.GlobalHandlers;
 using _Project.Scripts.Weapons.Definition;
 using GameFramework.Abilities;
 using UnityEngine;
+using System.Linq;
 
 namespace _Project.Scripts.Weapons
 {
@@ -30,6 +31,8 @@ namespace _Project.Scripts.Weapons
         public bool throwOnNoAmmo = true;
         private bool haveThirdWeaponSlot = false;
 
+        public Dictionary<string, int> weaponKills = new Dictionary<string, int>();
+
         private void Awake()
         {
             if (defaultWeapon == null)
@@ -46,6 +49,25 @@ namespace _Project.Scripts.Weapons
             {
                 ReferenceManager.PlayerInputController.changeWeaponEvent += SetActiveIndex;
             }
+        }
+
+        public void AddKillToWeapon(WeaponDefinition weapon)
+        {
+            if(weaponKills.ContainsKey(weapon.WeaponName))
+            {
+                weaponKills[weapon.WeaponName]++;
+            } else
+            {
+                weaponKills.Add(weapon.WeaponName, 1);
+            }
+        }
+
+        public string GetBestWeaponName()
+        {
+            string usedWeapons = "None";
+            if (weaponKills.Count > 0)
+                usedWeapons = weaponKills.OrderByDescending(pair => pair.Value).First().Key;
+            return usedWeapons;
         }
 
         public void Equip(WeaponDefinition weaponDefinition, int index)

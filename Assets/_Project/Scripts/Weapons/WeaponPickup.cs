@@ -28,7 +28,11 @@ namespace _Project.Scripts.Weapons
 
         private void Start()
         {
-            weaponGFX = Instantiate(WeaponDefinition.WeaponGFX, pickupGameObject.transform.position, pickupGameObject.transform.rotation, pickupGameObject.transform);
+            weaponGFX = GetComponentInChildren<Outline>()?.gameObject;
+            if (weaponGFX == null)
+            {
+                weaponGFX = Instantiate(WeaponDefinition.WeaponGFX, pickupGameObject.transform.position, pickupGameObject.transform.rotation, pickupGameObject.transform);
+            }
             SetOutlineVisibilityOnGround();
 
             foreach (var customCollider in GetComponentsInChildren<WeaponPickupCustomCollider>())

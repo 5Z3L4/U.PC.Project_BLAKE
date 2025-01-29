@@ -102,6 +102,11 @@ public class PlayerInteractables : MonoBehaviour
 
             foreach (IInteractable interactable in interactables)
             {
+                if(interactable == null)
+                {
+                    invalidInteractables.Add(interactable);
+                    continue;
+                }
                 if (!interactable.CanInteract()) continue;
                 if (interactable.GetGameObject() == null) { invalidInteractables.Add(interactable); continue; }
 
@@ -156,6 +161,11 @@ public class PlayerInteractables : MonoBehaviour
 
             foreach (IAltInteractable interactable in altInteractables)
             {
+                if (interactable == null)
+                {
+                    invalidInteractables.Add(interactable);
+                    continue;
+                }
                 if (!interactable.CanAltInteract()) continue;
                 if (interactable.GetGameObject() == null) { invalidInteractables.Add(interactable); continue; }
                 Vector3 direction = interactable.GetGameObject().transform.position - playerHead.position;

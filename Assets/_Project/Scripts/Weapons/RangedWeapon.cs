@@ -132,6 +132,7 @@ namespace _Project.Scripts.Weapons
                 detachedSource.minDistance = audioSource.minDistance;
                 detachedSource.maxDistance = audioSource.maxDistance;
                 detachedSource.transform.position = audioSource.transform.position;
+                detachedSource.outputAudioMixerGroup = audioSource.outputAudioMixerGroup;
 
                 detachedSource.Play();
                 Destroy(detachedAudio, detachedSource.clip.length);

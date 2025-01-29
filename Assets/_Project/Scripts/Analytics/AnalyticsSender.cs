@@ -50,8 +50,8 @@ namespace _Project.Scripts.Analytics
             var parameters = new Dictionary<string, object>()
             {
                 { AnalyticsParameterNames.LevelName, levelName },
-                { AnalyticsParameterNames.RoomsBeaten, FloorManager.Instance.RoomsDoneCounter.RoomsBeaten },
-                { AnalyticsParameterNames.RoomsToBeat, FloorManager.Instance.RoomsDoneCounter.RoomsInitialized },
+                { AnalyticsParameterNames.RoomsBeaten, FloorManager.Instance.roomsDoneCounter.RoomsBeaten },
+                { AnalyticsParameterNames.RoomsToBeat, FloorManager.Instance.roomsDoneCounter.RoomsInitialized },
             };
 
             AnalyticsManager.Instance.SendCustomData(AnalyticsEventNames.LevelCompleted, parameters, true);

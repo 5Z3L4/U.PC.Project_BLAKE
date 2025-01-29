@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2078178273542596224}
   - component: {fileID: 2078178273542596239}
   - component: {fileID: 1060863773}
+  - component: {fileID: 2231921271622565323}
   m_Layer: 0
   m_Name: SceneHandler
   m_TagString: Untagged
@@ -63,5 +64,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f4fe7f1208fb144181faa8ecef1bf1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
   levelIndex: 0
   levelNames: {fileID: 11400000, guid: 984345e1921682f4a9f4b3d0a5d0befb, type: 2}
+--- !u!114 &2231921271622565323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078178273542596238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9787f3bc402a4cb449af50e3e32f5085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

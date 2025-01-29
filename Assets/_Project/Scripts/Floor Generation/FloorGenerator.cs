@@ -69,7 +69,7 @@ public class FloorGenerator : MonoBehaviour
     private bool debugOverlapping = false;
     [SerializeField]
     private bool debugRoomFinding = false;
-    public int MaxRooms => maxRooms;
+    public int MaxRooms => spawnedRooms.Count;
 
     public IEnumerator GenerateFloor()
     {
