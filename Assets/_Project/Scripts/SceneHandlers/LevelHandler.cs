@@ -74,7 +74,6 @@ namespace _Project.Scripts.SceneHandlers
                 Destroy(ReferenceManager.PlayerInputController.gameObject);
             }
             ReferenceManager.RoomManager.ClearRooms();
-            SummaryHandler.Instance.ResetValues();
         }
 
         public void ResetValues()
@@ -96,6 +95,10 @@ namespace _Project.Scripts.SceneHandlers
             if(GameHandler.Instance != null)
             {
                 GameHandler.Instance._wasShownControls = false;
+            }
+            if(SummaryHandler.Instance != null)
+            {
+                SummaryHandler.Instance.ResetValues();
             }
         }
     }
