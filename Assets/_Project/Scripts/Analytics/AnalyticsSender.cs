@@ -77,11 +77,15 @@ namespace _Project.Scripts.Analytics
             {
                 return;
             }
-        
+            var weaponName = "";
+            if(killer.GetComponent<AIController>()?.Weapon != null)
+            {
+                weaponName = killer.GetComponent<AIController>().Weapon.name;
+            }
             var parameters = new Dictionary<string, object>()
             {
                 { AnalyticsParameterNames.Killer, killer.name },
-                { AnalyticsParameterNames.ItemName, killer.GetComponent<AIController>()?.Weapon?.name },
+                { AnalyticsParameterNames.ItemName, weaponName},
                 { AnalyticsParameterNames.PlacementName, ReferenceManager.RoomManager.GetActiveRoom().name }
             };
             
