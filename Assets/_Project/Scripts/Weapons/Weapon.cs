@@ -63,6 +63,10 @@ namespace _Project.Scripts.Weapons
         }
 
         public virtual WeaponInstanceInfo GenerateWeaponInstanceInfo(bool randomize = false) => new WeaponInstanceInfo();
-        public abstract void LoadWeaponInstanceInfo(WeaponInstanceInfo weaponInstanceInfo);
+
+        public virtual void LoadWeaponInstanceInfo(WeaponInstanceInfo weaponInstanceInfo)
+        {
+            weaponsManager.OnWeaponUpdate();
+        }
     }
 }

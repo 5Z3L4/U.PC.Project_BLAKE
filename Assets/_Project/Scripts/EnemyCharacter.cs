@@ -8,7 +8,6 @@ namespace _Project.Scripts
 {
     public class EnemyCharacter : BlakeCharacter
     {
-
         [SerializeField]
         private float speed = 6f;
         [SerializeField]
@@ -106,7 +105,7 @@ namespace _Project.Scripts
                 var weaponPickupInstantiated = Instantiate(weaponPickup, transform.position, Quaternion.identity);
                 weaponPickupInstantiated.WeaponDefinition = weapon.WeaponDefinition;
                 weaponPickupInstantiated.WeaponInstanceInfo = weapon.GenerateWeaponInstanceInfo(true);
-                SpawnedInRoom.AddSpawnedWeapon(weaponPickupInstantiated.gameObject);
+                SpawnedInRoom.AddSpawnedWeapon(weaponPickupInstantiated);
             }
         }
     }

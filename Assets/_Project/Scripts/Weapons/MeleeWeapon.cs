@@ -16,6 +16,8 @@ namespace _Project.Scripts.Weapons
         public ParticleSystem weaponFlashEffect;
         [SerializeField]
         public ParticleSystem weaponAttackEffect;
+        [SerializeField]
+        private LayerMask mask;
         
         private PlayableDirector playableDirector;
         private Transform characterTransform;
@@ -29,7 +31,7 @@ namespace _Project.Scripts.Weapons
         private int maxSpreadRangePerSide;
         private float lastAttackTime;
         
-        private float masterShootDelayTime => currentWeaponStats.AttackDelayTime + shootDelayTime;
+        private float masterAttackDelayTime => currentWeaponStats.AttackDelayTime + shootDelayTime;
         
         //Enemy only
         private float effectDuration = 0f;
@@ -53,7 +55,7 @@ namespace _Project.Scripts.Weapons
 
         public override bool CanPrimaryAttack()
         {
-            if (Time.time - lastAttackTime < masterShootDelayTime) return false;
+            if (Time.time - lastAttackTime < masterAttackDelayTime) return false;
             if (isTryingToAttack) return false;
             
             return true;
@@ -89,10 +91,10 @@ namespace _Project.Scripts.Weapons
         private void CastEnemyWeaponVFX()
         {
             weaponFlashEffect.Play();
-            DOVirtual.DelayedCall(effectDuration, TryStopEnemyMuzzleFlashVFX);
+            DOVirtual.DelayedCall(effectDuration, TryStopEnemyWeaponFlashVFX);
         }
 
-        private void TryStopEnemyMuzzleFlashVFX()
+        private void TryStopEnemyWeaponFlashVFX()
         {
             weaponFlashEffect.Clear();
             weaponFlashEffect.Stop();
@@ -122,7 +124,13 @@ namespace _Project.Scripts.Weapons
                 {
                     continue;
                 }
-                
+                if(Physics.Raycast(new Ray(characterTransform.position, targetDir), out RaycastHit hit ,currentWeaponStats.SphereCastRadius, mask)) { }
+                {
+                    if (hit.collider != null)
+                    {
+                        if (hit.collider.gameObject != colliderFound.gameObject) continue;
+                    }
+                }
                 var damageable = colliderFound.transform.GetComponentInParent<IDamageable>();
                 damageable?.TryTakeDamage(transform.parent.gameObject, 1);
             }
@@ -204,7 +212,7 @@ namespace _Project.Scripts.Weapons
 
         public override void LoadWeaponInstanceInfo(WeaponInstanceInfo weaponInstanceInfo)
         {
-        
+            base.LoadWeaponInstanceInfo(weaponInstanceInfo);
         }
     }
 }

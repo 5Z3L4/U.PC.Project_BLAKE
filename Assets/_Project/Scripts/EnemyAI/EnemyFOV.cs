@@ -48,6 +48,11 @@ namespace _Project.Scripts.EnemyAI
         private void OnDisable()
         {
             _canSeePlayer = false;
+            if (!cts.IsCancellationRequested)
+            {
+                cts.Cancel();
+                cts.Dispose();
+            }
         }
 
         private async UniTaskVoid FOVRoutine()
@@ -55,8 +60,16 @@ namespace _Project.Scripts.EnemyAI
             cts = new CancellationTokenSource();
             while (true)
             {
-                await UniTask.Delay(TimeSpan.FromSeconds(fovCheckDelay), cancellationToken: cts.Token);
-                await FieldOfViewCheck(cts.Token);
+                var delay = TimeSpan.FromSeconds(fovCheckDelay);
+                if (await UniTask.Delay(delay, cancellationToken: cts.Token).SuppressCancellationThrow())
+                {
+                    return;
+                }
+
+                if (await FieldOfViewCheck(cts.Token).SuppressCancellationThrow())
+                {
+                    return;
+                }
             }
         }
 
@@ -99,7 +112,12 @@ namespace _Project.Scripts.EnemyAI
                 else if(distanceToTarget < maxBackVisibilityDistance)
                 {
                     CanSeePlayer = true;
-                    await UniTask.Delay(TimeSpan.FromSeconds(findPlayerFromBehindDelay), cancellationToken: cToken);
+                    var delay = TimeSpan.FromSeconds(findPlayerFromBehindDelay);
+                    if (await UniTask.Delay(delay, cancellationToken: cToken).SuppressCancellationThrow())
+                    {
+                        return; 
+                    }
+                    
                     OnCanSeePlayerChanged?.Invoke(CanSeePlayer);
                 }
             }
@@ -144,8 +162,11 @@ namespace _Project.Scripts.EnemyAI
 #endif
         private void OnDestroy()
         {
-            cts?.Cancel();
-            cts?.Dispose();
+            if (!cts.IsCancellationRequested)
+            {
+                cts?.Cancel();
+                cts?.Dispose();
+            }
         }
     }
 }

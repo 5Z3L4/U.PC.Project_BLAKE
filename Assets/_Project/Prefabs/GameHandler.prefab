@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 953ecdafefa97a740b8d475e25d58532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 0
+  dontDestroyOnLoad: 1
   pausedGameCanvas: {fileID: 0}
   playerUI: {fileID: 0}

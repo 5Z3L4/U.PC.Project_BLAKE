@@ -37,11 +37,21 @@ namespace _Project.Scripts.SceneHandlers
             }
         }
 
+        public string[] GetLevelList()
+        {
+            return levelNames.levelNames;
+        }
+
+        public int GetIndex()
+        {
+            return levelIndex;
+        }
+
         public void GoToNextLevel()
         {
             if (levelIndex == levelNames.levelNames.Length - 1)
             {
-                EndRun();
+                EndRun(true);
                 return;
             }
             
@@ -53,17 +63,18 @@ namespace _Project.Scripts.SceneHandlers
             sceneHandler.LoadNewLevel(levelNames.levelNames[levelIndex]);
         }
 
-        public void EndRun()
+        public void EndRun(bool won)
         {
+            GameHandler.Instance.IsGamePaused = true;
+            FindAnyObjectByType<SummaryScreen>(FindObjectsInactive.Include).SetupSummary(won);
+
             levelIndex = 0;
             if (ReferenceManager.PlayerInputController != null)
             {
                 Destroy(ReferenceManager.PlayerInputController.gameObject);
             }
-            
             ReferenceManager.RoomManager.ClearRooms();
-
-            sceneHandler.LoadMainMenu();
+            SummaryHandler.Instance.ResetValues();
         }
 
         public void ResetValues()
@@ -81,6 +92,10 @@ namespace _Project.Scripts.SceneHandlers
             }
             if(ReferenceManager.RoomManager != null){
                 ReferenceManager.RoomManager.ClearRooms();
+            }
+            if(GameHandler.Instance != null)
+            {
+                GameHandler.Instance._wasShownControls = false;
             }
         }
     }

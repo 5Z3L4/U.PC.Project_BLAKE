@@ -510,6 +510,9 @@ MonoBehaviour:
   isInitialized: 0
   isBeaten: 0
   spawnPoint: {fileID: 2417886148915629074}
+  respawnableObjects:
+  - {fileID: 671498278134991702}
+  - {fileID: 8325165633606930936}
   fog: {fileID: 7956087247140920814}
   fogBlockerPrefab: {fileID: 0}
   fogBlockerAmount: 0
@@ -6550,6 +6553,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 533ffb6a79d6ba94ca899689f9df94f3, type: 3}
+--- !u!1 &671498278134991702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2250193661021338515, guid: 533ffb6a79d6ba94ca899689f9df94f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1615647770159804613}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &671498278134991705 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2250193661021338524, guid: 533ffb6a79d6ba94ca899689f9df94f3,
@@ -23481,6 +23490,12 @@ PrefabInstance:
 --- !u!4 &8325165633606930935 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2250193661021338524, guid: 533ffb6a79d6ba94ca899689f9df94f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 7832504390046804587}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8325165633606930936 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2250193661021338515, guid: 533ffb6a79d6ba94ca899689f9df94f3,
     type: 3}
   m_PrefabInstance: {fileID: 7832504390046804587}
   m_PrefabAsset: {fileID: 0}
