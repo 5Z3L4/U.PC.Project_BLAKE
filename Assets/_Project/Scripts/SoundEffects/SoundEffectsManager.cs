@@ -1,0 +1,84 @@
+using System.Collections;
+using System.Collections.Generic;
+using _Project.Scripts.Patterns;
+using UnityEngine;
+using UnityEngine.Audio;
+
+namespace _Project.Scripts.SoundEffects
+{
+    [RequireComponent(typeof(SFXPool))]
+    public class SoundEffectsManager : Singleton<SoundEffectsManager>
+    {
+        private SFXPool _sfxPool;
+        private Dictionary<string, AudioClip> _isClipPlaying;
+        private Dictionary<string, AudioSource> _frequentAudioSources;
+        
+        private bool _isRandomPitch = false;
+        private bool _isRandomVolume = false;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            
+            _sfxPool = GetComponent<SFXPool>();
+            _isClipPlaying = new Dictionary<string, AudioClip>();
+            _frequentAudioSources = new Dictionary<string, AudioSource>();
+        }
+
+        public SoundEffectsManager WithRandomPitch()
+        {
+            _isRandomPitch = true;
+            return this;
+        }
+
+        public SoundEffectsManager WithRandomVolume()
+        {
+            _isRandomVolume = true;
+            return this;
+        }
+
+        public void PlaySFX(SoundData soundData, Vector3 position)
+        {
+            if (!_isClipPlaying.TryAdd(soundData.AudioClip.name, soundData.AudioClip)) return;
+
+            if (!_frequentAudioSources.TryGetValue(soundData.AudioClip.name, out var audioSource))
+            {
+                audioSource = _sfxPool.GetObject();
+            }
+            
+            audioSource.transform.position = position;
+            audioSource.outputAudioMixerGroup = soundData.AudioMixerGroup;
+            audioSource.clip = soundData.AudioClip;
+
+            if (_isRandomPitch)
+            {
+                audioSource.pitch += Random.Range(-0.05f, 0.05f);
+            }
+
+            if (_isRandomVolume)
+            {
+                audioSource.volume = Random.Range(0.45f, 1f);
+            }
+            
+            
+            audioSource.PlayOneShot(soundData.AudioClip);
+
+            StartCoroutine(ClipReset(audioSource, soundData.AudioClip, soundData.IsFrequent));
+        }
+    
+        private IEnumerator ClipReset(AudioSource audioSource, AudioClip clip, bool isFrequent)
+        {
+            yield return new WaitUntil(() => !audioSource.isPlaying);
+            audioSource.Stop();
+            
+            _isClipPlaying.Remove(clip.name);
+
+            if (isFrequent)
+            {
+                _frequentAudioSources.TryAdd(clip.name, audioSource);
+                yield break;
+            }
+            _sfxPool.ReturnObject(audioSource);
+        }
+    }
+}
