@@ -790,6 +790,7 @@ MonoBehaviour:
     constantValue: 0
   Waypoints: {fileID: 0}
   SpecialWeapon: {fileID: 8349588016827953080}
+  specialSkillEnabled: 0
   specialWeaponShootChance: 0.4
   specialWeaponCooldown: 3
   maxDistanceToShootSpecialWeapon: 15
@@ -843,6 +844,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 15
   timeBetweenDamages: 0.5
+  hitSoundData:
+  - audioClip: {fileID: 8300000, guid: 86ed8d6395d60924280b2349232312b9, type: 3}
+    audioMixerGroup: {fileID: 8048913908855039910, guid: 051cac1ae2a9c8a439448df8a83e6ded,
+      type: 2}
+    isFrequent: 0
+  - audioClip: {fileID: 8300000, guid: 5dc66911ccb9f6c458412e67ebafbfca, type: 3}
+    audioMixerGroup: {fileID: 8048913908855039910, guid: 051cac1ae2a9c8a439448df8a83e6ded,
+      type: 2}
+    isFrequent: 0
+  - audioClip: {fileID: 8300000, guid: 3d8301b0a36160440aa940f344eaa3eb, type: 3}
+    audioMixerGroup: {fileID: 8048913908855039910, guid: 051cac1ae2a9c8a439448df8a83e6ded,
+      type: 2}
+    isFrequent: 0
+  - audioClip: {fileID: 8300000, guid: cb531f62819036b4bae2716843097d99, type: 3}
+    audioMixerGroup: {fileID: 8048913908855039910, guid: 051cac1ae2a9c8a439448df8a83e6ded,
+      type: 2}
+    isFrequent: 0
+  - audioClip: {fileID: 8300000, guid: 31572650e29d4044ca06fa4dfc8f7cac, type: 3}
+    audioMixerGroup: {fileID: 8048913908855039910, guid: 051cac1ae2a9c8a439448df8a83e6ded,
+      type: 2}
+    isFrequent: 0
+  - audioClip: {fileID: 8300000, guid: 36e6566d179ab084b8b2acab861fb71c, type: 3}
+    audioMixerGroup: {fileID: 8048913908855039910, guid: 051cac1ae2a9c8a439448df8a83e6ded,
+      type: 2}
+    isFrequent: 0
+  - audioClip: {fileID: 8300000, guid: 403aa41a5f0ab2b48b0f4eb7deddea3f, type: 3}
+    audioMixerGroup: {fileID: 8048913908855039910, guid: 051cac1ae2a9c8a439448df8a83e6ded,
+      type: 2}
+    isFrequent: 0
+  deathSoundData: []
+  shieldBreakSoundData:
+    audioClip: {fileID: 0}
+    audioMixerGroup: {fileID: 0}
+    isFrequent: 0
   maxRespawns: 3
   explosionParticle: {fileID: 6361431522622511341, guid: 12d7691791b971b41b6074506d2a114d,
     type: 3}
