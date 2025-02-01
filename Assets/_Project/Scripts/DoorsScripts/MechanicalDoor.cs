@@ -1,4 +1,5 @@
 using _Project.Scripts.GlobalHandlers;
+using _Project.Scripts.SoundEffects;
 using UnityEngine;
 
 public class MechanicalDoor : Door, IInteractable, IAltInteractable
@@ -13,6 +14,10 @@ public class MechanicalDoor : Door, IInteractable, IAltInteractable
     private bool interactable = false;
     [SerializeField]
     private bool open = false;
+    [SerializeField]
+    private SoundData openDoorSoundData;
+    [SerializeField]
+    private SoundData closeDoorSoundData;
 
     private Room roomToPeek;
 
@@ -100,6 +105,7 @@ public class MechanicalDoor : Door, IInteractable, IAltInteractable
             return;
         }
         
+        SoundEffectsManager.Instance.PlaySFX(openDoorSoundData, transform.position);
         animator.SetBool("closed", false);
         open = true;
     }
@@ -111,6 +117,7 @@ public class MechanicalDoor : Door, IInteractable, IAltInteractable
             return;
         }
         
+        SoundEffectsManager.Instance.PlaySFX(closeDoorSoundData, transform.position);
         animator.SetBool("closed", true);
         open = false;
     }

@@ -1,4 +1,5 @@
 using _Project.Scripts.Analytics;
+using _Project.Scripts.SoundEffects;
 using _Project.Scripts.Weapons.Definition;
 using QuickOutline.Scripts;
 using UnityEngine;
@@ -17,6 +18,9 @@ namespace _Project.Scripts.Weapons
 
         [SerializeField] 
         private bool addAmmoWhenWalkedOn = true;
+        
+        [SerializeField]
+        private SoundData weaponPickupSoundData;
 
         [HideInInspector]
         public WeaponInstanceInfo WeaponInstanceInfo;
@@ -90,6 +94,7 @@ namespace _Project.Scripts.Weapons
 
             WeaponInstanceInfo = weaponInstanceInfoToSave;
             weaponsManager.OnPlayerPickupWeapon();
+            SoundEffectsManager.Instance.PlaySFX(weaponPickupSoundData, transform.position);
 
             if (weaponDefinition != null)
             {

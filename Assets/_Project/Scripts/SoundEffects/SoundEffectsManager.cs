@@ -12,9 +12,6 @@ namespace _Project.Scripts.SoundEffects
         private SFXPool _sfxPool;
         private Dictionary<string, AudioClip> _isClipPlaying;
         private Dictionary<string, AudioSource> _frequentAudioSources;
-        
-        private bool _isRandomPitch = false;
-        private bool _isRandomVolume = false;
 
         protected override void Awake()
         {
@@ -25,21 +22,9 @@ namespace _Project.Scripts.SoundEffects
             _frequentAudioSources = new Dictionary<string, AudioSource>();
         }
 
-        public SoundEffectsManager WithRandomPitch()
+        public void PlaySFX(SoundData soundData, Vector3 position, bool isRandomVolume = false, bool isRandomPitch = false)
         {
-            _isRandomPitch = true;
-            return this;
-        }
-
-        public SoundEffectsManager WithRandomVolume()
-        {
-            _isRandomVolume = true;
-            return this;
-        }
-
-        public void PlaySFX(SoundData soundData, Vector3 position)
-        {
-            if (!_isClipPlaying.TryAdd(soundData.AudioClip.name, soundData.AudioClip)) return;
+            if (!_isClipPlaying.TryAdd(soundData.AudioClip.name, soundData.AudioClip) && !soundData.IsFrequent) return;
 
             if (!_frequentAudioSources.TryGetValue(soundData.AudioClip.name, out var audioSource))
             {
@@ -50,18 +35,18 @@ namespace _Project.Scripts.SoundEffects
             audioSource.outputAudioMixerGroup = soundData.AudioMixerGroup;
             audioSource.clip = soundData.AudioClip;
 
-            if (_isRandomPitch)
+            if (isRandomPitch)
             {
                 audioSource.pitch += Random.Range(-0.05f, 0.05f);
             }
 
-            if (_isRandomVolume)
+            if (isRandomVolume)
             {
                 audioSource.volume = Random.Range(0.45f, 1f);
             }
             
-            
             audioSource.PlayOneShot(soundData.AudioClip);
+            //audioSource.Play();
 
             StartCoroutine(ClipReset(audioSource, soundData.AudioClip, soundData.IsFrequent));
         }

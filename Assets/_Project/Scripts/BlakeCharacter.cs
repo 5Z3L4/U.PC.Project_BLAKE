@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using _Project.Scripts.GlobalHandlers;
 using _Project.Scripts.Interfaces;
+using _Project.Scripts.SoundEffects;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public abstract class BlakeCharacter : MonoBehaviour, IDamageable
 {
@@ -11,6 +13,16 @@ public abstract class BlakeCharacter : MonoBehaviour, IDamageable
 
     [SerializeField] 
     protected float timeBetweenDamages = .5f;
+
+    [SerializeField] 
+    protected SoundData[] hitSoundData = {};
+    
+    [SerializeField] 
+    protected SoundData[] deathSoundData = {};
+
+    [SerializeField] 
+    private SoundData shieldBreakSoundData;
+    
 
     public int Health
     {
@@ -62,6 +74,12 @@ public abstract class BlakeCharacter : MonoBehaviour, IDamageable
     public virtual void Die(GameObject killer)
     {
         isDead = true;
+        
+        if (deathSoundData.Length > 0)
+        {
+            SoundEffectsManager.Instance.PlaySFX(deathSoundData[Random.Range(0, deathSoundData.Length)], transform.position);
+        }
+        
         if (respawnCounter >= maxRespawns)
         {
             ReferenceManager.LevelHandler.EndRun(false);
@@ -89,6 +107,12 @@ public abstract class BlakeCharacter : MonoBehaviour, IDamageable
         
         //Debug.Log(instigator.name + " dealt " + damage + " damage to " + name);
         Health -= damage;
+
+        if (hitSoundData.Length > 0)
+        {
+            SoundEffectsManager.Instance.PlaySFX(hitSoundData[Random.Range(0, hitSoundData.Length)], transform.position);
+        }
+        
         OnDamageTaken?.Invoke(instigator);
 
         if (health > 0)
@@ -137,6 +161,7 @@ public abstract class BlakeCharacter : MonoBehaviour, IDamageable
         hasShield = false;
         shieldParticle.gameObject.SetActive(false);
         shieldExplosionParticleInstantiated = Instantiate(shieldExplosionParticle, transform.position, Quaternion.identity);
+        SoundEffectsManager.Instance.PlaySFX(shieldBreakSoundData, transform.position);
     }
 
     public void SetRespawnPosition(Vector3 position)
