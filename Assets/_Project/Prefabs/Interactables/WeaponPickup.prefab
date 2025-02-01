@@ -99,6 +99,11 @@ MonoBehaviour:
   pickupGameObject: {fileID: 4758205076925276579}
   rotateForce: 5
   addAmmoWhenWalkedOn: 1
+  weaponPickupSoundData:
+    audioClip: {fileID: 8300000, guid: b8ec435974c43af4cbf66d632e5f1e55, type: 3}
+    audioMixerGroup: {fileID: 8048913908855039910, guid: 051cac1ae2a9c8a439448df8a83e6ded,
+      type: 2}
+    isFrequent: 0
 --- !u!114 &4825340247130890640
 MonoBehaviour:
   m_ObjectHideFlags: 0

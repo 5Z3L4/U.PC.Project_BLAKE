@@ -3229,6 +3229,11 @@ MonoBehaviour:
   dashCooldown: 1.5
   dashDuration: 0.175
   gunHandlerTransform: {fileID: 3772505426422216946}
+  dashSoundData:
+    audioClip: {fileID: 8300000, guid: 40f2a38e313efe24b8a908872fee1669, type: 3}
+    audioMixerGroup: {fileID: 8048913908855039910, guid: 051cac1ae2a9c8a439448df8a83e6ded,
+      type: 2}
+    isFrequent: 1
 --- !u!114 &5545414051132038907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3242,6 +3247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
+  renamePrefab: 0
 --- !u!114 &4151773349220175101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3294,6 +3300,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   timeBetweenDamages: 0.5
+  hitSoundData:
+  - audioClip: {fileID: 8300000, guid: 2b18efab8ec255c41afb5ba880e58877, type: 3}
+    audioMixerGroup: {fileID: 8048913908855039910, guid: 051cac1ae2a9c8a439448df8a83e6ded,
+      type: 2}
+    isFrequent: 0
+  deathSoundData:
+  - audioClip: {fileID: 8300000, guid: e0f715bba79505044b53c8f2507f7a0f, type: 3}
+    audioMixerGroup: {fileID: 8048913908855039910, guid: 051cac1ae2a9c8a439448df8a83e6ded,
+      type: 2}
+    isFrequent: 0
+  shieldBreakSoundData:
+    audioClip: {fileID: 8300000, guid: a48fa4a63b6a7a74fa08d9ec98f30d17, type: 3}
+    audioMixerGroup: {fileID: 8048913908855039910, guid: 051cac1ae2a9c8a439448df8a83e6ded,
+      type: 2}
+    isFrequent: 0
   maxRespawns: 3
   explosionParticle: {fileID: 6361431522622511341, guid: b9bcc07df42695645b74449cfd80b6db,
     type: 3}
