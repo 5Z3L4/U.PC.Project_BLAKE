@@ -33,7 +33,7 @@ namespace _Project.Scripts.GlobalHandlers
 
         private void EnableDeveloperConsole()
         {
-            var xd = DevConsole.singleton;
+            var _ = DevConsole.singleton;
             Instantiate(_devConsoleCommandsPrefab);
         }
 

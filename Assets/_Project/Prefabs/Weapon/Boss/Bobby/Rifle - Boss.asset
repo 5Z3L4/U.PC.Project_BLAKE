@@ -26,10 +26,10 @@ MonoBehaviour:
   Scale: {x: 1, y: 1, z: 1}
   PickupLocationOffset: {x: 0, y: 0, z: 0}
   PickupRotation: {x: 0, y: 0, z: 0, w: 0}
-  BasicBullet: {fileID: 8745238448183679225, guid: 3834453275fdaab4aa045b723129cc96,
+  BasicBullet: {fileID: -5621749900764010926, guid: 47b4b245cadfcdb448ce3f20b32bf11f,
     type: 3}
   WaitingTimeForNextShoot: 1
-  BulletType: 1
+  BulletType: 2
   SpreadType: 3
   Spread: 4
   SpreadStep: -1
