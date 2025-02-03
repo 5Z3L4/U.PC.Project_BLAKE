@@ -104,6 +104,11 @@ MonoBehaviour:
     audioMixerGroup: {fileID: 8048913908855039910, guid: 051cac1ae2a9c8a439448df8a83e6ded,
       type: 2}
     isFrequent: 0
+  ammoPickupSoundData:
+    audioClip: {fileID: 8300000, guid: 753e63bc356600346ad2a021889d09de, type: 3}
+    audioMixerGroup: {fileID: 8048913908855039910, guid: 051cac1ae2a9c8a439448df8a83e6ded,
+      type: 2}
+    isFrequent: 0
 --- !u!114 &4825340247130890640
 MonoBehaviour:
   m_ObjectHideFlags: 0

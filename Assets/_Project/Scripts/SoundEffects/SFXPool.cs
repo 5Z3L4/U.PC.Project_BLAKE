@@ -9,7 +9,7 @@ namespace _Project.Scripts.SoundEffects
     {
         [SerializeField] private GameObject poolPrefab;
         [SerializeField] private int defaultPoolCapacity = 10;
-        [SerializeField] private int maxPoolCapacity = 100;
+        [SerializeField] private int maxPoolCapacity = 20;
         [SerializeField] private bool collectionCheck = true;
         
         private ObjectPool<AudioSource> _audioSourcePool;

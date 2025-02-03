@@ -21,6 +21,9 @@ namespace _Project.Scripts.Weapons
         
         [SerializeField]
         private SoundData weaponPickupSoundData;
+        
+        [SerializeField]
+        private SoundData ammoPickupSoundData;
 
         [HideInInspector]
         public WeaponInstanceInfo WeaponInstanceInfo;
@@ -185,6 +188,7 @@ namespace _Project.Scripts.Weapons
 
                 rangedWeaponInstanceInfo.bulletsLeft += rangedWeapon.BulletsLeft;
                 rangedWeapon.LoadWeaponInstanceInfo(rangedWeaponInstanceInfo);
+                SoundEffectsManager.Instance.PlaySFX(ammoPickupSoundData, transform.position);
                 Destroy(gameObject);
             }
         }

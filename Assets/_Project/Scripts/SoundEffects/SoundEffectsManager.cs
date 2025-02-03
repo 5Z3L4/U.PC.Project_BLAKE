@@ -46,7 +46,6 @@ namespace _Project.Scripts.SoundEffects
             }
             
             audioSource.PlayOneShot(soundData.AudioClip);
-            //audioSource.Play();
 
             StartCoroutine(ClipReset(audioSource, soundData.AudioClip, soundData.IsFrequent));
         }

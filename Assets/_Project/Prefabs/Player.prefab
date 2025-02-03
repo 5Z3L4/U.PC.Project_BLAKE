@@ -3306,7 +3306,7 @@ MonoBehaviour:
       type: 2}
     isFrequent: 0
   deathSoundData:
-  - audioClip: {fileID: 8300000, guid: e0f715bba79505044b53c8f2507f7a0f, type: 3}
+  - audioClip: {fileID: 8300000, guid: 2b18efab8ec255c41afb5ba880e58877, type: 3}
     audioMixerGroup: {fileID: 8048913908855039910, guid: 051cac1ae2a9c8a439448df8a83e6ded,
       type: 2}
     isFrequent: 0
