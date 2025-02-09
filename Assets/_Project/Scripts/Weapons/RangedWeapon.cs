@@ -110,7 +110,7 @@ namespace _Project.Scripts.Weapons
             if (isTryingToShoot) return false;
             if(BulletsLeft <= 1 && !weaponsManager.throwOnNoAmmo)
             {
-                StartCoroutine("UnequipSelf");
+                StartCoroutine(UnequipSelf());
                 return BulletsLeft == 1;
             }
             
@@ -118,10 +118,10 @@ namespace _Project.Scripts.Weapons
             return true;
         }
 
-        private IEnumerator UnequipSelf()
+        private IEnumerator UnequipSelf(bool throwingWeapon = false)
         {
             yield return new WaitForEndOfFrame();
-            if (audioSource != null && audioSource.isPlaying)
+            if (audioSource != null && audioSource.isPlaying && !throwingWeapon)
             {
                 var detachedAudio = new GameObject("DetachedAudioSource");
                 var detachedSource = detachedAudio.AddComponent<AudioSource>();
@@ -194,7 +194,7 @@ namespace _Project.Scripts.Weapons
             spawnedThrowable.transform.parent = null;
             spawnedThrowable.SetupVFX(rangedWeaponDefinition.WeaponGFX);
             spawnedThrowable.SetupBullet(0, transform.parent.gameObject);
-            StartCoroutine("UnequipSelf");
+            StartCoroutine(UnequipSelf(true));
             return true;
         }
 
