@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Project.Scripts.GlobalHandlers;
+using _Project.Scripts.SoundEffects;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -24,6 +25,10 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] 
     private Transform gunHandlerTransform;
+    
+    [SerializeField]
+    private SoundData dashSoundData;
+    
 
     private Vector2 movementAxis;
     private Vector2 mousePosition;
@@ -95,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         {
             ReferenceManager.PlayerInputController.movementEvent -= MovementHandler;
             ReferenceManager.PlayerInputController.mousePositionEvent -= MousePositionHandler;
-            ReferenceManager.PlayerInputController.dashEvent -= Dash;       
+            ReferenceManager.PlayerInputController.dashEvent -= Dash;
         }
 
         if (ReferenceManager.BlakeHeroCharacter != null)
@@ -206,6 +211,7 @@ public class PlayerMovement : MonoBehaviour
 
         OnDashPerformed?.Invoke();
         SetDashCountdowns();
+        SoundEffectsManager.Instance.PlaySFX(dashSoundData, transform.position);
     }
    
    private void SetDashCountdowns()

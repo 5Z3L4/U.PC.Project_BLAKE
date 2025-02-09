@@ -1,4 +1,5 @@
 using System;
+using _Project.Scripts.SoundEffects;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -15,6 +16,8 @@ namespace _Project.Scripts.EnemyAI.Visuals
     {
         [SerializeField] private GameObject _yellowMarker;
         [SerializeField] private GameObject _redMarker;
+        [SerializeField] private SoundData _playerSpottedSoundData;
+        [SerializeField] private SoundData _playerExposedSoundData;
         
         private bool _isAttacking;
         private Sequence _tweenSequence;
@@ -58,6 +61,7 @@ namespace _Project.Scripts.EnemyAI.Visuals
 
         private void OnAlarmedState()
         {
+            SoundEffectsManager.Instance.PlaySFX(_playerSpottedSoundData, transform.position);
             AnimateVisual(_yellowMarker, AnimationType.PunchPosition)
                 .AttachExternalCancellation(gameObject.GetCancellationTokenOnDestroy()).Forget();
         }
@@ -67,6 +71,7 @@ namespace _Project.Scripts.EnemyAI.Visuals
             if (!_isAttacking)
             {
                 _isAttacking = true;
+                SoundEffectsManager.Instance.PlaySFX(_playerExposedSoundData, transform.position);
                 AnimateVisual(_redMarker, AnimationType.PunchScale, 2f)
                     .AttachExternalCancellation(gameObject.GetCancellationTokenOnDestroy()).Forget();
             }

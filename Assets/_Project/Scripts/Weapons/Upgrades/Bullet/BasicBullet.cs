@@ -9,27 +9,28 @@ namespace _Project.Scripts.Weapons.Upgrades.Bullet
         [SerializeField]
         private float bulletSpeed;
 
-        [SerializeField, Tooltip("Time after bullet will be destroyed")]
-        private float destroyTime;
-
         [SerializeField, Tooltip("How many enemies bullet should penetrate 0 = destroy at first hit")]
         private int penetrateAmount;
         
         [SerializeField]
         private BulletExplosion explosionPrefab;
 
-        private Rigidbody rb;
-
         private GameObject instigator;
         private BulletType bulletType;
+
+        protected Rigidbody rb;
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody>();
         }
 
-        //TODO: Add magic function handler
         private void Update()
+        {
+            UpdatePosition();
+        }
+
+        protected virtual void UpdatePosition()
         {
             rb.velocity = transform.forward * bulletSpeed;
         }
@@ -44,8 +45,12 @@ namespace _Project.Scripts.Weapons.Upgrades.Bullet
             
             this.instigator = instigator;
             this.bulletType = bulletType;
-            destroyTime = range / bulletSpeed;
-            Destroy(gameObject, destroyTime);
+
+            if (bulletType != BulletType.Explosive)
+            {
+                var destroyTime = range / bulletSpeed;
+                Destroy(gameObject, destroyTime);
+            }
         }
 
         private void OnCollisionEnter(Collision collision)

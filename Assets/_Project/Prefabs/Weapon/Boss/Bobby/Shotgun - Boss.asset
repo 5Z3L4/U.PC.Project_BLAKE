@@ -26,7 +26,7 @@ MonoBehaviour:
   Scale: {x: 1, y: 1, z: 1}
   PickupLocationOffset: {x: 0, y: 0, z: 0}
   PickupRotation: {x: 0, y: 0, z: 0, w: 0}
-  BasicBullet: {fileID: 8745238448183679225, guid: 840b6a6b89ca7344da4b0ad530514ca7,
+  BasicBullet: {fileID: -6403945925427504173, guid: 432f69d5927c7a249a11a142e5d3d624,
     type: 3}
   WaitingTimeForNextShoot: 10
   BulletType: 2

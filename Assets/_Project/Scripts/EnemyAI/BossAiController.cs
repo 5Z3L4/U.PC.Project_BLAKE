@@ -9,7 +9,8 @@ namespace _Project.Scripts.EnemyAI
     {
         [Space(20)]
         public Weapon SpecialWeapon;
-        
+
+        [SerializeField] private bool specialSkillEnabled;
         [SerializeField, Range(0f,1f)] private float specialWeaponShootChance;
         [SerializeField] private float specialWeaponCooldown;
         [SerializeField] private int maxDistanceToShootSpecialWeapon;
@@ -22,6 +23,11 @@ namespace _Project.Scripts.EnemyAI
         {
             get
             {
+                if (!specialSkillEnabled)
+                {
+                    return true;
+                }
+                
                 var isOnCooldown = Time.time <= _specialWeaponCooldownTimestamp;
                 if (!isOnCooldown)
                 {

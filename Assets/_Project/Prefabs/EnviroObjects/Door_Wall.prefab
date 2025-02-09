@@ -574,6 +574,16 @@ MonoBehaviour:
   uiHolder: {fileID: 6184300611566697292}
   interactable: 0
   open: 0
+  openDoorSoundData:
+    audioClip: {fileID: 8300000, guid: c3c53d0002c413d469f66d222e06ea50, type: 3}
+    audioMixerGroup: {fileID: -3480081075734911879, guid: 051cac1ae2a9c8a439448df8a83e6ded,
+      type: 2}
+    isFrequent: 0
+  closeDoorSoundData:
+    audioClip: {fileID: 8300000, guid: 9d0f15b8522b465429d34d7bc202450a, type: 3}
+    audioMixerGroup: {fileID: -3480081075734911879, guid: 051cac1ae2a9c8a439448df8a83e6ded,
+      type: 2}
+    isFrequent: 0
 --- !u!65 &821815831123594217
 BoxCollider:
   m_ObjectHideFlags: 0
