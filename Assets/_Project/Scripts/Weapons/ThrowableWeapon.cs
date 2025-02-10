@@ -41,9 +41,6 @@ public class ThrowableWeapon : MonoBehaviour, IBullet
         {
             damageable.TryTakeDamage(instigator, 1);
         }
-        else
-        {
             Destroy(gameObject);
-        }
     }
 }
