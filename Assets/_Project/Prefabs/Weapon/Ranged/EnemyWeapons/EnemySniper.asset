@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b52c6e7e16fc848a76e7336673e5f2, type: 3}
   m_Name: EnemySniper
   m_EditorClassIdentifier: 
+  WeaponType: 106
   WeaponPrefab: {fileID: 8623244368148286623, guid: 419325c1d82cb204cb136d7467339420,
     type: 3}
   WeaponGFX: {fileID: 539712161414889713, guid: 7e0af4d7e171e6148a07c86bfa73cbee,

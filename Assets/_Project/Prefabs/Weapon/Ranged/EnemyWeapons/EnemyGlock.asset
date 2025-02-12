@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b52c6e7e16fc848a76e7336673e5f2, type: 3}
   m_Name: EnemyGlock
   m_EditorClassIdentifier: 
+  WeaponType: 101
   WeaponPrefab: {fileID: 5319882019298209556, guid: b439379a8d4ee1f47a52087f53bbe13b,
     type: 3}
   WeaponGFX: {fileID: 899293860116181753, guid: ef357f2648604d04f8dcd9d3b7af440f,

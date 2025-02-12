@@ -166,7 +166,7 @@ namespace _Project.Scripts.Weapons
                     continue;
                 }
                 
-                if (weapon.WeaponDefinition != WeaponDefinition)
+                if (weapon.WeaponDefinition.WeaponType != WeaponDefinition.WeaponType)
                 {
                     continue;
                 }
@@ -190,6 +190,7 @@ namespace _Project.Scripts.Weapons
                 rangedWeapon.LoadWeaponInstanceInfo(rangedWeaponInstanceInfo);
                 SoundEffectsManager.Instance.PlaySFX(ammoPickupSoundData, transform.position);
                 Destroy(gameObject);
+                break;
             }
         }
     }

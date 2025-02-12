@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b52c6e7e16fc848a76e7336673e5f2, type: 3}
   m_Name: MachineGun
   m_EditorClassIdentifier: 
+  WeaponType: 102
   WeaponPrefab: {fileID: 8623244368148286623, guid: 6319a1b0b2129e44fbe02b75620268c8,
     type: 3}
   WeaponGFX: {fileID: 899293860116181753, guid: 82b8cc3ac601d01488dfe4cf9f7e27f2,

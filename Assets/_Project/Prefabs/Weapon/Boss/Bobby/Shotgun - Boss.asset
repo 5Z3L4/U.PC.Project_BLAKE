@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b52c6e7e16fc848a76e7336673e5f2, type: 3}
   m_Name: Shotgun - Boss
   m_EditorClassIdentifier: 
+  WeaponType: 1001
   WeaponPrefab: {fileID: 7102642101788406657, guid: 5537cce7f288ae346949b6adb82e3bbe,
     type: 3}
   WeaponGFX: {fileID: 7630133848501499039, guid: 24876219021b8f541ae02417265e6a2c,
