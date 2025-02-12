@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b52c6e7e16fc848a76e7336673e5f2, type: 3}
   m_Name: Revolver
   m_EditorClassIdentifier: 
+  WeaponType: 103
   WeaponPrefab: {fileID: 2211575096574099193, guid: 7bafbe8de9e5c224f9c91487d46efe98,
     type: 3}
   WeaponGFX: {fileID: 296156443889256378, guid: af2522d929ba0ec4eab11a3835c86b8b,

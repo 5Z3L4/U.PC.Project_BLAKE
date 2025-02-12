@@ -46,7 +46,7 @@ namespace _Project.Scripts.Weapons.Upgrades.Bullet
             this.instigator = instigator;
             this.bulletType = bulletType;
 
-            if (bulletType != BulletType.Explosive)
+            if (range > 0)
             {
                 var destroyTime = range / bulletSpeed;
                 Destroy(gameObject, destroyTime);

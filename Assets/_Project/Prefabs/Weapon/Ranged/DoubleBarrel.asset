@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b52c6e7e16fc848a76e7336673e5f2, type: 3}
   m_Name: DoubleBarrel
   m_EditorClassIdentifier: 
+  WeaponType: 100
   WeaponPrefab: {fileID: 4911671507717690896, guid: d59ad31d5e825164385713c41e42f342,
     type: 3}
   WeaponGFX: {fileID: 1318050290126625103, guid: 1780d87ee5d4ee24b8a12e7cf5b7f1f8,

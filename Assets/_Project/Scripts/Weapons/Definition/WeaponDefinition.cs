@@ -6,6 +6,8 @@ namespace _Project.Scripts.Weapons.Definition
     [CreateAssetMenu(fileName = "Weapon definition", menuName = "Project BLAKE/Weapon")]
     public class WeaponDefinition : ScriptableObject
     {
+        public WeaponType WeaponType;
+        
         public GameObject WeaponPrefab;
     
         public GameObject WeaponGFX;
