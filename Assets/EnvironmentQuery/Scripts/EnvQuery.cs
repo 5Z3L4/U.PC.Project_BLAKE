@@ -3,6 +3,7 @@ using UnityEngine;
 using NoAlloq;
 using System;
 using System.Diagnostics;
+using _Project.Scripts.GlobalHandlers;
 
 /**
  * Environment Query Instance
@@ -310,6 +311,11 @@ public class EnvQuery : MonoBehaviour
 #if UNITY_EDITOR
 	private void OnDrawGizmos()
 	{
+		if (!GlobalStartSettings.Instance.EnableEnemiesAIGizmos)
+		{
+			return;
+		}
+		
 		if (isActiveAndEnabled && envQueryItems != null)
 		{
 			foreach (EnvQueryItem item in envQueryItems)

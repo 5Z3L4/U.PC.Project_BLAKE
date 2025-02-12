@@ -9,14 +9,17 @@ namespace _Project.Scripts.GlobalHandlers
 {
     public class GlobalStartSettings : Singleton<GlobalStartSettings>
     {
+        [Space(10)]
         [SerializeField] private bool _enableDeveloperConsole;
         [SerializeField] private bool _removeURPDebug;
         [SerializeField] private bool _enableEnemies;
+        [SerializeField] private bool _enableEnemiesAIGizmos;
         
         [Space]
         [SerializeField] private BaseCommand _devConsoleCommandsPrefab;
 
         public bool EnableEnemies => _enableEnemies;
+        public bool EnableEnemiesAIGizmos => _enableEnemiesAIGizmos;
         
         private void Start()
         {

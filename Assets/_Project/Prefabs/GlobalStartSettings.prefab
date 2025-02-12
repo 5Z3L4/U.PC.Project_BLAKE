@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
+  renamePrefab: 0
   _enableDeveloperConsole: 1
   _removeURPDebug: 1
   _enableEnemies: 1
+  _enableEnemiesAIGizmos: 0
   _devConsoleCommandsPrefab: {fileID: 5241348274939121156, guid: dc918890179ef0a409c91d9214c4368e,
     type: 3}
