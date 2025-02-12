@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Project.Scripts.GlobalHandlers;
 using _Project.Scripts.Weapons.Definition;
 using _Project.Scripts.Weapons.Statistics;
 using Cysharp.Threading.Tasks;
@@ -180,9 +181,14 @@ namespace _Project.Scripts.Weapons
         {
             var collidersFoundNumber = Physics.OverlapSphere(Owner.transform.position,
                 currentWeaponStats.LoudnessRange, currentWeaponStats.EnemyLayerMask);
+            var currentRoom = ReferenceManager.RoomManager.PlayerCurrentActiveRoom;
             foreach (var enemy in collidersFoundNumber)
             {
-                enemy.GetComponent<AIController>().TryChangeCombatState(CombatState.Chase);
+                var enemyRoom = enemy.GetComponent<EnemyCharacter>().SpawnedInRoom;
+                if (enemyRoom == currentRoom)
+                {
+                    enemy.GetComponent<AIController>().TryChangeCombatState(CombatState.Chase);
+                }
             }
         }
 

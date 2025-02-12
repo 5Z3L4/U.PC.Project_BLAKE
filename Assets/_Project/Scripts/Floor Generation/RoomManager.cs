@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    private Room activeRoom;
-    private Room previousRoom;
+    private Room playerCurrentActiveRoom;
+    private Room playerPreviousActiveRoom;
     public delegate void EnteredRoom(Room room);
     public event EnteredRoom onRoomEnter;
     public event EnteredRoom onRoomLeave;
@@ -15,6 +15,9 @@ public class RoomManager : MonoBehaviour
 
     [SerializeField]
     private Transform minimapFloor;
+    
+    public Room PlayerCurrentActiveRoom => playerCurrentActiveRoom;
+
 
     private void Awake()
     {
@@ -38,25 +41,25 @@ public class RoomManager : MonoBehaviour
 
     public void SetActiveRoom(Room newRoom)
     {
-        activeRoom = newRoom;
-        onRoomEnter?.Invoke(activeRoom);
+        playerCurrentActiveRoom = newRoom;
+        onRoomEnter?.Invoke(playerCurrentActiveRoom);
     }
 
     public Room GetActiveRoom()
     {
-        return activeRoom;
+        return playerCurrentActiveRoom;
     }
 
     public void SetPreviousRoom(Room newRoom)
     {
         if (newRoom == null) return;
-        previousRoom = newRoom;
-        onRoomLeave?.Invoke(previousRoom);
+        playerPreviousActiveRoom = newRoom;
+        onRoomLeave?.Invoke(playerPreviousActiveRoom);
     }
 
     public Room GetPreviousRoom()
     {
-        return previousRoom;
+        return playerPreviousActiveRoom;
     }
 
     public Transform GetMinimapFloor()
