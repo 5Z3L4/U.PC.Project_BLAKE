@@ -29,7 +29,7 @@ namespace _Project.Scripts.Weapons.Upgrades.UI
 
         private void OnEnable()
         {
-            SwitchBuyButtonInteractable();
+            RefreshBuyButton();
         }
 
         public WeaponStatisticUpgradeUI CreateNewUpgradeStatistic(WeaponStatisticUpgradeUI weaponStatisticUpgradeUI)
@@ -49,10 +49,10 @@ namespace _Project.Scripts.Weapons.Upgrades.UI
                 upgradeCost = upgradeData.UpgradeCost;
             }
             
-            SwitchBuyButtonInteractable();
+            RefreshBuyButton();
         }
 
-        private void SwitchBuyButtonInteractable()
+        public void RefreshBuyButton()
         {
             var isEnoughPoints =
                 ReferenceManager.PlayerCurrencyController.HasPlayerEnoughPoints(upgradeCost);

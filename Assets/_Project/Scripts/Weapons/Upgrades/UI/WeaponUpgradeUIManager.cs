@@ -77,5 +77,14 @@ namespace _Project.Scripts.Weapons.Upgrades.UI
                 }
             }
         }
+
+        public void RefreshCardsStatus()
+        {
+            for (var i = 0; i < upgradeCardParent.childCount; i++)
+            {
+                var card = upgradeCardParent.GetChild(i).GetComponent<WeaponUpgradeCardUI>();
+                card.RefreshBuyButton();
+            }
+        }
     }
 }

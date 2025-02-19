@@ -231,6 +231,7 @@ namespace _Project.Scripts.Weapons.Upgrades
                     .AddWeaponUpgrade(upgradeData.WeaponDefinition.WeaponName, statistics);
 
                 ReferenceManager.PlayerCurrencyController.RemovePoints(upgradeData.UpgradeCost);
+                weaponUpgradeUIManager.RefreshCardsStatus();
                 
                 this.TrySendAnalytics(upgradeData, dictionaryOfUpgrades);
                 
