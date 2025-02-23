@@ -77,15 +77,19 @@ namespace _Project.Scripts.Analytics
             {
                 return;
             }
-            var weaponName = "";
-            if(killer.GetComponent<AIController>()?.Weapon != null)
+            
+            var aiController = killer.GetComponent<AIController>();
+            if (aiController == null || aiController.Weapon == null)
             {
-                weaponName = killer.GetComponent<AIController>().Weapon.name;
+                return;
             }
+
+            var killerName = killer.name.Replace("(Clone)", "");
+            
             var parameters = new Dictionary<string, object>()
             {
-                { AnalyticsParameterNames.Killer, killer.name },
-                { AnalyticsParameterNames.ItemName, weaponName},
+                { AnalyticsParameterNames.Killer, killerName },
+                { AnalyticsParameterNames.ItemName, aiController.Weapon.WeaponDefinition.WeaponName},
                 { AnalyticsParameterNames.PlacementName, ReferenceManager.RoomManager.GetActiveRoom().name }
             };
             

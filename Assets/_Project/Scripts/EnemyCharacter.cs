@@ -77,6 +77,7 @@ namespace _Project.Scripts
                 Debug.LogError("WeaponDefinition is not valid. " + name);
                 return;
             }
+            
             var weapon = AIController.Weapon;
 
             if (savageThreeActivated)
@@ -95,7 +96,7 @@ namespace _Project.Scripts
                 }
             }
             
-            Destroy(AIController.Weapon.gameObject);
+            AIController.Weapon.gameObject.SetActive(false);
 
             await UniTask.Delay(TimeSpan.FromSeconds(dropWeaponTime));
 
