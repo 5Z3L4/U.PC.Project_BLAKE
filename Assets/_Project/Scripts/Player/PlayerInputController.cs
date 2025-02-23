@@ -15,7 +15,6 @@ namespace _Project.Scripts.Player
         }
         
         private PlayerInputSystem inputSystem;
-        private bool isPeeking = false;
         private InputState inputState = InputState.Gameplay;
 
         protected override void Awake()

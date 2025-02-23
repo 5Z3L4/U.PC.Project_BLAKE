@@ -89,7 +89,6 @@ public class Room : MonoBehaviour
     private RoomsDoneCounter roomsDoneCounter;
     private bool isPeeking = false;
     private List<WeaponPickup> instantiatedWeapons;
-    private bool anyEnemyAlive = false;
 
     [HideInInspector]
     public int gCost;

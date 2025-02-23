@@ -116,3 +116,5 @@ Assets/Plugins/Editor/JetBrains*
 # Visual Studio Code
 .vscode/
 
+# Web GL builds
+com.unity.connect.share/
